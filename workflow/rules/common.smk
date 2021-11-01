@@ -46,8 +46,9 @@ wildcard_constraints:
 
 
 def compile_output_list(wildcards):
-    return [
-        "annotation/dummy/%s_%s.dummy.txt" % (sample, t)
+    output_files = [
+        "snv_indels/ensemble_vcf/%s_%s.ensembled.vep_annotated.vcf" % (sample, t)
         for sample in get_samples(samples)
         for t in get_unit_types(units, sample)
     ]
+    return output_files
