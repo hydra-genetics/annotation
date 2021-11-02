@@ -17,3 +17,25 @@ properties:
     - units
     - resources
     - default_container
+
+  vep:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for vep
+      container:
+        type: string
+        description: name or path to docker/singularity vep
+      vep_cache:
+        type: string
+        description: path to vep cache directory
+      extra:
+        type: string
+        description: parameters that should be forwarded to vep annotate
+      mode:
+        type: string
+        description: Used to make vep query online database, by setting mode to --database
+      required:
+        - extra
+        - vep_cache

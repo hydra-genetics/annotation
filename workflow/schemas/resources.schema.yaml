@@ -14,3 +14,13 @@ properties:
 
   required:
     - default_resources
+
+  annotate:
+    type: object
+    properties:
+      threads:
+        type: integer
+        description: number of threads that will be used by the 'annotate' rule
+      time:
+        type: string
+        description: max execution time for the 'annotate' rule
