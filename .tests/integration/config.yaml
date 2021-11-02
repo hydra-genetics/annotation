@@ -12,3 +12,6 @@ vep:
   vep_cache:  VEP/homo_sapiens
   mode: "--database"
   extra: " --af  "
+
+calculate_run_background:
+  container: "docker://gmsuppsala/somatic:develop"
