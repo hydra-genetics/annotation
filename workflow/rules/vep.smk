@@ -16,7 +16,7 @@ rule vep:
     output:
         vcf=temp("snv_indels/{caller}/{file}.vep_annotated.vcf"),
     params:
-        extra=config["vep"]["extra"],
+        extra=config.get("vep", {}).get("extra", ""),
         mode=config.get("vep", {}).get("mode", "--offline --cache"),
     log:
         "snv_indels/{caller}/{file}.vep_annotated.vcf.gz.log",
