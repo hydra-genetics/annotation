@@ -25,7 +25,10 @@ rule vep:
             "snv_indels/{caller}/{file}.vep_annotated.vcf.gz.benchmark.tsv",
             config.get("vep", {}).get("benchmark_repeats", 1),
         )
-    threads: config.get("vep", config["default_resources"]).get("threads", config["default_resources"]["threads"])
+    threads: config.get("vep", {}).get("threads", config["default_resources"]["threads"])
+    resources:
+        threads=config.get("vep", {}).get("threads", config["default_resources"]["threads"]),
+        time=config.get("vep", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("vep", {}).get("container", config["default_container"])
     conda:
