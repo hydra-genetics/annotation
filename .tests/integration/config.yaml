@@ -14,4 +14,4 @@ vep:
   extra: " --af  "
 
 calculate_seqrun_background:
-  container: "docker://docker://python:3.9.7-slim"
+  container: "docker://python:3.9.7-slim"
