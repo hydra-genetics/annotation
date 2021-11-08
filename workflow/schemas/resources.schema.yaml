@@ -15,12 +15,22 @@ properties:
   required:
     - default_resources
 
-  annotate:
+  vep:
     type: object
     properties:
       threads:
         type: integer
-        description: number of threads that will be used by the 'annotate' rule
+        description: number of threads that will be used by the 'vep' rule
       time:
         type: string
-        description: max execution time for the 'annotate' rule
+        description: max execution time for the 'vep' rule
+
+  calculate_seqrun_background:
+    type: object
+    properties:
+      threads:
+        type: integer
+        description: number of threads that will be used by the 'calculate_seqrun_background' rule
+      time:
+        type: string
+        description: max execution time for the 'calculate_seqrun_background' rule

@@ -12,3 +12,6 @@ vep:
   vep_cache:  VEP/homo_sapiens
   mode: "--database"
   extra: " --af  "
+
+calculate_seqrun_background:
+  container: "docker://python:3.9.7-slim"
