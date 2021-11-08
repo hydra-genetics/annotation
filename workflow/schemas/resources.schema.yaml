@@ -25,12 +25,12 @@ properties:
         type: string
         description: max execution time for the 'vep' rule
 
-  calculate_run_background:
+  calculate_seqrun_background:
     type: object
     properties:
       threads:
         type: integer
-        description: number of threads that will be used by the 'calculate_run_background' rule
+        description: number of threads that will be used by the 'calculate_seqrun_background' rule
       time:
         type: string
-        description: max execution time for the 'calculate_run_background' rule
+        description: max execution time for the 'calculate_seqrun_background' rule

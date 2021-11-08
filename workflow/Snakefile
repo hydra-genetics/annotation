@@ -9,7 +9,7 @@ __license__ = "GPL-3"
 
 include: "rules/common.smk"
 include: "rules/vep.smk"
-include: "rules/calculate_run_background.smk"
+include: "rules/calculate_seqrun_background.smk"
 
 
 report: "report/workflow.rst"

@@ -40,12 +40,12 @@ properties:
         - extra
         - vep_cache
 
-  calculate_run_background:
+  calculate_seqrun_background:
     type: object
     properties:
       benchmark_repeats:
         type: integer
-        description: set number of times benchmark should be repeated for vep
+        description: set number of times benchmark should be repeated for calculate_seqrun_background
       container:
         type: string
-        description: name or path to docker/singularity vep
+        description: name or path to docker/singularity calculate_seqrun_background

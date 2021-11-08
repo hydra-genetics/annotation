@@ -12,7 +12,7 @@ if analysis_type == "panel":
     gvcf_file = open(gvcf_files)
     for line in gvcf_file:
         gvcf_filenames.append(line.strip())
-elif analysis_type == "run":
+elif analysis_type == "seqrun":
     gvcf_filenames = gvcf_files
 else:
     print("Wrong analysis type. Should be panel or run")
