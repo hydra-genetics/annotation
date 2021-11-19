@@ -14,7 +14,7 @@ rule vep:
         cache=config["vep"]["vep_cache"],
         fasta=config["reference"]["fasta"],
     output:
-        vcf=temp("snv_indels/{caller}/{file}.vep_annotated.vcf"),
+        vcf="snv_indels/{caller}/{file}.vep_annotated.vcf",
     params:
         extra=config.get("vep", {}).get("extra", ""),
         mode=config.get("vep", {}).get("mode", "--offline --cache"),
@@ -29,6 +29,9 @@ rule vep:
     resources:
         threads=config.get("vep", {}).get("threads", config["default_resources"]["threads"]),
         time=config.get("vep", {}).get("time", config["default_resources"]["time"]),
+        mem_mb=config.get("vep", {}).get("mem_mb", config["default_resources"]["mem_mb"]),
+        mem_per_cpu=config.get("vep", {}).get("mem_per_cpu", config["default_resources"]["mem_per_cpu"]),
+        partition=config.get("vep", {}).get("partition", config["default_resources"]["partition"]),
     container:
         config.get("vep", {}).get("container", config["default_container"])
     conda:
