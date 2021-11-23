@@ -11,6 +11,15 @@ properties:
       time:
         type: string
         description: default max execution time for a rule
+      mem_mb:
+        type: integer
+        description: default memory used for a rule
+      mem_per_cpu:
+        type: integer
+        description: default memory used per cpu for a rule
+      partition:
+        type: string
+        description: default partition to use on the cluster for a rule
 
   required:
     - default_resources
@@ -24,6 +33,15 @@ properties:
       time:
         type: string
         description: max execution time for the 'vep' rule
+      mem_mb:
+        type: integer
+        description: memory used for 'vep'
+      mem_per_cpu:
+        type: integer
+        description: memory used per cpu for 'vep'
+      partition:
+        type: string
+        description: partition to use on the cluster for 'vep'
 
   calculate_seqrun_background:
     type: object
@@ -34,3 +52,12 @@ properties:
       time:
         type: string
         description: max execution time for the 'calculate_seqrun_background' rule
+      mem_mb:
+        type: integer
+        description: memory used for 'calculate_seqrun_background'
+      mem_per_cpu:
+        type: integer
+        description: memory used per cpu for 'calculate_seqrun_background'
+      partition:
+        type: string
+        description: partition to use on the cluster for 'calculate_seqrun_background'
