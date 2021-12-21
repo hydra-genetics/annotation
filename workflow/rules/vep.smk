@@ -14,7 +14,7 @@ rule vep:
         cache=config["vep"]["vep_cache"],
         fasta=config["reference"]["fasta"],
     output:
-        vcf="snv_indels/{caller}/{file}.vep_annotated.vcf",
+        vcf=temp("snv_indels/{caller}/{file}.vep_annotated.vcf"),
     params:
         extra=config.get("vep", {}).get("extra", ""),
         mode=config.get("vep", {}).get("mode", "--offline --cache"),

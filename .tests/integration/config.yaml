@@ -8,7 +8,7 @@ reference:
   fasta: "reference/WASH7P.fna"
 
 vep:
-  container: "docker://ensemblorg/ensembl-vep:release_99.0"
+  container: "docker://hydragenetics/vep:105"
   vep_cache:  VEP/homo_sapiens
   mode: "--database"
   extra: " --af  "
