@@ -8,6 +8,7 @@ __license__ = "GPL-3"
 
 
 include: "rules/common.smk"
+include: "rules/snpeff.smk"
 include: "rules/vep.smk"
 include: "rules/calculate_seqrun_background.smk"
 
