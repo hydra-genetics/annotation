@@ -7,6 +7,10 @@ default_container: "docker://hydragenetics/common:0.0.1"
 reference:
   fasta: "reference/WASH7P.fna"
 
+snpeff:
+  container: "docker://hydragenetics/snpeff:5.0"
+  db: "SnpEff/GRCh38.99"
+
 vep:
   container: "docker://hydragenetics/vep:105"
   vep_cache:  VEP/homo_sapiens

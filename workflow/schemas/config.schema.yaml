@@ -18,6 +18,24 @@ properties:
     - resources
     - default_container
 
+  snpeff:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for snpeff
+      container:
+        type: string
+        description: name or path to docker/singularity snpeff
+      db:
+        type: string
+        description: path to snpeff database directory
+      extra:
+        type: string
+        description: parameters that should be forwarded to snpeff
+      required:
+        - db
+
   vep:
     type: object
     properties:
