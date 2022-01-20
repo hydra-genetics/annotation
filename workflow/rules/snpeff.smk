@@ -12,8 +12,9 @@ rule snpeff:
     output:
         calls=temp("{file}.snpeff.vcf.gz"),
         csvstats=temp("{file}.snpeff.csv"),
+        genes=temp("{file}.snpeff.genes.txt"),
     params:
-        extra=config.get("snpeff", {}).get("extra", "--nodownload"),
+        extra=config.get("snpeff", {}).get("extra", "-nodownload"),
     log:
         "{file}.snpeff.vcf.gz.log",
     benchmark:
@@ -35,4 +36,4 @@ rule snpeff:
     message:
         "{rule}: Annotate {wildcards.file}.vcf.gz with SnpEff"
     wrapper:
-        "0.85.0/bio/snpeff"
+        "0.85.0/bio/snpeff/annotate"
