@@ -9,7 +9,7 @@ reference:
 
 snpeff:
   container: "docker://hydragenetics/snpeff:5.0"
-  db: "SnpEff/GRCh38"
+  db: "SnpEff/GRCh38.99"
 
 vep:
   container: "docker://hydragenetics/vep:105"
