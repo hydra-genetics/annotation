@@ -8,7 +8,7 @@ rule snpeff:
     input:
         vcf="{file}.vcf.gz",
         tabix="{file}.vcf.gz.tbi",
-        db=config.get("snpeff", {}).get("db", "")
+        db=config.get("snpeff", {}).get("db", ""),
     output:
         calls=temp("{file}.snpeff.vcf.gz"),
         csvstats=temp("{file}.snpeff.csv"),

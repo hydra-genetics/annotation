@@ -52,11 +52,11 @@ def compile_output_list(wildcards):
         for t in get_unit_types(units, sample)
     ]
     output_files.append(
-      [
-        "snv_indels/ensemble_vcf/%s_%s.ensembled.snpeff.vcf.gz" % (sample, t)
-        for sample in get_samples(samples)
-        for t in get_unit_types(units, sample)
-      ]
+        [
+            "snv_indels/ensemble_vcf/%s_%s.ensembled.snpeff.vcf.gz" % (sample, t)
+            for sample in get_samples(samples)
+            for t in get_unit_types(units, sample)
+        ]
     )
     output_files.append(["annotation/calculate_seqrun_background/%s_seqrun_background.tsv" % ("1")])
     return output_files
