@@ -7,6 +7,11 @@ default_container: "docker://hydragenetics/common:0.0.1"
 reference:
   fasta: "reference/WASH7P.fna"
 
+simple_sv_annotation:
+  container: "docker://hydragenetics/simple_sv_annotation:2019.02.18"
+  panel: "reference/panel.txt"
+  fusion_pairs: "reference/fusion_pairs.txt"
+
 snpeff:
   container: "docker://hydragenetics/snpeff:5.0"
   db: "SnpEff/GRCh38.99"

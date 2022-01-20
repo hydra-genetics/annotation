@@ -18,6 +18,25 @@ properties:
     - resources
     - default_container
 
+  simple_sv_annotation:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for simple_sv_annotation
+      container:
+        type: string
+        description: name or path to docker/singularity simple_sv_annotation
+      fusion_pairs:
+        type: string
+        description: path to simple_sv_annotation fusion pairs file
+      panel:
+        type: string
+        description: path to simple_sv_annotation cancer panel file
+      required:
+        - fusion_pairs
+        - panel
+
   snpeff:
     type: object
     properties:

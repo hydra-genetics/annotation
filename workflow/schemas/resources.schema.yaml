@@ -24,6 +24,25 @@ properties:
   required:
     - default_resources
 
+  simple_sv_annotation:
+    type: object
+    properties:
+      threads:
+        type: integer
+        description: number of threads that will be used by the 'simple_sv_annotation' rule
+      time:
+        type: string
+        description: max execution time for the 'simple_sv_annotation' rule
+      mem_mb:
+        type: integer
+        description: memory used for 'simple_sv_annotation'
+      mem_per_cpu:
+        type: integer
+        description: memory used per cpu for 'simple_sv_annotation'
+      partition:
+        type: string
+        description: partition to use on the cluster for 'simple_sv_annotation'
+
   snpeff:
     type: object
     properties:
