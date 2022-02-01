@@ -10,12 +10,12 @@ rule simple_sv_annotation:
         panel=config.get("simple_sv_annotation", {}).get("panel", ""),
         fusion_pairs=config.get("simple_sv_annotation", {}).get("fusion_pairs", ""),
     output:
-        vcf=temp("{file}.ssa.vcf.gz"),
+        vcf=temp("{file}.ssa.vcf"),
     log:
-        "{file}.ssa.vcf.gz.log",
+        "{file}.ssa.vcf.log",
     benchmark:
         repeat(
-            "{file}.ssa.vcf.gz.benchmark.tsv",
+            "{file}.ssa.vcf.benchmark.tsv",
             config.get("simple_sv_annotation", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("simple_sv_annotation", {}).get("threads", config["default_resources"]["threads"])

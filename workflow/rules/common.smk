@@ -53,7 +53,7 @@ def compile_output_list(wildcards):
     ]
     output_files.append(
         [
-            "snv_indels/ensemble_vcf/%s_%s.ensembled.ssa.vcf.gz" % (sample, t)
+            "snv_indels/ensemble_vcf/%s_%s.ensembled.ssa.vcf" % (sample, t)
             for sample in get_samples(samples)
             for t in get_unit_types(units, sample)
         ]
