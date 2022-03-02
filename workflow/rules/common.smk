@@ -46,17 +46,16 @@ wildcard_constraints:
 
 
 def compile_output_list(wildcards):
+    files = {
+        "qc/add_mosdepth_coverage_to_gvcf": [".mosdepth.gvcf.gz"],
+        "snv_indels/ensemble_vcf": [".ensembled.vep_annotated.vcf", ".ensembled.ssa.vcf"],
+    }
     output_files = [
-        "snv_indels/ensemble_vcf/%s_%s.ensembled.vep_annotated.vcf" % (sample, t)
+        "%s/%s_%s%s" % (prefix, sample, unit_type, suffix)
+        for prefix in files.keys()
         for sample in get_samples(samples)
-        for t in get_unit_types(units, sample)
+        for unit_type in get_unit_types(units, sample)
+        for suffix in files[prefix]
     ]
-    output_files.append(
-        [
-            "snv_indels/ensemble_vcf/%s_%s.ensembled.ssa.vcf" % (sample, t)
-            for sample in get_samples(samples)
-            for t in get_unit_types(units, sample)
-        ]
-    )
     output_files.append(["annotation/calculate_seqrun_background/%s_seqrun_background.tsv" % ("1")])
     return output_files

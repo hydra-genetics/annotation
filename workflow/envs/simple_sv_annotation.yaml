@@ -4,3 +4,4 @@ channels:
   - defaults
 dependencies:
   - simple_sv_annotation=2019.02.18
+  - python==3.9
