@@ -18,6 +18,26 @@ properties:
     - resources
     - default_container
 
+  add_mosdepth_coverage_to_gvcf:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for add_mosdepth_coverage_to_gvcf
+      container:
+        type: string
+        description: name or path to docker/singularity add_mosdepth_coverage_to_gvcf
+
+  calculate_seqrun_background:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for calculate_seqrun_background
+      container:
+        type: string
+        description: name or path to docker/singularity calculate_seqrun_background
+
   simple_sv_annotation:
     type: object
     properties:
@@ -76,13 +96,3 @@ properties:
       required:
         - extra
         - vep_cache
-
-  calculate_seqrun_background:
-    type: object
-    properties:
-      benchmark_repeats:
-        type: integer
-        description: set number of times benchmark should be repeated for calculate_seqrun_background
-      container:
-        type: string
-        description: name or path to docker/singularity calculate_seqrun_background

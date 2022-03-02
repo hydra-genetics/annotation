@@ -24,6 +24,44 @@ properties:
   required:
     - default_resources
 
+  add_mosdepth_coverage_to_gvcf:
+    type: object
+    properties:
+      threads:
+        type: integer
+        description: number of threads that will be used by the 'add_mosdepth_coverage_to_gvcf' rule
+      time:
+        type: string
+        description: max execution time for the 'add_mosdepth_coverage_to_gvcf' rule
+      mem_mb:
+        type: integer
+        description: memory used for 'add_mosdepth_coverage_to_gvcf'
+      mem_per_cpu:
+        type: integer
+        description: memory used per cpu for 'add_mosdepth_coverage_to_gvcf'
+      partition:
+        type: string
+        description: partition to use on the cluster for 'add_mosdepth_coverage_to_gvcf'
+
+  calculate_seqrun_background:
+    type: object
+    properties:
+      threads:
+        type: integer
+        description: number of threads that will be used by the 'calculate_seqrun_background' rule
+      time:
+        type: string
+        description: max execution time for the 'calculate_seqrun_background' rule
+      mem_mb:
+        type: integer
+        description: memory used for 'calculate_seqrun_background'
+      mem_per_cpu:
+        type: integer
+        description: memory used per cpu for 'calculate_seqrun_background'
+      partition:
+        type: string
+        description: partition to use on the cluster for 'calculate_seqrun_background'
+
   simple_sv_annotation:
     type: object
     properties:
@@ -80,22 +118,3 @@ properties:
       partition:
         type: string
         description: partition to use on the cluster for 'vep'
-
-  calculate_seqrun_background:
-    type: object
-    properties:
-      threads:
-        type: integer
-        description: number of threads that will be used by the 'calculate_seqrun_background' rule
-      time:
-        type: string
-        description: max execution time for the 'calculate_seqrun_background' rule
-      mem_mb:
-        type: integer
-        description: memory used for 'calculate_seqrun_background'
-      mem_per_cpu:
-        type: integer
-        description: memory used per cpu for 'calculate_seqrun_background'
-      partition:
-        type: string
-        description: partition to use on the cluster for 'calculate_seqrun_background'
