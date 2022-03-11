@@ -10,8 +10,9 @@ gvcf_data = in_gvcf.read().split("\n")
 
 coverage_data_i = -1
 coverage_data_chrom = "chr1"
+coverage_data_startpos = 0
 coverage_data_endpos = 0
-coverage_data_cov = 0
+coverage_data_cov = -1
 header = True
 for line in gvcf_data:
     if header:
@@ -28,9 +29,11 @@ for line in gvcf_data:
     columns[8] = "%s:DP_mosdepth" % (columns[8])
     while not(chrom == coverage_data_chrom and pos <= coverage_data_endpos):
         coverage_data_i += 1
+        if pos > coverage_data_startpos:
+            coverage_data_cov = coverage_data[coverage_data_i].split("\t")[3]
         coverage_data_chrom = coverage_data[coverage_data_i].split("\t")[0]
+        coverage_data_startpos = int(coverage_data[coverage_data_i].split("\t")[1])
         coverage_data_endpos = int(coverage_data[coverage_data_i].split("\t")[2])
-        coverage_data_cov = coverage_data[coverage_data_i].split("\t")[3]
     columns[9] = "%s:%s" % (columns[9], str(coverage_data_cov))
     out_gvcf.write(columns[0])
     for column in columns[1:]:
