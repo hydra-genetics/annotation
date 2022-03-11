@@ -47,7 +47,7 @@ wildcard_constraints:
 
 def compile_output_list(wildcards):
     files = {
-        "qc/add_mosdepth_coverage_to_gvcf": [".mosdepth.gvcf.gz"],
+        "qc/add_mosdepth_coverage_to_gvcf": [".mosdepth.gvcf"],
         "snv_indels/ensemble_vcf": [".ensembled.vep_annotated.vcf", ".ensembled.ssa.vcf"],
     }
     output_files = [
