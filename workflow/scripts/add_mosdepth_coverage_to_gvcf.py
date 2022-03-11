@@ -25,15 +25,13 @@ for line in gvcf_data:
         continue
     chrom = columns[0]
     pos = int(columns[1])
-    format = "%s:DP_mosdepth" % (columns[8])
+    columns[8] = "%s:DP_mosdepth" % (columns[8])
     while not(chrom == coverage_data_chrom and pos <= coverage_data_endpos):
         coverage_data_i += 1
         coverage_data_chrom = coverage_data[coverage_data_i].split("\t")[0]
         coverage_data_endpos = int(coverage_data[coverage_data_i].split("\t")[2])
         coverage_data_cov = coverage_data[coverage_data_i].split("\t")[3]
-    data = "%s:%s" % (columns[9], str(coverage_data_cov))
-    columns[8] = format
-    columns[9] = data
+    columns[9] = "%s:%s" % (columns[9], str(coverage_data_cov))
     out_gvcf.write(columns[0])
     for column in columns[1:]:
         out_gvcf.write("\t" + column)
