@@ -12,7 +12,7 @@ rule add_mosdepth_coverage_to_gvcf:
         coverage="qc/mosdepth_bed/{sample}_{type}.per-base.bed.gz",
         gvcf="snv_indels/mutect2_gvcf/{sample}_{type}.merged.gvcf.gz",
     output:
-        gvcf=temp("qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.gvcf.gz"),
+        gvcf=temp("qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.gvcf"),
     log:
         "qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.gvcf.gz.log",
     threads: config.get("add_mosdepth_coverage_to_gvcf", {}).get("threads", config["default_resources"]["threads"])
