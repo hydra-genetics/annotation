@@ -3,7 +3,7 @@ import gzip
 
 in_coverage = gzip.open(snakemake.input.coverage, "rt")
 in_gvcf = gzip.open(snakemake.input.gvcf, "rt")
-out_gvcf = gzip.open(snakemake.output.gvcf, "wt")
+out_gvcf = open(snakemake.output.gvcf, "w")
 
 coverage_data = in_coverage.read().split("\n")
 gvcf_data = in_gvcf.read().split("\n")
