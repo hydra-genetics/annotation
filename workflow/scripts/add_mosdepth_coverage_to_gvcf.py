@@ -32,6 +32,8 @@ for line in gvcf_data:
         coverage_data_endpos = int(coverage_data[coverage_data_i].split("\t")[2])
         coverage_data_cov = coverage_data[coverage_data_i].split("\t")[3]
     data = "%s:%s" % (columns[9], str(coverage_data_cov))
+    column[8] = format
+    column[9] = data
     out_gvcf.write(columns[0])
     for column in columns[1:]:
         out_gvcf.write("\t" + column)
