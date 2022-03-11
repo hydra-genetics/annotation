@@ -17,7 +17,7 @@ header = True
 for line in gvcf_data:
     if header:
         if line[:6] == "#CHROM":
-            out_gvcf.write("##FORMAT=<ID=DPMOSDEPTH,Number=1,Type=Integer,Description=\"Read depth reported by mosdepth\">\n")
+            out_gvcf.write("##FORMAT=<ID=DP_mosdepth,Number=1,Type=Integer,Description=\"Read depth reported by mosdepth\">\n")
             header = False
         out_gvcf.write(line + "\n")
         continue
@@ -26,7 +26,7 @@ for line in gvcf_data:
         continue
     chrom = columns[0]
     pos = int(columns[1])
-    columns[8] = "%s:DPMOSDEPTH" % (columns[8])
+    columns[8] = "%s:DP_mosdepth" % (columns[8])
     while not(chrom == coverage_data_chrom and pos <= coverage_data_endpos):
         coverage_data_i += 1
         if pos > coverage_data_startpos:
