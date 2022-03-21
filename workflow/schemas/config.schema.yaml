@@ -121,6 +121,16 @@ properties:
       required:
         - db
 
+  sort_vcf:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for sort_vcf
+      container:
+        type: string
+        description: name or path to docker/singularity container
+
   tabix_vcf:
     type: object
     properties:

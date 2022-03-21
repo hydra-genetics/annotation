@@ -176,6 +176,25 @@ properties:
         type: string
         description: partition to use on the cluster for 'snpeff'
 
+  sort_vcf:
+    type: object
+    properties:
+      threads:
+        type: integer
+        description: number of threads that will be used by 'sort_vcf'
+      time:
+        type: string
+        description: max execution time for 'sort_vcf'
+      mem_mb:
+        type: integer
+        description: memory used for 'sort_vcf'
+      mem_per_cpu:
+        type: integer
+        description: memory used per cpu for 'sort_vcf'
+      partition:
+        type: string
+        description: partition to use on the cluster for 'sort_vcf'
+
   tabix_vcf:
     type: object
     properties:
