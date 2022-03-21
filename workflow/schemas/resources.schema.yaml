@@ -43,6 +43,82 @@ properties:
         type: string
         description: partition to use on the cluster for 'add_mosdepth_coverage_to_gvcf'
 
+  add_multi_snv_in_codon:
+    type: object
+    properties:
+      threads:
+        type: integer
+        description: number of threads that will be used by 'add_multi_snv_in_codon'
+      time:
+        type: string
+        description: max execution time for 'add_multi_snv_in_codon'
+      mem_mb:
+        type: integer
+        description: memory used for 'add_multi_snv_in_codon'
+      mem_per_cpu:
+        type: integer
+        description: memory used per cpu for 'add_multi_snv_in_codon'
+      partition:
+        type: string
+        description: partition to use on the cluster for 'add_multi_snv_in_codon'
+
+  artifact_annotation:
+    type: object
+    properties:
+      threads:
+        type: integer
+        description: number of threads that will be used by 'artifact_annotation'
+      time:
+        type: string
+        description: max execution time for 'artifact_annotation'
+      mem_mb:
+        type: integer
+        description: memory used for 'artifact_annotation'
+      mem_per_cpu:
+        type: integer
+        description: memory used per cpu for 'artifact_annotation'
+      partition:
+        type: string
+        description: partition to use on the cluster for 'artifact_annotation'
+
+  background_annotation:
+    type: object
+    properties:
+      threads:
+        type: integer
+        description: number of threads that will be used by 'background_annotation'
+      time:
+        type: string
+        description: max execution time for 'background_annotation'
+      mem_mb:
+        type: integer
+        description: memory used for 'background_annotation'
+      mem_per_cpu:
+        type: integer
+        description: memory used per cpu for 'background_annotation'
+      partition:
+        type: string
+        description: partition to use on the cluster for 'background_annotation'
+
+  bgzip_vcf:
+    type: object
+    properties:
+      threads:
+        type: integer
+        description: number of threads that will be used by 'bgzip_vcf'
+      time:
+        type: string
+        description: max execution time for 'bgzip_vcf'
+      mem_mb:
+        type: integer
+        description: memory used for 'bgzip_vcf'
+      mem_per_cpu:
+        type: integer
+        description: memory used per cpu for 'bgzip_vcf'
+      partition:
+        type: string
+        description: partition to use on the cluster for 'bgzip_vcf'
+
   calculate_seqrun_background:
     type: object
     properties:
@@ -99,6 +175,25 @@ properties:
       partition:
         type: string
         description: partition to use on the cluster for 'snpeff'
+
+  tabix_vcf:
+    type: object
+    properties:
+      threads:
+        type: integer
+        description: number of threads that will be used by 'tabix_vcf'
+      time:
+        type: string
+        description: max execution time for 'tabix_vcf'
+      mem_mb:
+        type: integer
+        description: memory used for 'tabix_vcf'
+      mem_per_cpu:
+        type: integer
+        description: memory used per cpu for 'tabix_vcf'
+      partition:
+        type: string
+        description: partition to use on the cluster for 'tabix_vcf'
 
   vep:
     type: object
