@@ -9,20 +9,20 @@ __license__ = "GPL-3"
 
 rule vep:
     input:
-        vcf="snv_indels/{caller}/{file}.vcf.gz",
-        tabix="snv_indels/{caller}/{file}.vcf.gz.tbi",
+        vcf="{file}.vcf.gz",
+        tabix="{file}.vcf.gz.tbi",
         cache=config["vep"]["vep_cache"],
         fasta=config["reference"]["fasta"],
     output:
-        vcf=temp("snv_indels/{caller}/{file}.vep_annotated.vcf"),
+        vcf=temp("{file}.vep_annotated.vcf"),
     params:
         extra=config.get("vep", {}).get("extra", ""),
         mode=config.get("vep", {}).get("mode", "--offline --cache"),
     log:
-        "snv_indels/{caller}/{file}.vep_annotated.vcf.gz.log",
+        "{file}.vep_annotated.vcf.gz.log",
     benchmark:
         repeat(
-            "snv_indels/{caller}/{file}.vep_annotated.vcf.gz.benchmark.tsv",
+            "{file}.vep_annotated.vcf.gz.benchmark.tsv",
             config.get("vep", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("vep", {}).get("threads", config["default_resources"]["threads"])
@@ -37,6 +37,6 @@ rule vep:
     conda:
         "../envs/vep.yaml"
     message:
-        "{rule}: Annotate with VEP: snv_indels/{wildcards.caller}/{wildcards.file}.vep_annotated.vcf.gz"
+        "{rule}: Annotate with VEP: {wildcards.file}.vep_annotated.vcf.gz"
     shell:
         "(vep --vcf --no_stats -o {output.vcf} -i {input.vcf} --dir_cache {input.cache} --fork {threads} --refseq {params.mode} --fasta {input.fasta} {params.extra} ) &> {log}"

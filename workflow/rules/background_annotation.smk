@@ -34,6 +34,6 @@ rule background_annotation:
     conda:
         "../envs/background_annotation.yaml"
     message:
-        "{rule}: Background filter vcf in annotation/background_annotation/{wildcards.sample}_{wildcards.type}"
+        "{rule}: Background annotation vcf in annotation/background_annotation/{wildcards.sample}_{wildcards.type}"
     script:
         "../scripts/background_annotation.py"
