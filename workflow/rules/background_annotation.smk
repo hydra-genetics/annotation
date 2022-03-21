@@ -12,7 +12,7 @@ rule background_annotation:
         vcf="annotation/artifact_annotation/{sample}_{type}.artifact_annotation.vcf",
         background=config["reference"]["background"],
     output:
-        vcf=temp("annotation/background_annotation/{sample}_{type}.background_annotation.vcf",
+        vcf=temp("annotation/background_annotation/{sample}_{type}.background_annotation.vcf"),
     params:
         nr_min_sd=config.get("background_annotation", {}).get("nr_min_sd", 5),
     log:
