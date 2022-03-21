@@ -73,7 +73,7 @@ for line in in_vcf:
     for obs in Observations:
         if int(obs) > max_observations:
             max_observations = int(obs)
-    if max_observations >= 2:
+    if max_observations >= 1:
         if filter == "PASS":
             filter = "Artifact"
         else:
