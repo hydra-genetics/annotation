@@ -37,9 +37,9 @@ properties:
       container:
         type: string
         description: name or path to docker/singularity container
-      use_filter:
-        type: bool
-        description: When True only those position with filter 'PASS' are considered
+      af_limit:
+        type: float
+        description: Lower af limit for variants to be considered
 
   artifact_annotation:
     type: object

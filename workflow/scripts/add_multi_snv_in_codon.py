@@ -5,7 +5,7 @@ from subprocess import check_output
 in_fastq_ref = snakemake.input.ref
 in_vcf = open(snakemake.input.vcf)
 out_vcf = open(snakemake.output.vcf, "w")
-use_filter = snakemake.params.use_filter
+af_limit = snakemake.params.af_limit
 
 
 AA_dict = {"Ala": ["GCT", "GCC", "GCA", "GCG"],
@@ -54,10 +54,6 @@ for line in in_vcf:
     alt = lline[4]
     if len(ref) > 1 or len(alt) > 1:
         continue
-    FILTER = lline[6]
-    if use_filter:
-        if FILTER != "PASS":
-            continue
     INFO = lline[7]
     INFO_list = INFO.split(";")
     AF_index = 0
@@ -67,7 +63,7 @@ for line in in_vcf:
             AF_index = i
         i += 1
     AF = float(INFO_list[AF_index][3:])
-    if AF < 0.05:
+    if AF < af_limit:
         continue
     if chrom == prev_chrom and pos - prev_pos <= 2:
         if not (candidate_list != [] and candidate_list[-1][0] == prev_chrom and int(candidate_list[-1][1]) == prev_pos):

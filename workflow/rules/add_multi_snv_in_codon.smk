@@ -14,7 +14,7 @@ rule add_multi_snv_in_codon:
     output:
         vcf=temp("annotation/add_multi_snv_in_codon/{sample}_{type}.codon_snvs.vcf"),
     params:
-        use_filter=config.get("add_multi_snv_in_codon", {}).get("use_filter", True),
+        af_limit=config.get("add_multi_snv_in_codon", {}).get("af_limit", 0.05),
     log:
         "annotation/add_multi_snv_in_codon/{sample}_{type}.codon_snvs.vcf.log",
     benchmark:
