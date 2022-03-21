@@ -9,7 +9,7 @@ __license__ = "GPL-3"
 
 rule artifact_annotation:
     input:
-        vcf="annotation/add_multi_snv_in_codon/{sample}_{type}.codon_snvs.vcf",
+        vcf="annotation/add_multi_snv_in_codon/{sample}_{type}.codon_snvs.vep_annotated.vcf",
         artifacts=config["reference"]["artifacts"],
     output:
         vcf=temp("annotation/artifact_annotation/{sample}_{type}.artifact_annotation.vcf"),
