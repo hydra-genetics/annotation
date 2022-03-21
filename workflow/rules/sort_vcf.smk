@@ -32,6 +32,6 @@ rule sort_vcf:
     conda:
         "../envs/sort_vcf.yaml"
     message:
-        "{rule}: Sort vcf annotation/add_multi_snv_in_codon/{wildcards.file}.vcf.gz"
+        "{rule}: sort vcf annotation/add_multi_snv_in_codon/{wildcards.file}.vcf.gz"
     wrapper:
         "0.79.0/bio/bcftools/sort"

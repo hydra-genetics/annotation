@@ -37,6 +37,6 @@ rule vep:
     conda:
         "../envs/vep.yaml"
     message:
-        "{rule}: Annotate with VEP: {wildcards.file}.vep_annotated.vcf.gz"
+        "{rule}: annotate with vep {wildcards.file}.vep_annotated.vcf.gz"
     shell:
         "(vep --vcf --no_stats -o {output.vcf} -i {input.vcf} --dir_cache {input.cache} --fork {threads} --refseq {params.mode} --fasta {input.fasta} {params.extra} ) &> {log}"

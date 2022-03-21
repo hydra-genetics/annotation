@@ -34,6 +34,6 @@ rule add_multi_snv_in_codon:
     conda:
         "../envs/add_multi_snv_in_codon.yaml"
     message:
-        "{rule}: Add multivariants to vcf if they ar in same codon: annotation/add_multi_snv_in_codon/{wildcards.sample}_{wildcards.type}"
+        "{rule}: add multivariants to vcf if they ar in same codon: annotation/add_multi_snv_in_codon/{wildcards.sample}_{wildcards.type}"
     script:
         "../scripts/add_multi_snv_in_codon.py"
