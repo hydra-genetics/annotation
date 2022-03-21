@@ -49,6 +49,7 @@ def compile_output_list(wildcards):
     files = {
         "qc/add_mosdepth_coverage_to_gvcf": [".mosdepth.gvcf.gz"],
         "snv_indels/ensemble_vcf": [".ensembled.vep_annotated.vcf", ".ensembled.ssa.vcf"],
+        "annotation/background_annotation": [".background_annotation.vcf"],
     }
     output_files = [
         "%s/%s_%s%s" % (prefix, sample, unit_type, suffix)

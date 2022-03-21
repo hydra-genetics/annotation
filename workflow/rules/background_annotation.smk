@@ -9,10 +9,10 @@ __license__ = "GPL-3"
 
 rule background_annotation:
     input:
-        vcf="annotation/background_annotation/{sample}_{type}.artifact_annotation.vcf",
+        vcf="annotation/artifact_annotation/{sample}_{type}.artifact_annotation.vcf",
         background=config["reference"]["background"],
     output:
-        vcf=temp("annotation/background_annotation/{sample}_{type}.background_filter.vcf"),
+        vcf=temp("annotation/background_annotation/{sample}_{type}.background_annotation.vcf"),
     params:
         nr_min_sd=config.get("background_annotation", {}).get("nr_min_sd", 5),
     log:
