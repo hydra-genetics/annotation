@@ -32,7 +32,6 @@ for line in artifacts:
 
 in_vcf = VariantFile(in_vcf_filename)
 new_header = in_vcf.header
-new_header.filters.add("Artifact", None, None, "SNV or INDEL observed in other samples")
 new_header.info.add(
     "Artifact",
     "1",
@@ -73,12 +72,6 @@ for line in in_vcf:
     for obs in Observations:
         if int(obs) > max_observations:
             max_observations = int(obs)
-    if max_observations >= 1:
-        if filter == "PASS":
-            filter = "Artifact"
-        else:
-            filter += ";Artifact"
-        lline[6] = filter
     INFO = lline[7]
     Artifact_string = "Artifact=" + Observations[0]
     if len(Observations) > 1:

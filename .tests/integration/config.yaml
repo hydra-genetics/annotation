@@ -22,7 +22,7 @@ vep:
   container: "docker://hydragenetics/vep:105"
   vep_cache:  VEP/homo_sapiens
   mode: "--database"
-  extra: " --af  "
+  extra: "  --pick --af "
 
 calculate_seqrun_background:
   container: "docker://python:3.9.7-slim"

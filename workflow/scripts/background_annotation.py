@@ -9,7 +9,6 @@ nr_min_sd = snakemake.params.nr_min_sd
 
 in_vcf = VariantFile(in_vcf_filename)
 new_header = in_vcf.header
-new_header.filters.add("LownrSD", None, None, "Variant is close to background median in background panel")
 new_header.info.add("PanelMedian", "1", "Float", "Background median MAF in panel")
 new_header.info.add("PositionNrSD", "1", "Float", "Number of Standard Deviations from background panel median")
 out_vcf = VariantFile(out_vcf_filename, 'w', header=new_header)
@@ -67,12 +66,6 @@ for line in in_vcf:
             INFO = "PanelMedian=" + "{:.4f}".format(panel_median) + ";" + INFO
             INFO = "PositionNrSD=" + "{:.2f}".format(nr_SD) + ";" + INFO
             lline[7] = INFO
-    if nr_SD < nr_min_sd:
-        if filter == "PASS":
-            filter = "LownrSD"
-        else:
-            filter += ";LownrSD"
-        lline[6] = filter
     out_vcf.write(lline[0])
     for column in lline[1:]:
         out_vcf.write("\t" + column)
