@@ -28,6 +28,52 @@ properties:
         type: string
         description: name or path to docker/singularity add_mosdepth_coverage_to_gvcf
 
+  add_multi_snv_in_codon:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for add_multi_snv_in_codon
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      af_limit:
+        type: float
+        description: Lower af limit for variants to be considered
+
+  artifact_annotation:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for artifact_annotation
+      container:
+        type: string
+        description: name or path to docker/singularity container
+
+  background_annotation:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for background_annotation
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      nr_min_sd:
+        type: integer
+        description: number of standard deviations from median to not get a filter flag
+
+  bgzip_vcf:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for bgzip_vcf
+      container:
+        type: string
+        description: name or path to docker/singularity container
+
   calculate_seqrun_background:
     type: object
     properties:
@@ -74,6 +120,29 @@ properties:
         description: parameters that should be forwarded to snpeff
       required:
         - db
+
+  sort_vcf:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for sort_vcf
+      container:
+        type: string
+        description: name or path to docker/singularity container
+
+  tabix_vcf:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for tabix_vcf
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: extra parameters to tabix_vcf
 
   vep:
     type: object
