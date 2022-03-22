@@ -42,6 +42,9 @@ for line in in_vcf:
     chrom = lline[0]
     pos = lline[1]
     key = chrom + "_" + pos
+    ref = lline[3]
+    alt = lline[4]
+    INFO = lline[7]
     format_list = lline[8].split(":")
     data = lline[9].split(":")
     AF_index = 0
