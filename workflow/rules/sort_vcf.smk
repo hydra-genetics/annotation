@@ -9,8 +9,7 @@ __license__ = "GPL-3"
 
 rule sort_vcf:
     input:
-        vcf="annotation/add_multi_snv_in_codon/{file}.vcf.gz",
-        tbi="annotation/add_multi_snv_in_codon/{file}.vcf.gz.tbi",
+        vcf="annotation/add_multi_snv_in_codon/{file}.vcf",
     output:
         vcf=temp("annotation/add_multi_snv_in_codon/{file}.sorted.vcf"),
     log:
