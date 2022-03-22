@@ -42,21 +42,15 @@ for line in in_vcf:
     chrom = lline[0]
     pos = lline[1]
     key = chrom + "_" + pos
-    ref = lline[3]
-    alt = lline[4]
-    filter = lline[6]
-    INFO = lline[7]
-    INFO_list = INFO.split(";")
+    format_list = lline[8].split(":")
+    data = lline[9].split(":")
     AF_index = 0
-    Caller_index = 0
     i = 0
-    for info in INFO_list:
-        if info[:3] == "AF=":
+    for f in format_list:
+        if f == "AF":
             AF_index = i
-        if info[:8] == "CALLERS=":
-            Caller_index = i
         i += 1
-    AF = float(INFO_list[AF_index][3:])
+    AF = float(data[AF_index])
     nr_SD = 1000
     if len(ref) == 1 and len(alt) == 1:
         if key in background_panel_dict:
