@@ -1,6 +1,3 @@
-# vim: syntax=python tabstop=4 expandtab
-# coding: utf-8
-
 __author__ = "Jonas Almlöf"
 __copyright__ = "Copyright 2021, Jonas Almlöf"
 __email__ = "jonas.almlof@scilifelab.uu.se"
@@ -10,7 +7,7 @@ __license__ = "GPL-3"
 rule artifact_annotation:
     input:
         vcf="annotation/add_multi_snv_in_codon/{sample}_{type}.codon_snvs.sorted.vep_annotated.vcf",
-        artifacts=config["reference"]["artifacts"],
+        artifacts=config.get("reference", {}).get("artifacts", ""),
     output:
         vcf=temp("annotation/artifact_annotation/{sample}_{type}.artifact_annotation.vcf"),
     log:
