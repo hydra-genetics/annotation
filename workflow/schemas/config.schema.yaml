@@ -38,7 +38,7 @@ properties:
         type: string
         description: name or path to docker/singularity container
       af_limit:
-        type: float
+        type: number
         description: Lower af limit for variants to be considered
 
   artifact_annotation:
