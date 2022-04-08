@@ -1,0 +1,142 @@
+##fileformat=VCFv4.2
+##FILTER=<ID=PASS,Description="All filters passed">
+##FILTER=<ID=AMPBIAS,Description="Indicate the variant has amplicon bias.">
+##FILTER=<ID=Bias,Description="Strand Bias">
+##FILTER=<ID=Cluster0bp,Description="Two variants are within 0 bp">
+##FILTER=<ID=InGap,Description="The variant is in the deletion gap, thus likely false positive">
+##FILTER=<ID=InIns,Description="The variant is adjacent to an insertion variant">
+##FILTER=<ID=LongMSI,Description="The somatic variant is flanked by long A/T (>=14)">
+##FILTER=<ID=MSI12,Description="Variant in MSI region with 12 non-monomer MSI or 13 monomer MSI">
+##FILTER=<ID=NM5.25,Description="Mean mismatches in reads >= 5.25, thus likely false positive">
+##FILTER=<ID=Q10,Description="Mean Mapping Quality Below 10">
+##FILTER=<ID=SN1.5,Description="Signal to Noise Less than 1.5">
+##FILTER=<ID=d3,Description="Total Depth < 3">
+##FILTER=<ID=f0.01,Description="Allele frequency < 0.01">
+##FILTER=<ID=p8,Description="Mean Position in Reads Less than 8">
+##FILTER=<ID=pSTD,Description="Position in Reads has STD of 0">
+##FILTER=<ID=q22.5,Description="Mean Base Quality Below 22.5">
+##FILTER=<ID=v2,Description="Var Depth < 2">
+##FORMAT=<ID=AD,Number=.,Type=Integer,Description="Allelic depths for the ref and alt alleles in the order listed">
+##FORMAT=<ID=AF,Number=A,Type=Float,Description="Allele Frequency">
+##FORMAT=<ID=ALD,Number=2,Type=Integer,Description="Variant forward, reverse reads">
+##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Total Depth">
+##FORMAT=<ID=F1R2,Number=R,Type=Integer,Description="Count of reads in F1R2 pair orientation supporting each allele">
+##FORMAT=<ID=F2R1,Number=R,Type=Integer,Description="Count of reads in F2R1 pair orientation supporting each allele">
+##FORMAT=<ID=GQ,Number=1,Type=Integer,Description="Genotype Quality">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another; will always be heterozygous and is not intended to describe called alleles">
+##FORMAT=<ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+##FORMAT=<ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+##FORMAT=<ID=PS,Number=1,Type=Integer,Description="Phasing set (typically the position of the first variant in the set)">
+##FORMAT=<ID=RD,Number=2,Type=Integer,Description="Reference forward, reverse reads">
+##FORMAT=<ID=SB,Number=4,Type=Integer,Description="Per-sample component statistics which comprise the Fisher's Exact Test to detect strand bias.">
+##FORMAT=<ID=VD,Number=1,Type=Integer,Description="Variant Depth">
+##INFO=<ID=ADJAF,Number=1,Type=Float,Description="Adjusted AF for indels due to local realignment">
+##INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency">
+##INFO=<ID=AMPFLAG,Number=1,Type=Integer,Description="Top variant in amplicons don't match">
+##INFO=<ID=AS_SB_TABLE,Number=1,Type=String,Description="Allele-specific forward/reverse read counts for strand bias tests. Includes the reference and alleles separated by |.">
+##INFO=<ID=AS_UNIQ_ALT_READ_COUNT,Number=A,Type=Integer,Description="Number of reads with unique start and mate end positions for each alt at a variant site">
+##INFO=<ID=BIAS,Number=1,Type=String,Description="Strand Bias Info">
+##INFO=<ID=CALLERS,Number=.,Type=String,Description="Individual caller support">
+##INFO=<ID=CONTQ,Number=1,Type=Float,Description="Phred-scaled qualities that alt allele are not due to contamination">
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Total Depth">
+##INFO=<ID=DUPRATE,Number=1,Type=Float,Description="Duplication rate in fraction">
+##INFO=<ID=ECNT,Number=1,Type=Integer,Description="Number of events in this haplotype">
+##INFO=<ID=END,Number=1,Type=Integer,Description="Chr End Position">
+##INFO=<ID=GDAMP,Number=1,Type=Integer,Description="No. of amplicons supporting variant">
+##INFO=<ID=GERMQ,Number=1,Type=Integer,Description="Phred-scaled quality that alt alleles are not germline variants">
+##INFO=<ID=HIAF,Number=1,Type=Float,Description="Allele frequency using only high quality bases">
+##INFO=<ID=HICNT,Number=1,Type=Integer,Description="High quality variant reads">
+##INFO=<ID=HICOV,Number=1,Type=Integer,Description="High quality total reads">
+##INFO=<ID=LSEQ,Number=1,Type=String,Description="5' flanking seq">
+##INFO=<ID=MBQ,Number=R,Type=Integer,Description="median base quality">
+##INFO=<ID=MFRL,Number=R,Type=Integer,Description="median fragment length">
+##INFO=<ID=MMQ,Number=R,Type=Integer,Description="median mapping quality">
+##INFO=<ID=MPOS,Number=A,Type=Integer,Description="median distance from end of read">
+##INFO=<ID=MQ,Number=1,Type=Float,Description="Mean Mapping Quality">
+##INFO=<ID=MSI,Number=1,Type=Float,Description="MicroSatellite. > 1 indicates MSI">
+##INFO=<ID=MSILEN,Number=1,Type=Float,Description="MicroSatellite unit length in bp">
+##INFO=<ID=NALOD,Number=A,Type=Float,Description="Negative log 10 odds of artifact in normal with same allele fraction as tumor">
+##INFO=<ID=NCAMP,Number=1,Type=Integer,Description="No. of amplicons don't work">
+##INFO=<ID=NCount,Number=1,Type=Integer,Description="Count of N bases in the pileup">
+##INFO=<ID=NLOD,Number=A,Type=Float,Description="Normal log 10 likelihood ratio of diploid het or hom alt genotypes">
+##INFO=<ID=NM,Number=1,Type=Float,Description="Mean mismatches in reads">
+##INFO=<ID=OCM,Number=1,Type=Integer,Description="Number of alt reads whose original alignment doesn't match the current contig.">
+##INFO=<ID=ODDRATIO,Number=1,Type=Float,Description="Strand Bias Odds ratio">
+##INFO=<ID=OLD_CLUMPED,Number=1,Type=String,Description="Original chr:pos:ref:alt encoding">
+##INFO=<ID=OLD_MULTIALLELIC,Number=1,Type=String,Description="Original chr:pos:ref:alt encoding">
+##INFO=<ID=OLD_VARIANT,Number=.,Type=String,Description="Original chr:pos:ref:alt encoding">
+##INFO=<ID=PMEAN,Number=1,Type=Float,Description="Mean position in reads">
+##INFO=<ID=PON,Number=0,Type=Flag,Description="site found in panel of normals">
+##INFO=<ID=POPAF,Number=A,Type=Float,Description="negative log 10 population allele frequencies of alt alleles">
+##INFO=<ID=PSTD,Number=1,Type=Float,Description="Position STD in reads">
+##INFO=<ID=QSTD,Number=1,Type=Float,Description="Quality score STD in reads">
+##INFO=<ID=QUAL,Number=1,Type=Float,Description="Mean quality score in reads">
+##INFO=<ID=REFBIAS,Number=1,Type=String,Description="Reference depth by strand">
+##INFO=<ID=ROQ,Number=1,Type=Float,Description="Phred-scaled qualities that alt allele are not due to read orientation artifact">
+##INFO=<ID=RPA,Number=R,Type=Integer,Description="Number of times tandem repeat unit is repeated, for each allele (including reference)">
+##INFO=<ID=RSEQ,Number=1,Type=String,Description="3' flanking seq">
+##INFO=<ID=RU,Number=1,Type=String,Description="Tandem repeat unit (bases)">
+##INFO=<ID=SAMPLE,Number=1,Type=String,Description="Sample name (with whitespace translated to underscores)">
+##INFO=<ID=SBF,Number=1,Type=Float,Description="Strand Bias Fisher p-value">
+##INFO=<ID=SEQQ,Number=1,Type=Integer,Description="Phred-scaled quality that alt alleles are not sequencing errors">
+##INFO=<ID=SHIFT3,Number=1,Type=Integer,Description="No. of bases to be shifted to 3 prime for deletions due to alternative alignment">
+##INFO=<ID=SN,Number=1,Type=Float,Description="Signal to noise">
+##INFO=<ID=SPANPAIR,Number=1,Type=Integer,Description="No. of pairs supporting SV">
+##INFO=<ID=SPLITREAD,Number=1,Type=Integer,Description="No. of split reads supporting SV">
+##INFO=<ID=STR,Number=0,Type=Flag,Description="Variant is a short tandem repeat">
+##INFO=<ID=STRANDQ,Number=1,Type=Integer,Description="Phred-scaled quality of strand bias artifact">
+##INFO=<ID=STRQ,Number=1,Type=Integer,Description="Phred-scaled quality that alt alleles in STRs are not polymerase slippage errors">
+##INFO=<ID=SVLEN,Number=1,Type=Integer,Description="The length of SV in bp">
+##INFO=<ID=SVTYPE,Number=1,Type=String,Description="SV type: INV DUP DEL INS FUS">
+##INFO=<ID=TLAMP,Number=1,Type=Integer,Description="Total of amplicons covering variant">
+##INFO=<ID=TLOD,Number=A,Type=Float,Description="Log 10 likelihood ratio score of variant existing versus not existing">
+##INFO=<ID=TYPE,Number=1,Type=String,Description="Variant Type: SNV Insertion Deletion Complex">
+##INFO=<ID=VARBIAS,Number=1,Type=String,Description="Variant depth by strand">
+##INFO=<ID=VD,Number=1,Type=Integer,Description="Variant Depth">
+##MutectVersion=2.2
+##bcftools_concatVersion=1.14+htslib-1.14
+##contig=<ID=chr1>
+##contig=<ID=chr2>
+##contig=<ID=chr3>
+##contig=<ID=chr4>
+##contig=<ID=chr5>
+##contig=<ID=chr6>
+##contig=<ID=chr7>
+##contig=<ID=chr8>
+##contig=<ID=chr9>
+##contig=<ID=chr10>
+##contig=<ID=chr11>
+##contig=<ID=chr12>
+##contig=<ID=chr13>
+##contig=<ID=chr14>
+##contig=<ID=chr15>
+##contig=<ID=chr16>
+##contig=<ID=chr17>
+##contig=<ID=chr18>
+##contig=<ID=chr19>
+##contig=<ID=chr20>
+##contig=<ID=chr21>
+##contig=<ID=chr22>
+##contig=<ID=chrX>
+##contig=<ID=chrY,length=59373566>
+##contig=<ID=chrM,length=16571>
+##filtering_status=Warning: unfiltered Mutect 2 calls.  Please run FilterMutectCalls to remove false positives.
+##source=VarDict_v1.8.2
+##INFO=<ID=AA,Number=1,Type=String,Description="Amino acid change">
+##VEP="v105" time="2022-03-22 11:07:54" cache="/data/ref_genomes/VEP/homo_sapiens_refseq/105_GRCh37" ensembl-variation=105.ac8178e ensembl=105.f357e33 ensembl-funcgen=105.660df8f ensembl-io=105.2a0a40c 1000genomes="phase3" COSMIC="92" ClinVar="202012" HGMD-PUBLIC="20204" assembly="GRCh37.p13" dbSNP="154" gencode="GENCODE 19" genebuild="2011-04" gnomAD="r2.1" polyphen="2.2.2" refseq="2020-10-26 17:03:42 - GCF_000001405.25_GRCh37.p13_genomic.gff" regbuild="1.0" sift="sift5.2.2"
+##INFO=<ID=CSQ,Number=.,Type=String,Description="Consequence annotations from Ensembl VEP. Format: Allele|Consequence|IMPACT|SYMBOL|Gene|Feature_type|Feature|BIOTYPE|EXON|INTRON|HGVSc|HGVSp|cDNA_position|CDS_position|Protein_position|Amino_acids|Codons|Existing_variation|DISTANCE|STRAND|FLAGS|VARIANT_CLASS|SYMBOL_SOURCE|HGNC_ID|CANONICAL|TSL|APPRIS|CCDS|ENSP|SWISSPROT|TREMBL|UNIPARC|UNIPROT_ISOFORM|REFSEQ_MATCH|REFSEQ_OFFSET|GIVEN_REF|USED_REF|BAM_EDIT|GENE_PHENO|SIFT|PolyPhen|DOMAINS|HGVS_OFFSET|AF|AFR_AF|AMR_AF|EAS_AF|EUR_AF|SAS_AF|gnomAD_AF|gnomAD_AFR_AF|gnomAD_AMR_AF|gnomAD_ASJ_AF|gnomAD_EAS_AF|gnomAD_FIN_AF|gnomAD_NFE_AF|gnomAD_OTH_AF|gnomAD_SAS_AF|MAX_AF|MAX_AF_POPS|CLIN_SIG|SOMATIC|PHENO|PUBMED|MOTIF_NAME|MOTIF_POS|HIGH_INF_POS|MOTIF_SCORE_CHANGE|TRANSCRIPTION_FACTORS">
+##INFO=<ID=Artifact,Number=1,Type=String,Description="Number of observations of SNV or INDEL in panel samples per caller and finally panel size: vardict,mutect2,Total">
+##INFO=<ID=PanelMedian,Number=1,Type=Float,Description="Background median MAF in panel">
+##INFO=<ID=PositionNrSD,Number=1,Type=Float,Description="Number of Standard Deviations from background panel median">
+##FILTER=<ID=DP_lt_100,Description="Filter variants with low coverage (DP lower than 100)">
+##FILTER=<ID=AF_lt_0.05,Description="Filter variants with low vaf (AF lower than 0.05)">
+##FILTER=<ID=AD_lt_20,Description="Filter variants with few observations (AD lower than 20)">
+##FILTER=<ID=Germline,Description="Germline">
+##FILTER=<ID=Artifact_gt_2,Description="Filter variants found in more than 2 normal samples">
+##FILTER=<ID=Background_lt_5,Description="Filter position with where backgound distribution overlaps variant (lower than 5 SD from median)">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	sample
+chr12	25398281	.	C	T	300	PASS	PositionNrSD=131.42;PanelMedian=0.0012;Artifact=1,1,26;ADJAF=0.0029;AF=0.1619;BIAS=2:2;CALLERS=vardict,mutect2;DP=2384;DUPRATE=0;HIAF=0.1617;HICNT=376;HICOV=2326;LSEQ=TCAAGGCACTCTTGCCTACG;MQ=60;MSI=2;MSILEN=1;NM=1.1;ODDRATIO=1.124;PMEAN=37.1;PSTD=1;QSTD=1;QUAL=35;REFBIAS=966:1031;RSEQ=CACCAGCTCCAACTACCACA;SAMPLE=sample;SBF=0.31679;SHIFT3=1;SN=37.6;SPANPAIR=0;SPLITREAD=0;TYPE=SNV;VARBIAS=198:188;VD=386;CSQ=T|missense_variant|MODERATE|KRAS|3845|Transcript|NM_033360.4|protein_coding|2/6||NM_033360.4:c.38G>A|NP_203524.1:p.Gly13Asp|228|38|13|G/D|gGc/gAc|rs112445441&CM125166&COSV55497357&COSV55497388&COSV55522580||-1||SNV|EntrezGene||YES||||NP_203524.1|||||||C|C|OK||deleterious(0.04)|benign(0.44)|||||||||0|0|0|0|0|0|0|0|0|0|gnomAD_AFR&gnomAD_AMR&gnomAD_ASJ&gnomAD_EAS&gnomAD_FIN&gnomAD_NFE&gnomAD_OTH&gnomAD_SAS|pathogenic&likely_pathogenic|0&0&1&1&1|1&1&1&1&1|24033266&22992668&25157968&12460918&19018267&21975775&2278970&3122217&15696205&16361624&16434492&16618717&18316791&18794081&19075190&19114683&19679400&20921462&20921465&21228335&22407852&3627975&17332249&17384584&19255327&19773371&19794967&21063026&21398618&22392911&22734028&23071293&23090619&23182985&23406027&24558511&24628546&25808193&26371285&26623049|||||	GT:DP:VD:AD:AF:RD:ALD	0/1:2384:386:1997,386:0.1619:966,1031:198,188
+chr7	55242464	.	AGGAATTAAGAGAAGC	A	173	AF_lt_0.05	Artifact=0,0,26;ADJAF=0.0021;AF=0.0125;BIAS=2:2;CALLERS=vardict,mutect2;DP=2327;DUPRATE=0;HIAF=0.0129;HICNT=29;HICOV=2251;LSEQ=TAAAATTCCCGTCGCTATCA;MQ=60;MSI=4;MSILEN=1;NM=0.1;ODDRATIO=1.75725;PMEAN=36.8;PSTD=1;QSTD=1;QUAL=35.8;REFBIAS=1188:1106;RSEQ=AACATCTCCGAAAGCCAACA;SAMPLE=sample;SBF=0.18979;SHIFT3=0;SN=58;SPANPAIR=0;SPLITREAD=0;TYPE=Deletion;VARBIAS=11:18;VD=29;CSQ=-|inframe_deletion|MODERATE|EGFR|1956|Transcript|NM_005228.5|protein_coding|19/28||NM_005228.5:c.2235_2249del|NP_005219.2:p.Glu746_Ala750del|2496-2510|2235-2249|745-750|KELREA/K|aaGGAATTAAGAGAAGCa/aaa|rs121913421&COSV51765119||1||deletion|EntrezGene||YES||||NP_005219.2|||||||GGAATTAAGAGAAGC|GGAATTAAGAGAAGC||||||||||||||||||||||||drug_response|0&1|1&1|15118073&15118125&28347348|||||	GT:DP:VD:AD:AF:RD:ALD	0/1:2327:29:2294,29:0.0125:1188,1106:11,18
+chrX	149667834	.	G	A	99	AD_lt_20	Artifact=0,0,26;ADJAF=0;AF=0.0534;BIAS=1:0;CALLERS=vardict,mutect2;DP=131;DUPRATE=0;HIAF=0.0556;HICNT=7;HICOV=126;LSEQ=GCAGAGTTATTTCAGTATGA;MQ=60;MSI=3;MSILEN=2;NM=1.1;ODDRATIO=0;PMEAN=35.4;PSTD=1;QSTD=1;QUAL=35.4;REFBIAS=0:124;RSEQ=AGAAGGAGGAGCACCTGACT;SAMPLE=sample;SBF=1;SHIFT3=0;SN=14;SPANPAIR=0;SPLITREAD=0;TYPE=SNV;VARBIAS=0:7;VD=7;CSQ=A|intron_variant|MODIFIER|MAMLD1|10046|Transcript|NM_001177465.3|protein_coding||3/4|NM_001177465.3:c.1843-10398G>A|||||||rs636582||1||SNV|EntrezGene||YES||||NP_001170936.1|||||||G|G|OK|||||||0.6869|0.5363|0.4856|0.6606|0.6142||||||||||0.6869|AFR|||||||||	GT:DP:VD:AD:AF:RD:ALD	0/1:131:7:124,7:0.0534:0,124:0,7
+chr17	41245466	.	G	A	261	Germline;Artifact_gt_2	PositionNrSD=44.36;PanelMedian=0.0028;Artifact=20,20,26;ADJAF=0.0004;AF=0.0788;BIAS=2:2;CALLERS=vardict,mutect2;DP=2247;DUPRATE=0;HIAF=0.0787;HICNT=172;HICOV=2186;LSEQ=TTCAGCTCTGGGAAAGTATC;MQ=60;MSI=1;MSILEN=1;NM=1.1;ODDRATIO=1.29845;PMEAN=37;PSTD=1;QSTD=1;QUAL=35;REFBIAS=976:1094;RSEQ=CTGTCATGTCTTTTACTTGT;SAMPLE=sample;SBF=0.10001;SHIFT3=0;SN=34.4;SPANPAIR=0;SPLITREAD=0;TYPE=SNV;VARBIAS=95:82;VD=177;CSQ=A|synonymous_variant|LOW|BRCA1|672|Transcript|NM_007300.4|protein_coding|10/24||NM_007300.4:c.2082C>T|NP_009231.2:p.Ser694%3D|2195|2082|694|S|agC/agT|rs1799949&CM173511&COSV58784419||-1||SNV|EntrezGene||YES||||NP_009231.2|||||||G|G|||||||0.3365|0.2103|0.353|0.371|0.3002|0.4969|0.3526|0.2372|0.3165|0.3726|0.3788|0.4021|0.3242|0.3462|0.5041|0.5041|gnomAD_SAS|benign|0&0&1|1&1&1|25741868&24033266&19276285&12955716&20104584&21702907&22713736&21161372&27478808&19644020&20807450&21989022&24986639&28439188&16760288&15923272&25633036&30075112&24052750&29773799&26414677&29997359&27273131|||||	GT:DP:VD:AD:AF:RD:ALD	0/1:2247:177:2070,177:0.0788:976,1094:95,82

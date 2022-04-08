@@ -1,0 +1,4 @@
+#Chr	Start	End	Gene	CDS_mutation_syntax	AA_mutation_syntax	Report	comment	Exon	Accession_number
+NC_000012.11	25398281	25398281	KRAS	c.G38	p.G13	hotspot	-	exon2	NM_004985
+NC_000007.13	55242466	55242466	EGFR	c.G2236	p.E746	hotspot	-	exon19	NM_005228
+NC_000017.10	41245466	41245466	BRCA1	c.C2082	p.S694	region_all	-	exon10	NM_007294
