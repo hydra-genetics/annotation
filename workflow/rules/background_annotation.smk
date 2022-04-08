@@ -6,7 +6,7 @@ __license__ = "GPL-3"
 
 rule background_annotation:
     input:
-        vcf="annotation/artifact_annotation/{sample}_{type}.artifact_annotation.vcf",
+        vcf="annotation/hotspot_annotation/{sample}_{type}.hotspot_annotation.vcf",
         background=config.get("reference").get("background", ""),
     output:
         vcf=temp("annotation/background_annotation/{sample}_{type}.background_annotation.vcf"),

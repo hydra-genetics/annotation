@@ -84,6 +84,22 @@ properties:
         type: string
         description: name or path to docker/singularity calculate_seqrun_background
 
+  hotspot_annotation:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for hotspot_annotation
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      hotspot:
+        type: string
+        description: Hotspot file
+      chr_translation_file:
+        type: string
+        description: Chromosome translation file (NCXXXX to chrXX)
+
   simple_sv_annotation:
     type: object
     properties:
