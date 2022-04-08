@@ -138,6 +138,25 @@ properties:
         type: string
         description: partition to use on the cluster for 'calculate_seqrun_background'
 
+  hotspot_annotation:
+    type: object
+    properties:
+      threads:
+        type: integer
+        description: number of threads that will be used by the 'hotspot_annotation' rule
+      time:
+        type: string
+        description: max execution time for the 'hotspot_annotation' rule
+      mem_mb:
+        type: integer
+        description: memory used for 'hotspot_annotation'
+      mem_per_cpu:
+        type: integer
+        description: memory used per cpu for 'hotspot_annotation'
+      partition:
+        type: string
+        description: partition to use on the cluster for 'hotspot_annotation'
+
   simple_sv_annotation:
     type: object
     properties:
