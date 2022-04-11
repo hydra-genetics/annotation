@@ -6,7 +6,7 @@ default_container: "docker://hydragenetics/common:0.1.2"
 
 reference:
   fasta: "reference/WASH7P.fna"
-  artifacts: "reference/artifact_positions_chr1.txt"
+  artifacts: "reference/artifact_panel_chr1.tsv"
   background: "reference/background_panel_HES45.tsv"
 
 hotspot_annotation:
