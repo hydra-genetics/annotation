@@ -37,7 +37,7 @@ for line in artifacts:
     for obs in observations:
         if int(obs) > max_nr_observations:
             max_nr_observations = int(obs)
-    artifact_dict[chrom + "_" + pos] = [type, observations]
+    artifact_dict[chrom + "_" + pos + "_" + type] = [type, observations]
 
 
 in_vcf = VariantFile(in_vcf_filename)
@@ -65,19 +65,16 @@ for line in in_vcf:
     lline = line.strip().split("\t")
     chrom = lline[0]
     pos = lline[1]
-    key = chrom + "_" + pos
+    type = "INDEL"
+    if len(ref) == 1 and len(alt) == 1:
+        type = "SNV"
+    key = chrom + "_" + pos + "_" + type
     ref = lline[3]
     alt = lline[4]
     filter = lline[6]
     Observations = Empty_observation
-    if len(ref) == 1 and len(alt) == 1:
-        if key in artifact_dict:
-            if artifact_dict[key][0] == "SNV":
-                Observations = artifact_dict[key][1]
-    else:
-        if key in artifact_dict:
-            if artifact_dict[key][0] == "INDEL":
-                Observations = artifact_dict[key][1]
+    if key in artifact_dict:
+        Observations = artifact_dict[key][1]
     max_observations = 0
     for obs in Observations:
         if int(obs) > max_observations:
