@@ -9,7 +9,7 @@ __license__ = "GPL-3"
 
 rule add_multi_snv_in_codon:
     input:
-        vcf="snv_indels/ensemble_vcf/{sample}_{type}.ensembled.vep_annotated.vcf",
+        vcf="snv_indels/bcbio_variation_recall_ensemble/{sample}_{type}.ensembled.vep_annotated.vcf",
         ref=config["reference"]["fasta"],
     output:
         vcf=temp("annotation/add_multi_snv_in_codon/{sample}_{type}.codon_snvs.vcf"),

@@ -10,11 +10,11 @@ __license__ = "GPL-3"
 rule add_mosdepth_coverage_to_gvcf:
     input:
         coverage="qc/mosdepth_bed/{sample}_{type}.per-base.bed.gz",
-        gvcf="snv_indels/mutect2_gvcf/{sample}_{type}.merged.gvcf.gz",
+        gvcf="snv_indels/mutect2_gvcf/{sample}_{type}.merged.g.vcf.gz",
     output:
-        gvcf=temp("qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.gvcf"),
+        gvcf=temp("qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.g.vcf"),
     log:
-        "qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.gvcf.log",
+        "qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.g.vcf.log",
     threads: config.get("add_mosdepth_coverage_to_gvcf", {}).get("threads", config["default_resources"]["threads"])
     resources:
         threads=config.get("add_mosdepth_coverage_to_gvcf", {}).get("threads", config["default_resources"]["threads"]),
@@ -26,7 +26,7 @@ rule add_mosdepth_coverage_to_gvcf:
         ),
     benchmark:
         repeat(
-            "qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.gvcf.benchmark.tsv",
+            "qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.g.vcf.benchmark.tsv",
             config.get("add_mosdepth_coverage_to_gvcf", {}).get("benchmark_repeats", 1),
         )
     conda:
