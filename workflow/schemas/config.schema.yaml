@@ -154,6 +154,9 @@ properties:
       artifacts:
         type: string
         description: artifact file
+      background:
+        type: string
+        description: artifact file
 
   tabix_vcf:
     type: object
