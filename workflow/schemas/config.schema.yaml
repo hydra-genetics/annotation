@@ -147,6 +147,14 @@ properties:
         type: string
         description: name or path to docker/singularity container
 
+  reference:
+    type: object
+    description: reference used by alignment
+    properties:
+      artifacts:
+        type: string
+        description: artifact file
+
   tabix_vcf:
     type: object
     properties:
