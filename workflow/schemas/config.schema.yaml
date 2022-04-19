@@ -156,7 +156,7 @@ properties:
         description: artifact file
       background:
         type: string
-        description: artifact file
+        description: background file
 
   tabix_vcf:
     type: object
