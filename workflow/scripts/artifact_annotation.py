@@ -66,11 +66,11 @@ for line in in_vcf:
     chrom = lline[0]
     pos = lline[1]
     type = "INDEL"
+    ref = lline[3]
+    alt = lline[4]
     if len(ref) == 1 and len(alt) == 1:
         type = "SNV"
     key = chrom + "_" + pos + "_" + type
-    ref = lline[3]
-    alt = lline[4]
     filter = lline[6]
     Observations = Empty_observation
     if key in artifact_dict:
