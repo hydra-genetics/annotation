@@ -10,9 +10,9 @@ __license__ = "GPL-3"
 rule add_mosdepth_coverage_to_gvcf:
     input:
         coverage="qc/mosdepth_bed/{sample}_{type}.per-base.bed.gz",
-        gvcf="snv_indels/mutect2_gvcf/{sample}_{type}.merged.gvcf.gz",
+        gvcf="snv_indels/mutect2_gvcf/{sample}_{type}.merged.g.vcf.gz",
     output:
-        gvcf=temp("qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.gvcf"),
+        gvcf=temp("qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.g.vcf"),
     log:
         "qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.gvcf.log",
     threads: config.get("add_mosdepth_coverage_to_gvcf", {}).get("threads", config["default_resources"]["threads"])
