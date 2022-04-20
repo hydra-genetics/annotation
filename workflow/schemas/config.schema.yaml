@@ -147,6 +147,17 @@ properties:
         type: string
         description: name or path to docker/singularity container
 
+  reference:
+    type: object
+    description: collection of reference files
+    properties:
+      artifacts:
+        type: string
+        description: path to artifact file containing caller specific variant observation counts
+      background:
+        type: string
+        description: path to background file containing median and sd values for non-reference alleles per position
+
   tabix_vcf:
     type: object
     properties:
