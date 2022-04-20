@@ -153,10 +153,10 @@ properties:
     properties:
       artifacts:
         type: string
-        description: artifact file
+        description: path to artifact file containing caller specific variant observation counts
       background:
         type: string
-        description: background file
+        description: path to background file containing median and sd values for non-reference bases per position
 
   tabix_vcf:
     type: object
