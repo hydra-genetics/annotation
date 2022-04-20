@@ -149,7 +149,7 @@ properties:
 
   reference:
     type: object
-    description: reference used by alignment
+    description: collection of reference files
     properties:
       artifacts:
         type: string
