@@ -156,7 +156,7 @@ properties:
         description: path to artifact file containing caller specific variant observation counts
       background:
         type: string
-        description: path to background file containing median and sd values for non-reference bases per position
+        description: path to background file containing median and sd values for non-reference alleles per position
 
   tabix_vcf:
     type: object
