@@ -7,8 +7,8 @@ __license__ = "GPL-3"
 rule hotspot_annotation:
     input:
         vcf="annotation/artifact_annotation/{sample}_{type}.artifact_annotation.vcf",
-        hotspot=config.get("hotspot_annotation", {})["hotspots"],
-        chr_mapping=config.get("hotspot_annotation", {})["chr_translation_file"],
+        hotspot=config.get("hotspot_annotation", {}).get("hotspots", ""),
+        chr_mapping=config.get("hotspot_annotation", {}).get("chr_translation_file", ""),
     output:
         vcf=temp("annotation/hotspot_annotation/{sample}_{type}.hotspot_annotation.vcf"),
     log:
