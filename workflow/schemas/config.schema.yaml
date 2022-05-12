@@ -40,6 +40,9 @@ properties:
       af_limit:
         type: number
         description: Lower af limit for variants to be considered
+      artifact_limit:
+        type: number
+        description: Upper non-inclusive artifact limit for variants to be considered
 
   artifact_annotation:
     type: object

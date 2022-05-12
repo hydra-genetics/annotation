@@ -9,12 +9,14 @@ __license__ = "GPL-3"
 
 rule add_multi_snv_in_codon:
     input:
-        vcf="snv_indels/bcbio_variation_recall_ensemble/{sample}_{type}.ensembled.vep_annotated.vcf",
+        vcf="annotation/artifact_annotation/{sample}_{type}.artifact_annotation.vcf",
         ref=config["reference"]["fasta"],
+        artifacts=config.get("reference", {}).get("artifacts", ""),
     output:
         vcf=temp("annotation/add_multi_snv_in_codon/{sample}_{type}.codon_snvs.vcf"),
     params:
         af_limit=config.get("add_multi_snv_in_codon", {}).get("af_limit", 0.05),
+        artifact_limit=config.get("add_multi_snv_in_codon", {}).get("artifact_limit", 3),
     log:
         "annotation/add_multi_snv_in_codon/{sample}_{type}.codon_snvs.vcf.log",
     benchmark:
