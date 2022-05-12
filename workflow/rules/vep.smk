@@ -19,10 +19,10 @@ rule vep:
         extra=config.get("vep", {}).get("extra", "--pick"),
         mode=config.get("vep", {}).get("mode", "--offline --cache"),
     log:
-        "{file}.vep_annotated.vcf.gz.log",
+        "{file}.vep_annotated.vcf.log",
     benchmark:
         repeat(
-            "{file}.vep_annotated.vcf.gz.benchmark.tsv",
+            "{file}.vep_annotated.vcf.benchmark.tsv",
             config.get("vep", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("vep", {}).get("threads", config["default_resources"]["threads"])

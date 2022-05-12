@@ -6,7 +6,7 @@ __license__ = "GPL-3"
 
 rule artifact_annotation:
     input:
-        vcf="annotation/add_multi_snv_in_codon/{sample}_{type}.codon_snvs.sorted.vep_annotated.vcf",
+        vcf="snv_indels/bcbio_variation_recall_ensemble/{sample}_{type}.ensembled.vep_annotated.vcf",
         artifacts=config.get("reference", {}).get("artifacts", ""),
     output:
         vcf=temp("annotation/artifact_annotation/{sample}_{type}.artifact_annotation.vcf"),
