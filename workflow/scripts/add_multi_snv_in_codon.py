@@ -208,4 +208,4 @@ for Multibp in Multibp_list:
     while i < nr_callers:
         out_vcf.write(",-1")
         i += 1
-    out_vcf.write("AA=" + ref_AA + str(aa_nr) + alt_AA + "\t" + Multibp[AF_min_i][8] + "\t" + Multibp[AF_min_i][9] + "\n")
+    out_vcf.write(";AA=" + ref_AA + str(aa_nr) + alt_AA + "\t" + Multibp[AF_min_i][8] + "\t" + Multibp[AF_min_i][9] + "\n")
