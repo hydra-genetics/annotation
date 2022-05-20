@@ -11,12 +11,12 @@ rule annotate_cnv:
     input:
         vcf="{file}.vcf",
     output:
-        vcf=temp("{file}.include_cnv.{tag}.vcf.gz"),
+        vcf=temp("{file}.annotate_cnv.{tag}.vcf.gz"),
     params:
-        bed=lambda wildcards: config["annotate_cnv"]["bed"],
+        bed=lambda wildcards: config["annotate_cnv"][wildcards.tag],
     log:
-        "{file}.include_cnv.{tag}.log",
-    threads: config.get("filter_cnv", {}).get("threads", config["default_resources"]["threads"])
+        "{file}.annotate_cnv.{tag}.log",
+    threads: config.get("annotate_cnv", {}).get("threads", config["default_resources"]["threads"])
     resources:
         mem_mb=config.get("annotate_cnv", {}).get("mem_mb", config["default_resources"]["mem_mb"]),
         mem_per_cpu=config.get("annotate_cnv", {}).get("mem_per_cpu", config["default_resources"]["mem_per_cpu"]),
@@ -25,11 +25,11 @@ rule annotate_cnv:
         time=config.get("annotate_cnv", {}).get("time", config["default_resources"]["time"]),
     benchmark:
         repeat(
-            "{file}.include_cnv.{tag}.benchmark.tsv",
+            "{file}.annotate_cnv.{tag}.benchmark.tsv",
             config.get("annotate_cnv", {}).get("benchmark_repeats", 1),
         )
     conda:
-        "../envs/filter_cnv.yaml"
+        "../envs/annotate_cnv.yaml"
     container:
         config.get("annotate_cnv", {}).get("container", config["default_container"])
     message:
