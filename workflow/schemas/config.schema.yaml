@@ -44,6 +44,19 @@ properties:
         type: number
         description: Upper non-inclusive artifact limit for variants to be considered
 
+  annotate_cnv:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      bed:
+        type: number
+        description: bed file with genes
+
   artifact_annotation:
     type: object
     properties:
