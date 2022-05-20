@@ -1,15 +1,18 @@
 import gzip
 from pysam import VariantFile
 
+
 def variant_in_genelist(chrom, start, end, gene_dict):
     genes = ""
     if chrom in gene_dict:
         for gene_region in gene_dict[chrom]:
             g_start = gene_region[0]
             g_end = gene_region[1]
-            if ((start >= g_start and start <= g_end) or
-                (end >= g_start and end <= g_end) or
-                (start < g_start and end > g_end)):
+            if (
+                (start >= g_start and start <= g_end) or 
+                (end >= g_start and end <= g_end) or 
+                (start < g_start and end > g_end)
+            ):
                 if genes == "":
                     genes = gene_region[2]
                 else:
@@ -30,8 +33,8 @@ def filter_variants(in_vcf, out_vcf, filter_bed_file):
         else:
             gene_dict[chrom].append([start, end, gene])
 
-    vcf_out = open(out_vcf, "w")  if not out_vcf.endswith(".gz") else gzip.open(out_vcf)
-    vcf_in = open(in_vcf)  if not in_vcf.endswith(".gz") else gzip.open(in_vcf)
+    vcf_out = open(out_vcf, "w") if not out_vcf.endswith(".gz") else gzip.open(out_vcf)
+    vcf_in = open(in_vcf) if not in_vcf.endswith(".gz") else gzip.open(in_vcf)
     header = True
     info_ids = {}
     for line in vcf_in:
