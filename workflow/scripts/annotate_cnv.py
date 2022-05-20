@@ -9,8 +9,8 @@ def variant_in_genelist(chrom, start, end, gene_dict):
             g_start = gene_region[0]
             g_end = gene_region[1]
             if (
-                (start >= g_start and start <= g_end) or 
-                (end >= g_start and end <= g_end) or 
+                (start >= g_start and start <= g_end) or
+                (end >= g_start and end <= g_end) or
                 (start < g_start and end > g_end)
             ):
                 if genes == "":
