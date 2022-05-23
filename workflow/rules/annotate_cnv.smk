@@ -8,14 +8,14 @@ rule annotate_cnv:
     input:
         vcf="{file}.vcf",
     output:
-        vcf=temp("{file}.annotate_cnv.{tag}.vcf.gz"),
+        vcf=temp("{file}.annotate_cnv.{tag}.vcf"),
     params:
         bed=lambda wildcards: config.get("annotate_cnv", {}).get(wildcards.tag, ""),
     log:
-        "{file}.annotate_cnv.{tag}.vcf.gz.log",
+        "{file}.annotate_cnv.{tag}.vcf.log",
     benchmark:
         repeat(
-            "{file}.annotate_cnv.{tag}.vcf.gz.benchmark.tsv",
+            "{file}.annotate_cnv.{tag}.vcf.benchmark.tsv",
             config.get("annotate_cnv", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("annotate_cnv", {}).get("threads", config["default_resources"]["threads"])
