@@ -9,19 +9,19 @@ __license__ = "GPL-3"
 
 rule add_multi_snv_in_codon:
     input:
-        vcf="annotation/artifact_annotation/{sample}_{type}.artifact_annotation.vcf",
+        vcf="annotation/background_annotation/{file}.vcf",
         ref=config["reference"]["fasta"],
         artifacts=config.get("reference", {}).get("artifacts", ""),
     output:
-        vcf=temp("annotation/add_multi_snv_in_codon/{sample}_{type}.codon_snvs.vcf"),
+        vcf=temp("annotation/add_multi_snv_in_codon/{file}.codon_snvs.vcf"),
     params:
         af_limit=config.get("add_multi_snv_in_codon", {}).get("af_limit", 0.05),
         artifact_limit=config.get("add_multi_snv_in_codon", {}).get("artifact_limit", 3),
     log:
-        "annotation/add_multi_snv_in_codon/{sample}_{type}.codon_snvs.vcf.log",
+        "annotation/add_multi_snv_in_codon/{file}.codon_snvs.vcf.log",
     benchmark:
         repeat(
-            "annotation/add_multi_snv_in_codon/{sample}_{type}.codon_snvs.vcf.benchmark.tsv",
+            "annotation/add_multi_snv_in_codon/{file}.codon_snvs.vcf.benchmark.tsv",
             config.get("add_multi_snv_in_codon", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("add_multi_snv_in_codon", {}).get("threads", config["default_resources"]["threads"])
@@ -36,6 +36,6 @@ rule add_multi_snv_in_codon:
     conda:
         "../envs/add_multi_snv_in_codon.yaml"
     message:
-        "{rule}: add multivariants to vcf if they ar in same codon: annotation/add_multi_snv_in_codon/{wildcards.sample}_{wildcards.type}"
+        "{rule}: add multivariants to vcf if they are in same codon: {output.vcf}"
     script:
         "../scripts/add_multi_snv_in_codon.py"
