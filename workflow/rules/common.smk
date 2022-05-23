@@ -43,6 +43,7 @@ validate(units, schema="../schemas/units.schema.yaml")
 wildcard_constraints:
     sample="|".join(samples.index),
     unit="N|T|R",
+    tag="[^.]+",
 
 
 def compile_output_list(wildcards):
