@@ -34,7 +34,7 @@ def filter_variants(in_vcf, out_vcf, filter_bed_file):
             gene_dict[chrom].append([start, end, gene])
 
     vcf_out = open(out_vcf, "w")
-    vcf_in = open(in_vcf) if not in_vcf.endswith(".gz") else gzip.open(in_vcf)
+    vcf_in = open(in_vcf) if not in_vcf.endswith(".gz") else gzip.open(in_vcf, "rt")
     header = True
     info_ids = {}
     for line in vcf_in:
@@ -74,7 +74,7 @@ def filter_variants(in_vcf, out_vcf, filter_bed_file):
         genes = variant_in_genelist(chrom, start, end, gene_dict)
         if genes:
             INFO_mod = "Genes=%s;%s" % (genes, INFO_mod)
-            columns[7] = INFO_mod
+        columns[7] = INFO_mod
         vcf_out.write(columns[0])
         for column in columns[1:]:
             vcf_out.write("\t" + column)
