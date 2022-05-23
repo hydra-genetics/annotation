@@ -33,7 +33,7 @@ def filter_variants(in_vcf, out_vcf, filter_bed_file):
         else:
             gene_dict[chrom].append([start, end, gene])
 
-    vcf_out = open(out_vcf, "w") if not out_vcf.endswith(".gz") else gzip.open(out_vcf)
+    vcf_out = open(out_vcf, "w") if not out_vcf.endswith(".gz") else gzip.open(out_vcf, "w")
     vcf_in = open(in_vcf) if not in_vcf.endswith(".gz") else gzip.open(in_vcf)
     header = True
     info_ids = {}
