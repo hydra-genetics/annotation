@@ -58,8 +58,7 @@ for line in in_vcf:
     if len(ref) == 1 and len(alt) == 1:
         if key in background_panel_dict:
             panel_median = background_panel_dict[key][0]
-            if panel_median > 0.0:
-                nr_SD = (AF - panel_median) / background_panel_dict[key][1]
+            nr_SD = (AF - panel_median) / background_panel_dict[key][1]
             INFO = "PanelMedian=" + "{:.4f}".format(panel_median) + ";" + INFO
             INFO = "PositionNrSD=" + "{:.2f}".format(nr_SD) + ";" + INFO
             lline[7] = INFO
