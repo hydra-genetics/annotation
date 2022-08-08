@@ -7,7 +7,7 @@ in_vcf = open(snakemake.input.vcf)
 out_vcf = open(snakemake.output.vcf, "w")
 af_limit = snakemake.params.af_limit
 artifact_limit = snakemake.params.artifact_limit
-artifacts = open(snakemake.input.artifacts)
+artifacts_filename = snakemake.input.artifacts
 
 
 AA_dict = {"Ala": ["GCT", "GCC", "GCA", "GCG"],
@@ -37,10 +37,12 @@ dna_opposite = {"A": "T", "T": "A", "G": "C", "C": "G", "X": "X"}
 
 '''Get number of caller'''
 nr_callers = 0
-for line in artifacts:
-    nr_callers = (len(line.strip().split("\t")) - 3) / 3
-    break
-
+if artifacts_filename != "":
+    artifacts = open(artifacts_filename)
+    for line in artifacts:
+        nr_callers = (len(line.strip().split("\t")) - 3) / 3
+        break
+    artifacts.close()
 
 '''Read through vcf and find positions that could be within one codon and put in a candidate list'''
 header = True
@@ -66,7 +68,7 @@ for line in in_vcf:
     INFO = lline[7]
     INFO_list = INFO.split(";")
     AF_index = 0
-    Artifact_index = 0
+    Artifact_index = -1
     i = 0
     for info in INFO_list:
         if info[:3] == "AF=":
@@ -75,9 +77,11 @@ for line in in_vcf:
             Artifact_index = i
         i += 1
     AF = float(INFO_list[AF_index][3:])
-    Artifacts = INFO_list[Artifact_index][9:].split(",")[:-1]
-    Artifacts = [int(x) for x in Artifacts]
-    max_artifacts = max(Artifacts)
+    max_artifacts = 0
+    if Artifact_index != -1:
+        Artifacts = INFO_list[Artifact_index][9:].split(",")[:-1]
+        Artifacts = [int(x) for x in Artifacts]
+        max_artifacts = max(Artifacts)
     if AF < af_limit:
         continue
     if max_artifacts > artifact_limit:
