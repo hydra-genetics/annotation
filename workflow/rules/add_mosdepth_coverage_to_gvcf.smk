@@ -1,6 +1,3 @@
-# vim: syntax=python tabstop=4 expandtab
-# coding: utf-8
-
 __author__ = "Jonas Almlöf"
 __copyright__ = "Copyright 2022, Jonas Almlöf"
 __email__ = "jonas.almlof@igp.uu.se"
@@ -17,13 +14,11 @@ rule add_mosdepth_coverage_to_gvcf:
         "qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.g.vcf.log",
     threads: config.get("add_mosdepth_coverage_to_gvcf", {}).get("threads", config["default_resources"]["threads"])
     resources:
-        threads=config.get("add_mosdepth_coverage_to_gvcf", {}).get("threads", config["default_resources"]["threads"]),
-        time=config.get("add_mosdepth_coverage_to_gvcf", {}).get("time", config["default_resources"]["time"]),
         mem_mb=config.get("add_mosdepth_coverage_to_gvcf", {}).get("mem_mb", config["default_resources"]["mem_mb"]),
         mem_per_cpu=config.get("add_mosdepth_coverage_to_gvcf", {}).get("mem_per_cpu", config["default_resources"]["mem_per_cpu"]),
-        partition=config.get("hotspadd_mosdepth_coverage_to_gvcfot_info", {}).get(
-            "partition", config["default_resources"]["partition"]
-        ),
+        partition=config.get("add_mosdepth_coverage_to_gvcf", {}).get("partition", config["default_resources"]["partition"]),
+        threads=config.get("add_mosdepth_coverage_to_gvcf", {}).get("threads", config["default_resources"]["threads"]),
+        time=config.get("add_mosdepth_coverage_to_gvcf", {}).get("time", config["default_resources"]["time"]),
     benchmark:
         repeat(
             "qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.g.vcf.benchmark.tsv",
@@ -34,6 +29,6 @@ rule add_mosdepth_coverage_to_gvcf:
     container:
         config.get("add_mosdepth_coverage_to_gvcf", {}).get("container", config["default_container"])
     message:
-        "{rule}: Add mosdepth read depth info to: qc/add_mosdepth_coverage_to_gvcf/{wildcards.sample}_{wildcards.type}"
+        "{rule}: add mosdepth read depth info to: {output.gvcf}"
     script:
         "../scripts/add_mosdepth_coverage_to_gvcf.py"

@@ -14,22 +14,19 @@ rule tabix_vcf:
     log:
         "annotation/{file}.vcf.gz.tbi.log",
     benchmark:
-        repeat(
-            "annotation/{file}.vcf.gz.tbi.benchmark.tsv",
-            config.get("tabix_vcf", {}).get("benchmark_repeats", 1),
-        )
+        repeat("annotation/{file}.vcf.gz.tbi.benchmark.tsv", config.get("tabix_vcf", {}).get("benchmark_repeats", 1))
     threads: config.get("tabix_vcf", {}).get("threads", config["default_resources"]["threads"])
     resources:
-        threads=config.get("tabix_vcf", {}).get("threads", config["default_resources"]["threads"]),
-        time=config.get("tabix_vcf", {}).get("time", config["default_resources"]["time"]),
         mem_mb=config.get("tabix_vcf", {}).get("mem_mb", config["default_resources"]["mem_mb"]),
         mem_per_cpu=config.get("tabix_vcf", {}).get("mem_per_cpu", config["default_resources"]["mem_per_cpu"]),
         partition=config.get("tabix_vcf", {}).get("partition", config["default_resources"]["partition"]),
+        threads=config.get("tabix_vcf", {}).get("threads", config["default_resources"]["threads"]),
+        time=config.get("tabix_vcf", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("tabix_vcf", {}).get("container", config["default_container"])
     conda:
         "../envs/tabix_vcf.yaml"
     message:
-        "{rule}: Tabix index annotation/{wildcards.file}.vcf.gz"
+        "{rule}: tabix index {input}"
     wrapper:
         "0.79.0/bio/tabix"

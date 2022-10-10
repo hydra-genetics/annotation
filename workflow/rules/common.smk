@@ -1,6 +1,3 @@
-# vim: syntax=python tabstop=4 expandtab
-# coding: utf-8
-
 __author__ = "Jonas A"
 __copyright__ = "Copyright 2021, Jonas A"
 __email__ = "jonas.almlof@igp.uu.se"
@@ -34,15 +31,21 @@ validate(samples, schema="../schemas/samples.schema.yaml")
 
 ### Read and validate units file
 
-units = pandas.read_table(config["units"], dtype=str).set_index(["sample", "type", "flowcell", "lane"], drop=False).sort_index()
-validate(units, schema="../schemas/units.schema.yaml")
+units = (
+    pandas.read_table(config["units"], dtype=str)
+    .set_index(["sample", "type", "flowcell", "lane", "barcode"], drop=False)
+    .sort_index()
+)
 
 ### Set wildcard constraints
 
 
 wildcard_constraints:
-    sample="|".join(samples.index),
-    unit="N|T|R",
+    barcode="[A-Z+]+",
+    flowcell="[A-Z0-9]+",
+    lane="L[0-9]+",
+    sample="|".join(get_samples(samples)),
+    type="N|T|R",
     tag="[^.]+",
 
 

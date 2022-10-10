@@ -6,8 +6,8 @@ __license__ = "GPL-3"
 
 rule background_annotation:
     input:
-        vcf="annotation/hotspot_annotation/{sample}_{type}.hotspot_annotation.vcf",
         background=config.get("reference").get("background", ""),
+        vcf="annotation/hotspot_annotation/{sample}_{type}.hotspot_annotation.vcf",
     output:
         vcf=temp("annotation/background_annotation/{sample}_{type}.background_annotation.vcf"),
     params:
@@ -31,6 +31,6 @@ rule background_annotation:
     conda:
         "../envs/background_annotation.yaml"
     message:
-        "{rule}: background annotation vcf in annotation/background_annotation/{wildcards.sample}_{wildcards.type}"
+        "{rule}: background annotation of vcf in {output.vcf}"
     script:
         "../scripts/background_annotation.py"
