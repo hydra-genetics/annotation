@@ -25,7 +25,7 @@ properties:
       - mem_per_cpu
       - partition
       - threads
-      - time  
+      - time
 
   add_mosdepth_coverage_to_gvcf:
     type: object
@@ -199,6 +199,25 @@ properties:
         description: max execution time by default
 
   sort_vcf:
+    type: object
+    properties:
+      mem_mb:
+        type: integer
+        description: max memory in MB to be available by default
+      mem_per_cpu:
+        type: integer
+        description: memory in MB used per cpu by default
+      partition:
+        type: string
+        description: partition to use on cluster by default
+      threads:
+        type: integer
+        description: number of threads to be available by default
+      time:
+        type: string
+        description: max execution time by default
+
+  stranger:
     type: object
     properties:
       mem_mb:
