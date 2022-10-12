@@ -11,7 +11,7 @@ rule vep:
     input:
         vcf="{file}.vcf.gz",
         tabix="{file}.vcf.gz.tbi",
-        cache=config["vep"]["vep_cache"],
+        cache=config.get("vep", {}).get("vep_cache", ""),
         fasta=config["reference"]["fasta"],
     output:
         vcf=temp("{file}.vep_annotated.vcf"),
