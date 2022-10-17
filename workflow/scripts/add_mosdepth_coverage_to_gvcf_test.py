@@ -1,14 +1,13 @@
 import tempfile
 import os
 import unittest
-
-from pysam import VariantFile
+import gzip
 
 
 class TestUnitUtils(unittest.TestCase):
     def setUp(self):
-        self.in_coverage = ".tests/unit/mosdepth/sample.bed.gz"
-        self.in_gvcf = ".tests/unit/vcf/sample.g.vcf"
+        self.in_coverage = gzip.open(".tests/unit/mosdepth/sample.bed.gz", "rt")
+        self.in_gvcf = gzip.open(".tests/unit/vcf/sample.g.vcf.gz", "rt")
 
         self.tempdir = tempfile.mkdtemp()
 
@@ -27,20 +26,22 @@ class TestUnitUtils(unittest.TestCase):
     def test_annotate_gvcf_with_mosdepth_data(self):
         from add_mosdepth_coverage_to_gvcf import annotate_gvcf_with_mosdepth_data
 
-        out_gvcf = os.path.join(self.tempdir, "sample.mosdepth.g.vcf.gz")
+        out_gvcf = open(os.path.join(self.tempdir, "sample.mosdepth.g.vcf"), "w")
 
         # Annotate all variants with depth from mosdepth (added last)
         annotate_gvcf_with_mosdepth_data(self.in_coverage, self.in_gvcf, out_gvcf)
+        out_gvcf.close()
 
-        result_file = open(out_gvcf)
+        result_file = open(os.path.join(self.tempdir, "sample.mosdepth.g.vcf"))
         result = []
         for line in result_file:
             if line[0] != "#":
                 result.append(line)
 
         test_table = {
-            "chr1\t934419": '0/0:1374,2:1376:-5.652e+00:1124',
-            "chr1\t934420": '0/0:1397,0:1397:-3.146e+00:1126',
+            "chr1\t934419": '0/0:1374,2:1376:-5.652e+00:1111',
+            "chr1\t934420": '0/0:1397,0:1397:-3.146e+00:1124',
         }
+        print(result)
 
         self._test_annotation(test_table, result)

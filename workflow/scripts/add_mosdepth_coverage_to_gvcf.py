@@ -1,10 +1,6 @@
 
 import gzip
 
-in_coverage = gzip.open(snakemake.input.coverage, "rt")
-in_gvcf = gzip.open(snakemake.input.gvcf, "rt")
-out_gvcf = open(snakemake.output.gvcf, "w")
-
 
 def annotate_gvcf_with_mosdepth_data(in_coverage, in_gvcf, out_gvcf):
 
@@ -45,3 +41,11 @@ def annotate_gvcf_with_mosdepth_data(in_coverage, in_gvcf, out_gvcf):
             out_gvcf.write("\t" + column)
         out_gvcf.write("\n")
     out_gvcf.close()
+
+
+if __name__ == "__main__":
+    log = snakemake.log_fmt_shell(stdout=False, stderr=True)
+
+    annotate_gvcf_with_mosdepth_data(gzip.open(snakemake.input.coverage, "rt"),
+                                    gzip.open(snakemake.input.gvcf, "rt"),
+                                    open(snakemake.output.gvcf, "w"))
