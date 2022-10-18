@@ -2,7 +2,7 @@ import math
 from subprocess import check_output
 
 
-def add_multi_snv_in_codon(in_fastq_ref, in_vcf, out_vcf, af_limit, artifact_limit, artifacts_filename):
+def add_multi_snv_in_codon(in_fastq_ref, in_vcf, out_vcf, af_limit, artifact_limit, artifacts_filename, container):
 
     AA_dict = {"Ala": ["GCT", "GCC", "GCA", "GCG"],
                "Ile": ["ATT", "ATC", "ATA"],
@@ -177,8 +177,10 @@ def add_multi_snv_in_codon(in_fastq_ref, in_vcf, out_vcf, af_limit, artifact_lim
         for bp in ref:
             if bp == "X":
                 fasta_pos = pos + i
-                command = "samtools faidx " + in_fastq_ref + " " + chrom + ":" + str(fasta_pos) + "-" + str(fasta_pos)
-                ref_bp = check_output(command, shell=True).decode("utf-8").split("\n")[1]
+                command = "singularity exec " + container
+                command += " samtools faidx " + in_fastq_ref + " " + chrom + ":" + str(fasta_pos) + "-" + str(fasta_pos)
+                ref_bp = check_output(command, shell=True).decode("utf-8").split("\n")
+                ref_bp = ref_bp[-2]
                 ref_bp = ref_bp.upper()
                 ref[i] = ref_bp
                 alt[i] = ref_bp
@@ -212,9 +214,12 @@ def add_multi_snv_in_codon(in_fastq_ref, in_vcf, out_vcf, af_limit, artifact_lim
 if __name__ == "__main__":
     log = snakemake.log_fmt_shell(stdout=False, stderr=True)
 
-    add_multi_snv_in_codon(snakemake.input.ref,
-                           open(snakemake.input.vcf),
-                           open(snakemake.output.vcf, "w"),
-                           snakemake.params.af_limit,
-                           snakemake.params.artifact_limit,
-                           snakemake.input.artifacts)
+    add_multi_snv_in_codon(
+        snakemake.input.ref,
+        open(snakemake.input.vcf),
+        open(snakemake.output.vcf, "w"),
+        snakemake.params.af_limit,
+        snakemake.params.artifact_limit,
+        snakemake.input.artifacts,
+        snakemake.container,
+    )
