@@ -33,6 +33,6 @@ rule stranger:
     message:
         "{rule}: Annotate cnv_sv/expansionhunter/{wildcards.sample}_{wildcards.type}.vcf with stranger"
     shell:
-        "stranger"
+        "stranger "
         "-f {input.cat} "
         "{input.vcf} > {output} &> {log}"
