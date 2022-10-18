@@ -1,4 +1,5 @@
 import math
+import pysam
 from subprocess import check_output
 
 
@@ -177,10 +178,8 @@ def add_multi_snv_in_codon(in_fastq_ref, in_vcf, out_vcf, af_limit, artifact_lim
         for bp in ref:
             if bp == "X":
                 fasta_pos = pos + i
-                command = "singularity exec " + container
-                command += " samtools faidx " + in_fastq_ref + " " + chrom + ":" + str(fasta_pos) + "-" + str(fasta_pos)
-                ref_bp = check_output(command, shell=True).decode("utf-8").split("\n")
-                ref_bp = ref_bp[-2]
+                ref_bp = pysam.faidx(in_fastq_ref, chrom + ":" + str(fasta_pos) + "-" + str(fasta_pos))
+                ref_bp = ref_bp[1]
                 ref_bp = ref_bp.upper()
                 ref[i] = ref_bp
                 alt[i] = ref_bp
