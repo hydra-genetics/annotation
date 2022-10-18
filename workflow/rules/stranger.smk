@@ -35,8 +35,4 @@ rule stranger:
     shell:
         "stranger "
         "-f {input.cat} "
-<<<<<<< HEAD
         "{input.vcf} > {output}"
-=======
-        "{input.vcf} > {output} &> {log}"
->>>>>>> 9e3c6363ec8292bd8540fdf8b4009b7acd15ef8e
