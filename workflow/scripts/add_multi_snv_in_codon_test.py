@@ -44,10 +44,6 @@ class TestUnitUtils(unittest.TestCase):
         result = VariantFile(out_vcf_filename)
         self.assertTrue("AA" in result.header.info)
 
-        for variant in result:
-            print(variant.chrom, variant.start)
-        result = VariantFile(out_vcf_filename)
-
         test_table = {
             "chr1\t12647": "", # Original variant1
             "chr1\t12648": "", # Original variant2
