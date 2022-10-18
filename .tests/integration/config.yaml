@@ -27,3 +27,6 @@ vep:
   vep_cache:  VEP/homo_sapiens
   mode: "--database"
   extra: "  --pick --af "
+
+annotate_cnv:
+  cnv_amp_genes: "reference/cnv_amp_genes.bed"
