@@ -37,10 +37,10 @@ class TestUnitUtils(unittest.TestCase):
         self.assertTrue("Genes" in result.header.info)
 
         test_table = {
-            "chr1\t150500": "PHEW", # Variant overlapping one gene
-            "chr1\t934169": ('MTOR', 'PHEW'), # Variant overlapping two genes
-            "chr1\t3683619": "MTOR", # Variant overlapping one gene
-            "chr1\t142388550": "", # Variant not overlapping any gene
+            "chr1\t150500": "PHEW",  # Variant overlapping one gene
+            "chr1\t934169": ('MTOR', 'PHEW'),  # Variant overlapping two genes
+            "chr1\t3683619": "MTOR",  # Variant overlapping one gene
+            "chr1\t142388550": "",  # Variant not overlapping any gene
         }
 
         self._test_annotation(test_table, result, "Genes")

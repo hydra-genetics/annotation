@@ -39,10 +39,10 @@ class TestUnitUtils(unittest.TestCase):
         self.assertTrue("PositionNrSD" in result.header.info)
 
         test_table_sd = {
-            "chr1\t934487": 121.06999969482422, # Variant with SD
-            "chr1\t935222": 1000.00, # Variant without SD
-            "chr1\t2460944": "", # Indel variant that should not be annotated
-            "chr1\t2491306": 21.270000457763672, # Variant with median > 0
+            "chr1\t934487": 121.06999969482422,  # Variant with SD
+            "chr1\t935222": 1000.00,  # Variant without SD
+            "chr1\t2460944": "",  # Indel variant that should not be annotated
+            "chr1\t2491306": 21.270000457763672,  # Variant with median > 0
         }
 
         self._test_annotation(test_table_sd, result, "PositionNrSD")
@@ -56,10 +56,10 @@ class TestUnitUtils(unittest.TestCase):
         self.assertTrue("PanelMedian" in result.header.info)
 
         test_table_median = {
-            "chr1\t934487": 0.0000, # Variant with SD
-            "chr1\t935222": 0.0000, # Variant without SD
-            "chr1\t2460944": "", # Indel variant that should not be annotated
-            "chr1\t2491306": 0.0008999999845400453, # Variant with median > 0
+            "chr1\t934487": 0.0000,  # Variant with SD
+            "chr1\t935222": 0.0000,  # Variant without SD
+            "chr1\t2460944": "",  # Indel variant that should not be annotated
+            "chr1\t2491306": 0.0008999999845400453,  # Variant with median > 0
         }
 
         self._test_annotation(test_table_median, result, "PanelMedian")

@@ -22,7 +22,6 @@ include: "rules/snpeff.smk"
 include: "rules/vep.smk"
 
 
-
 report: "report/workflow.rst"
 
 

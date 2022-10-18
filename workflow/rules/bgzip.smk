@@ -29,6 +29,7 @@ rule bgzip_vcf:
     shell:
         "(bgzip -c {input} > {output}) &> {log}"
 
+
 rule tabix_vcf:
     input:
         "annotation/{file}.vcf.gz",

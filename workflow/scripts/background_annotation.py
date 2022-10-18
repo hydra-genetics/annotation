@@ -12,7 +12,6 @@ def add_background_annotation_data(in_vcf_filename, background_panel_filename, o
     out_vcf.close()
     in_vcf.close()
 
-
     background_panel_dict = {}
     if background_panel_filename != "":
         background_panel = open(background_panel_filename)
@@ -24,7 +23,6 @@ def add_background_annotation_data(in_vcf_filename, background_panel_filename, o
             median = float(lline[2])
             sd = float(lline[3])
             background_panel_dict[chrom + "_" + pos] = [median, sd]
-
 
     out_vcf = open(out_vcf_filename, "a")
     in_vcf = open(in_vcf_filename)

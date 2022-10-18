@@ -94,6 +94,8 @@ def add_artifact_annotation_data(in_vcf_filename, artifacts, out_vcf_filename):
 if __name__ == "__main__":
     log = snakemake.log_fmt_shell(stdout=False, stderr=True)
 
-    add_artifact_annotation_data(snakemake.input.vcf,
-                                open(snakemake.input.artifacts),
-                                snakemake.output.vcf)
+    add_artifact_annotation_data(
+        snakemake.input.vcf,
+        open(snakemake.input.artifacts),
+        snakemake.output.vcf,
+    )

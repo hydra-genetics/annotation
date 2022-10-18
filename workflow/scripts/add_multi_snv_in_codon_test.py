@@ -45,10 +45,10 @@ class TestUnitUtils(unittest.TestCase):
         self.assertTrue("AA" in result.header.info)
 
         test_table = {
-            "chr1\t12647": "", # Original variant1
-            "chr1\t12648": "", # Original variant2
-            "chr1\t12646": "Lys1100Pro", # Added variant
-            "chr1\t12645": "", # Additional variant in another codon
+            "chr1\t12647": "",  # Original variant1
+            "chr1\t12648": "",  # Original variant2
+            "chr1\t12646": "Lys1100Pro",  # Added variant
+            "chr1\t12645": "",  # Additional variant in another codon
         }
 
         self._test_annotation(test_table, result, "AA")

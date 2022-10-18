@@ -52,8 +52,8 @@ class TestUnitUtils(unittest.TestCase):
         result_file.close()
 
         test_table = {
-            "1\t934419": "0.0014534883720930232", # Position1
-            "1\t934420": "0.0017852055398810782", # Position2
+            "1\t934419": "0.0014534883720930232",  # Position1
+            "1\t934420": "0.0017852055398810782",  # Position2
         }
 
         self._test_annotation(test_table, result, "seqrun")
@@ -72,8 +72,8 @@ class TestUnitUtils(unittest.TestCase):
         result_file.close()
 
         test_table = {
-            "1\t934419": ["0.0014534883720930232", "0.0012548022188792567"], # Position1
-            "1\t934420": ["0.0017852055398810782", "0.0031975927425936467"], # Position2
+            "1\t934419": ["0.0014534883720930232", "0.0012548022188792567"],  # Position1
+            "1\t934420": ["0.0017852055398810782", "0.0031975927425936467"],  # Position2
         }
 
         self._test_annotation(test_table, result, "panel")

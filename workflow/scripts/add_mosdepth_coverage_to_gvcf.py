@@ -46,6 +46,8 @@ def annotate_gvcf_with_mosdepth_data(in_coverage, in_gvcf, out_gvcf):
 if __name__ == "__main__":
     log = snakemake.log_fmt_shell(stdout=False, stderr=True)
 
-    annotate_gvcf_with_mosdepth_data(gzip.open(snakemake.input.coverage, "rt"),
-                                    gzip.open(snakemake.input.gvcf, "rt"),
-                                    open(snakemake.output.gvcf, "w"))
+    annotate_gvcf_with_mosdepth_data(
+        gzip.open(snakemake.input.coverage, "rt"),
+        gzip.open(snakemake.input.gvcf, "rt"),
+        open(snakemake.output.gvcf, "w")
+    )

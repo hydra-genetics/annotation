@@ -37,8 +37,8 @@ class TestUnitUtils(unittest.TestCase):
         self.assertTrue("Artifact" in result.header.info)
 
         test_table = {
-            "chr1\t934487": ('0', '0', '36'), # Variant without artifacts
-            "chr1\t935222": ('33', '31', '36'), # Variants with artifacts
+            "chr1\t934487": ('0', '0', '36'),  # Variant without artifacts
+            "chr1\t935222": ('33', '31', '36'),  # Variants with artifacts
         }
 
         self._test_annotation(test_table, result, "Artifact")

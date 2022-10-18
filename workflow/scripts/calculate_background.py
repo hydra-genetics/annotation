@@ -68,9 +68,7 @@ def calculate_run_background(gvcf_files, background_file, analysis_type):
                 Provided that the data points are representative (e.g. independent and identically distributed),
                 the result should be an unbiased estimate of the true population variance.'''
                 stdev_background = statistics.stdev(background_dict[key])
-                background_file.write(
-                    key.split("_")[0] + "\t" + key.split("_")[1] + "\t" + str(median_background) + "\t" + str(stdev_background) + "\n"
-                )
+                background_file.write(f"{key.split("_")[0]}\t{key.split("_")[1]}\t{median_background}\t{stdev_background}\n")
     else:
         background_file.write("Chrom\tPos\tMedian\n")
         for key in background_dict:
@@ -78,10 +76,9 @@ def calculate_run_background(gvcf_files, background_file, analysis_type):
             nr_obs = len(background_dict[key])
             if nr_obs >= 1:
                 median_background = statistics.median(background_dict[key])
-                background_file.write(
-                    key.split("_")[0] + "\t" + key.split("_")[1] + "\t" + str(median_background) + "\n"
-                )
+                background_file.write(f"{key.split("_")[0]}\t{key.split("_")[1]}\t{median_background}\n")
     background_file.close()
+
 
 if __name__ == "__main__":
     gvcf_files = snakemake.input.gvcfs
