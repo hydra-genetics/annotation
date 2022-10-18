@@ -17,7 +17,7 @@ rule stranger:
     benchmark:
         repeat(
             "annotation/stranger/{sample}_{type}.stranger.vcf.benchmark.tsv",
-            config.get("stranger", {}).get("benchmark_repeats", 1)
+            config.get("stranger", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("stranger", {}).get("threads", config["default_resources"]["threads"])
     resources:
