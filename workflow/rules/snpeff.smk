@@ -6,9 +6,9 @@ __license__ = "GPL-3"
 
 rule snpeff:
     input:
+        vcf="{file}.vcf.gz",
         db=config.get("snpeff", {}).get("db", ""),
         tabix="{file}.vcf.gz.tbi",
-        vcf="{file}.vcf.gz",
     output:
         calls=temp("{file}.snpeff.vcf.gz"),
         csvstats=temp("{file}.snpeff.csv"),
