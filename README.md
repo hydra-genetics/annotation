@@ -122,8 +122,8 @@ The following output files should be targeted via another rule:
 | `snv_indels/bcbio_variation_recall_ensemble/{sample}_{type}.ensembled.ssa.vcf` | SnpEff annotated vcf |
 | `annotation/background_annotation/{sample}_{type}.background_annotation.vcf` | vcf file annotated with background noise data |
 | `annotation/artifact_annotation/{sample}_{type}.artifact_annotation.vcf` | vcf file annotated with artifact info |
-| `annotation/add_multi_snv_in_codon/{sample}_{type}.background_annotation.include.exon.filter.snv_hard_filter.codon_snvs.vcf` | vcf file where two variants affecting the same codon are added as a separate variant |
-| `cnv_sv/svdb_query/add_mosdepth_coverage_to_gvcf/{sample}_{type}.svdb_query.annotate_cnv.cnv_amp_genes.vcf` | cnv vcf file annotated with gene names for a selection of genes of interest |
+| `annotation/add_multi_snv_in_codon/{file}.codon_snvs.vcf` | artifact annotated vcf file where two variants affecting the same codon are added as a separate variant |
+| `cnv_sv/svdb_query/add_mosdepth_coverage_to_gvcf/{file}.annotate_cnv.{tag}.vcf` | cnv vcf file annotated with gene names for a selection of genes of interest |
 
 ## :judge: Rule Graph
 
