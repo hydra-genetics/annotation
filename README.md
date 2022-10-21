@@ -126,7 +126,7 @@ The following output files should be targeted via another rule:
 | path: `annotation/background_annotation/`<br />file: `{sample}_{type}.background_annotation.vcf` | vcf file annotated with background noise data |
 | path: `annotation/artifact_annotation/`<br />file: `{sample}_{type}.artifact_annotation.vcf` | vcf file annotated with artifact info |
 | path: `annotation/add_multi_snv_in_codon/`<br />file: `{file}.codon_snvs.vcf` | artifact annotated vcf file where two variants affecting the same codon are added as a separate variant |
-| path: `cnv_sv/svdb_query/`<br />file: `add_mosdepth_coverage_to_gvcf/{file}.annotate_cnv.{tag}.vcf` | cnv vcf file annotated with gene names for a selection of genes of interest |
+| path: `cnv_sv/svdb_query/add_mosdepth_coverage_to_gvcf/`<br />file: `{file}.annotate_cnv.{tag}.vcf` | cnv vcf file annotated with gene names for a selection of genes of interest |
 
 ## :judge: Rule Graph
 
