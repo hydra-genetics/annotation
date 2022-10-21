@@ -222,7 +222,7 @@ properties:
     properties:
       mem_mb:
         type: integer
-        description: max memory in MB to be available by default
+        description: max memory in MB to be available
       mem_per_cpu:
         type: integer
         description: memory in MB used per cpu by default
