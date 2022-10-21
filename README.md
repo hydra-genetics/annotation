@@ -2,7 +2,7 @@
 
 # :snake: hydra-genetics/annotation
 
-#### Snakemake module containing processing steps for variant annotation.
+Snakemake module containing processing steps for variant annotation.
 
 ![Lint](https://github.com/hydra-genetics/annotation/actions/workflows/lint.yaml/badge.svg?branch=develop)
 ![Snakefmt](https://github.com/hydra-genetics/annotation/actions/workflows/snakefmt.yaml/badge.svg?branch=develop)
