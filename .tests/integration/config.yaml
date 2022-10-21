@@ -2,7 +2,7 @@ resources: "resources.yaml"
 samples: "samples.tsv"
 units: "units.tsv"
 
-default_container: "docker://hydragenetics/common:0.1.2"
+default_container: "docker://hydragenetics/common:0.1.9"
 
 reference:
   fasta: "reference/WASH7P.fna"
@@ -27,3 +27,6 @@ vep:
   vep_cache:  VEP/homo_sapiens
   mode: "--database"
   extra: "  --pick --af "
+
+annotate_cnv:
+  cnv_amp_genes: "reference/cnv_amp_genes.bed"

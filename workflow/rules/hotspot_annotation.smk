@@ -6,9 +6,9 @@ __license__ = "GPL-3"
 
 rule hotspot_annotation:
     input:
-        vcf="annotation/artifact_annotation/{sample}_{type}.artifact_annotation.vcf",
-        hotspot=config.get("hotspot_annotation", {}).get("hotspots", ""),
         chr_mapping=config.get("hotspot_annotation", {}).get("chr_translation_file", ""),
+        hotspot=config.get("hotspot_annotation", {}).get("hotspots", ""),
+        vcf="annotation/artifact_annotation/{sample}_{type}.artifact_annotation.vcf",
     output:
         vcf=temp("annotation/hotspot_annotation/{sample}_{type}.hotspot_annotation.vcf"),
     log:
@@ -30,6 +30,6 @@ rule hotspot_annotation:
     conda:
         "../envs/hotspot_annotation.yaml"
     message:
-        "{rule}: hotspot annotation vcf in annotation/hotspot_annotation/{wildcards.sample}_{wildcards.type}"
+        "{rule}: hotspot annotation vcf in {output.vcf}"
     script:
         "../scripts/add_hotspot_information.py"
