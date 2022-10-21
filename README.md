@@ -120,13 +120,13 @@ The following output files should be targeted via another rule:
 
 | File | Description |
 |---|---|
-| path: `qc/add_mosdepth_coverage_to_gvcf/` file: `{sample}_{type}.mosdepth.g.vcf` | genome vcf created by mutect2 with coverage from mosdepth |
-| path: `snv_indels/bcbio_variation_recall_ensemble/` file: `{sample}_{type}.ensembled.vep_annotated.vcf` | vep annotated vcf |
-| path: `snv_indels/bcbio_variation_recall_ensemble/` file: `{sample}_{type}.ensembled.ssa.vcf` | SnpEff annotated vcf |
-| path: `annotation/background_annotation/` file: `{sample}_{type}.background_annotation.vcf` | vcf file annotated with background noise data |
-| path: `annotation/artifact_annotation/` file: `{sample}_{type}.artifact_annotation.vcf` | vcf file annotated with artifact info |
-| path: `annotation/add_multi_snv_in_codon/` file: `{file}.codon_snvs.vcf` | artifact annotated vcf file where two variants affecting the same codon are added as a separate variant |
-| path: `cnv_sv/svdb_query/` file: `add_mosdepth_coverage_to_gvcf/{file}.annotate_cnv.{tag}.vcf` | cnv vcf file annotated with gene names for a selection of genes of interest |
+| path: `qc/add_mosdepth_coverage_to_gvcf/`<br />file: `{sample}_{type}.mosdepth.g.vcf` | genome vcf created by mutect2 with coverage from mosdepth |
+| path: `snv_indels/bcbio_variation_recall_ensemble/`<br />file: `{sample}_{type}.ensembled.vep_annotated.vcf` | vep annotated vcf |
+| path: `snv_indels/bcbio_variation_recall_ensemble/`<br />file: `{sample}_{type}.ensembled.ssa.vcf` | SnpEff annotated vcf |
+| path: `annotation/background_annotation/`<br />file: `{sample}_{type}.background_annotation.vcf` | vcf file annotated with background noise data |
+| path: `annotation/artifact_annotation/`<br />file: `{sample}_{type}.artifact_annotation.vcf` | vcf file annotated with artifact info |
+| path: `annotation/add_multi_snv_in_codon/`<br />file: `{file}.codon_snvs.vcf` | artifact annotated vcf file where two variants affecting the same codon are added as a separate variant |
+| path: `cnv_sv/svdb_query/`<br />file: `add_mosdepth_coverage_to_gvcf/{file}.annotate_cnv.{tag}.vcf` | cnv vcf file annotated with gene names for a selection of genes of interest |
 
 ## :judge: Rule Graph
 
