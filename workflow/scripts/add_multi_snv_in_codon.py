@@ -3,7 +3,7 @@ import pysam
 from subprocess import check_output
 
 
-def add_multi_snv_in_codon(in_fastq_ref, in_vcf, out_vcf, af_limit, artifact_limit, artifacts_filename, container):
+def add_multi_snv_in_codon(in_fastq_ref, in_vcf, out_vcf, af_limit, artifact_limit, artifacts_filename):
 
     AA_dict = {"Ala": ["GCT", "GCC", "GCA", "GCG"],
                "Ile": ["ATT", "ATC", "ATA"],
@@ -220,5 +220,4 @@ if __name__ == "__main__":
         snakemake.params.af_limit,
         snakemake.params.artifact_limit,
         snakemake.input.artifacts,
-        snakemake.container,
     )
