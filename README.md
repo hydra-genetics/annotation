@@ -1,7 +1,5 @@
 # <img src="https://github.com/hydra-genetics/annotation/blob/develop/images/hydragenetics.png" width=40 /> hydra-genetics/annotation
 
-# :snake: hydra-genetics/annotation
-
 Snakemake module containing processing steps for variant annotation.
 
 ![Lint](https://github.com/hydra-genetics/annotation/actions/workflows/lint.yaml/badge.svg?branch=develop)
