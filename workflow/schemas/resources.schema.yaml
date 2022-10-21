@@ -228,7 +228,7 @@ properties:
         description: memory in MB used per cpu
       partition:
         type: string
-        description: partition to use on cluster by default
+        description: partition to use on cluster
       threads:
         type: integer
         description: number of threads to be available by default
