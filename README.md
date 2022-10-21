@@ -120,7 +120,7 @@ The following output files should be targeted via another rule:
 
 | File | Description |
 |---|---|
-| `qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.g.vcf` | genome vcf created by mutect2 with coverage from mosdepth |
+| path: `qc/add_mosdepth_coverage_to_gvcf/` file: `{sample}_{type}.mosdepth.g.vcf` | genome vcf created by mutect2 with coverage from mosdepth |
 | `snv_indels/bcbio_variation_recall_ensemble/{sample}_{type}.ensembled.vep_annotated.vcf` | vep annotated vcf |
 | `snv_indels/bcbio_variation_recall_ensemble/{sample}_{type}.ensembled.ssa.vcf` | SnpEff annotated vcf |
 | `annotation/background_annotation/{sample}_{type}.background_annotation.vcf` | vcf file annotated with background noise data |
