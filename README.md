@@ -1,6 +1,8 @@
+# <img src="https://github.com/hydra-genetics/annotation/blob/develop/images/hydragenetics.png" width=40 /> hydra-genetics/annotation
+
 # :snake: hydra-genetics/annotation
 
-Snakemake module containing processing steps for variant annotation.
+#### Snakemake module containing processing steps for variant annotation.
 
 ![Lint](https://github.com/hydra-genetics/annotation/actions/workflows/lint.yaml/badge.svg?branch=develop)
 ![Snakefmt](https://github.com/hydra-genetics/annotation/actions/workflows/snakefmt.yaml/badge.svg?branch=develop)
@@ -67,6 +69,7 @@ The workflow repository contains a small test dataset `.tests/integration` which
 $ cd .tests/integration
 $ snakemake -s ../../Snakefile -j1 --configfile config.yaml --use-singularity
 ```
+
 ## :rocket: Usage
 
 To use this module in your workflow, follow the description in the
