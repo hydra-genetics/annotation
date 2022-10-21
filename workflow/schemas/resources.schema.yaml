@@ -235,7 +235,7 @@ properties:
         description: number of threads to be available
       time:
         type: string
-        description: max execution time by default
+        description: max execution time
 
   tabix_vcf:
     type: object
