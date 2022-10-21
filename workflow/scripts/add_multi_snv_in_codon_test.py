@@ -12,7 +12,6 @@ class TestUnitUtils(unittest.TestCase):
         self.af_limit = 0.0
         self.artifact_limit = 1000
         self.artifacts = ".tests/integration/reference/artifact_panel_chr1.tsv"
-        self.container = "docker://hydragenetics/common:0.1.8"
 
         self.tempdir = tempfile.mkdtemp()
 
@@ -39,7 +38,7 @@ class TestUnitUtils(unittest.TestCase):
 
         # Annotate all variants with multi snv in codon info
         add_multi_snv_in_codon(
-            self.reference, self.in_vcf, out_vcf, self.af_limit, self.artifact_limit, self.artifacts, self.container
+            self.reference, self.in_vcf, out_vcf, self.af_limit, self.artifact_limit, self.artifacts
         )
         out_vcf.close()
 
