@@ -231,7 +231,7 @@ properties:
         description: partition to use on cluster
       threads:
         type: integer
-        description: number of threads to be available by default
+        description: number of threads to be available
       time:
         type: string
         description: max execution time by default
