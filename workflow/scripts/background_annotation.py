@@ -29,7 +29,6 @@ def add_background_annotation_data(in_vcf_filename, background_panel_filename, o
     header = True
     for line in in_vcf:
         if header:
-            # out_vcf.write(line)
             if line[:6] == "#CHROM":
                 header = False
             continue
