@@ -219,6 +219,7 @@ properties:
 
   stranger:
     type: object
+    description: resource definitions for stranger
     properties:
       mem_mb:
         type: integer
