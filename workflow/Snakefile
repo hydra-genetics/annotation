@@ -16,9 +16,7 @@ include: "rules/calculate_seqrun_background.smk"
 include: "rules/hotspot_annotation.smk"
 include: "rules/simple_sv_annotation.smk"
 include: "rules/snpeff.smk"
-include: "rules/sort_vcf.smk"
 include: "rules/stranger.smk"
-include: "rules/tabix_vcf.smk"
 include: "rules/vep.smk"
 
 
