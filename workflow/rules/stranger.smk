@@ -31,7 +31,7 @@ rule stranger:
     conda:
         "../envs/stranger.yaml"
     message:
-        "{rule}: Annotate cnv_sv/expansionhunter/{wildcards.sample}_{wildcards.type}.vcf with stranger"
+        "{rule}: Annotate {input.vcf} with stranger"
     shell:
         "(stranger "
         "-f {input.cat} "
