@@ -185,6 +185,16 @@ properties:
         type: string
         description: name or path to docker/singularity container
 
+  stranger:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for stranger
+      container:
+        type: string
+        description: name or path to docker/singularity container
+
   reference:
     type: object
     description: collection of reference files

@@ -22,6 +22,10 @@ snpeff:
   container: "docker://hydragenetics/snpeff:5.0"
   db: "SnpEff/GRCh38.99"
 
+stranger:
+  container: "docker://hydragenetics/stranger:0.8.1"
+  catalog: "stranger/variant_catalog_grch38.json"
+
 vep:
   container: "docker://hydragenetics/vep:105"
   vep_cache:  VEP/homo_sapiens
