@@ -1,0 +1,8 @@
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - snpeff=5.0
+  - bcftools=1.10
+  - snakemake-wrapper-utils=0.3.1

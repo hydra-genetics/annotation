@@ -3,3 +3,4 @@ channels:
   - bioconda
   - defaults
 dependencies:
+  - htslib==1.10

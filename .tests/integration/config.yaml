@@ -2,4 +2,31 @@ resources: "resources.yaml"
 samples: "samples.tsv"
 units: "units.tsv"
 
-default_container: "docker://marrip/common:1.1.0"
+default_container: "docker://hydragenetics/common:0.1.9"
+
+reference:
+  fasta: "reference/WASH7P.fna"
+  artifacts: "reference/artifact_panel_chr1.tsv"
+  background: "reference/background_panel_HES45.tsv"
+
+hotspot_annotation:
+  hotspots: "reference/hotspots_combined_small.csv"
+  chr_translation_file: "reference/hotspot_report.chr.translation.hg19"
+
+simple_sv_annotation:
+  container: "docker://hydragenetics/simple_sv_annotation:2019.02.18"
+  panel: "reference/panel.txt"
+  fusion_pairs: "reference/fusion_pairs.txt"
+
+snpeff:
+  container: "docker://hydragenetics/snpeff:5.0"
+  db: "SnpEff/GRCh38.99"
+
+vep:
+  container: "docker://hydragenetics/vep:105"
+  vep_cache:  VEP/homo_sapiens
+  mode: "--database"
+  extra: "  --pick --af "
+
+annotate_cnv:
+  cnv_amp_genes: "reference/cnv_amp_genes.bed"

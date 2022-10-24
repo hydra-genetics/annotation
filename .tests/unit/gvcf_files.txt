@@ -1,0 +1,4 @@
+.tests/unit/vcf/sample2.g.vcf.gz
+.tests/unit/vcf/sample3.g.vcf.gz
+.tests/unit/vcf/sample4.g.vcf.gz
+.tests/unit/vcf/sample.g.vcf.gz

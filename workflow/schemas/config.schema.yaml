@@ -15,5 +15,220 @@ properties:
   required:
     - samples
     - units
-    - resources
     - default_container
+
+  samples:
+    type: string
+    description: path to samples.tsv file
+
+  units:
+    type: string
+    description: path to units.tsv file
+
+  default_container:
+    type: string
+    description: name or path to a default docker/singularity container
+
+  add_mosdepth_coverage_to_gvcf:
+    type: object
+    description: parameters for add_mosdepth_coverage_to_gvcf
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+
+  add_multi_snv_in_codon:
+    type: object
+    description: parameters for add_multi_snv_in_codon
+    properties:
+      af_limit:
+        type: number
+        description: Lower af limit for variants to be considered
+      artifact_limit:
+        type: number
+        description: Upper non-inclusive artifact limit for variants to be considered
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+
+  annotate_cnv:
+    type: object
+    description: parameters for annotate_cnv
+    properties:
+      bed:
+        type: string
+        description: bed file with gene names
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+
+  artifact_annotation:
+    type: object
+    description: parameters for artifact_annotation
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+
+  background_annotation:
+    type: object
+    description: parameters for background_annotation
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      nr_min_sd:
+        type: integer
+        description: number of standard deviations from median to not get a filter flag
+
+  bgzip_vcf:
+    type: object
+    description: parameters for bgzip_vcf
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+
+  calculate_seqrun_background:
+    type: object
+    description: parameters for calculate_seqrun_background
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+
+  hotspot_annotation:
+    type: object
+    description: parameters for hotspot_annotation
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      chr_translation_file:
+        type: string
+        description: Chromosome translation file (NCXXXX to chrXX)
+      hotspot:
+        type: string
+        description: Hotspot file
+
+  simple_sv_annotation:
+    type: object
+    description: parameters for simple_sv_annotation
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      fusion_pairs:
+        type: string
+        description: path to simple_sv_annotation fusion pairs file
+      panel:
+        type: string
+        description: path to simple_sv_annotation cancer panel file
+      required:
+        - fusion_pairs
+        - panel
+
+  snpeff:
+    type: object
+    description: parameters for snpeff
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      db:
+        type: string
+        description: path to snpeff database directory
+      extra:
+        type: string
+        description: parameters that should be forwarded
+      required:
+        - db
+
+  sort_vcf:
+    type: object
+    description: parameters for sort_vcf
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+
+  reference:
+    type: object
+    description: collection of reference files
+    properties:
+      artifacts:
+        type: string
+        description: path to artifact file containing caller specific variant observation counts
+      background:
+        type: string
+        description: path to background file containing median and sd values for non-reference alleles per position
+
+  tabix_vcf:
+    type: object
+    description: parameters for tabix_vcf
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded
+
+  vep:
+    type: object
+    description: parameters for vep
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded
+      mode:
+        type: string
+        description: Used to make vep query online database, by setting mode to --database
+      vep_cache:
+        type: string
+        description: path to vep cache directory
+      required:
+        - extra
+        - vep_cache

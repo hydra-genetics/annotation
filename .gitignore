@@ -4,3 +4,6 @@ __pycache__
 describe_workflow.rst
 describe_jupyter_notebook.txt
 annotation
+!annotation/background_annotation/HD832.HES45_T.background_annotation.include.exon.filter.snv_hard_filter.vcf
+*.log
+*.benchmark.tsv
