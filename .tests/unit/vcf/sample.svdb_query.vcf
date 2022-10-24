@@ -1,0 +1,49 @@
+##fileformat=VCFv4.1
+##source=MergeVCF
+##SVDB_version=2.6.0 cmd="/usr/local/bin/svdb --merge --vcf cnv_sv/cnvkit_vcf/VAL-01_T.vcf cnv_sv/gatk_cnv_vcf/VAL-01_T.vcf"
+##ALT=<ID=COPY_NORMAL,Description="Normal copy number">
+##ALT=<ID=DEL,Description="Deletion">
+##ALT=<ID=DUP,Description="Duplication">
+##INFO=<ID=BAF,Number=1,Type=Float,Description="SNP minor allele frequency">
+##INFO=<ID=BAF_PROBES,Number=1,Type=Integer,Description="Number of SNPs for BAF">
+##INFO=<ID=CALLER,Number=1,Type=String,Description="Caller">
+##INFO=<ID=CN,Number=1,Type=Float,Description="Copy number">
+##INFO=<ID=CORR_CN,Number=1,Type=Float,Description="Tumour content corrected copy number">
+##INFO=<ID=END,Number=1,Type=Integer,Description="End position of the variant described in this record">
+##INFO=<ID=LOG_ODDS_RATIO,Number=1,Type=Float,Description="Log odds ratio">
+##INFO=<ID=PROBES,Number=1,Type=Integer,Description="Number of probes in CNV">
+##INFO=<ID=SVLEN,Number=1,Type=Integer,Description="Difference in length between REF and ALT alleles">
+##INFO=<ID=SVTYPE,Number=1,Type=String,Description="Type of structural variant">
+##INFO=<ID=SVDB_INFO,Number=.,Type=String,Description="pipe separated list of all details in the INFO column of file VAL-01_T">
+##INFO=<ID=SVDB_SAMPLES,Number=.,Type=String,Description="pipe separated list of all details in the SAMPLEs column of file VAL-01_T">
+##INFO=<ID=SVDB_CHROM,Number=.,Type=String,Description="pipe separated list of all details in the CHROM column of file VAL-01_T">
+##INFO=<ID=SVDB_POS,Number=.,Type=String,Description="pipe separated list of all details in the POS column of file VAL-01_T">
+##INFO=<ID=SVDB_QUAL,Number=.,Type=String,Description="pipe separated list of all details in the QUAL column of file VAL-01_T">
+##INFO=<ID=SVDB_FILTERS,Number=.,Type=String,Description="pipe separated list of all details in the FILTER column of file VAL-01_T">
+##INFO=<ID=SVDB_INFO,Number=.,Type=String,Description="pipe separated list of all details in the INFO column of file VAL-01_T">
+##INFO=<ID=SVDB_SAMPLES,Number=.,Type=String,Description="pipe separated list of all details in the SAMPLEs column of file VAL-01_T">
+##INFO=<ID=SVDB_CHROM,Number=.,Type=String,Description="pipe separated list of all details in the CHROM column of file VAL-01_T">
+##INFO=<ID=SVDB_POS,Number=.,Type=String,Description="pipe separated list of all details in the POS column of file VAL-01_T">
+##INFO=<ID=SVDB_QUAL,Number=.,Type=String,Description="pipe separated list of all details in the QUAL column of file VAL-01_T">
+##INFO=<ID=SVDB_FILTERS,Number=.,Type=String,Description="pipe separated list of all details in the FILTER column of file VAL-01_T">
+##INFO=<ID=Twist_OCC,Number=1,Type=Integer,Description="The number of occurances of the event in the database">
+##INFO=<ID=Twist_AF,Number=1,Type=Float,Description="The frequency of the event in the database">
+##FORMAT=<ID=BAF,Number=1,Type=Float,Description="SNP minor allele frequency">
+##FORMAT=<ID=BAFQ,Number=1,Type=Integer,Description="Number of SNPs for BAF">
+##FORMAT=<ID=CCN,Number=1,Type=Float,Description="Corrected copy number">
+##FORMAT=<ID=CN,Number=1,Type=Float,Description="Copy number">
+##FORMAT=<ID=CNQ,Number=1,Type=Integer,Description="Number of probes in CNV">
+##FORMAT=<ID=DP,Number=1,Type=Float,Description="Average coverage over region">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##INFO=<ID=VARID,Number=1,Type=String,Description="The variant ID of merged samples">
+##INFO=<ID=set,Number=1,Type=String,Description="Source VCF for the merged record in SVDB">
+##INFO=<ID=svdb_origin,Number=1,Type=String,Description="pipe separated list of the VCF for the merged record in SVDB">
+##INFO=<ID=Twist_OCC,Number=1,Type=Integer,Description="The number of occurances of the event in the database">
+##INFO=<ID=Twist_AF,Number=1,Type=Float,Description="The frequency of the event in the database">
+##svdbcmdline=/usr/local/bin/svdb --merge --vcf cnv_sv/cnvkit_vcf/VAL-01_T.vcf cnv_sv/gatk_cnv_vcf/VAL-01_T.vcf
+##SVDB_version=2.6.0 cmd="/usr/local/bin/svdb --query --query_vcf cnv_sv/svdb_merge/VAL-01_T.merged.vcf --db /projects/wp1/nobackup/ngs/utveckling/Twist_DNA_DATA/SVDB/all_TN_292_svdb_0.8_20220505.vcf --out_frq Twist_AF --out_occ Twist_OCC --prefix cnv_sv/svdb_query/VAL-01_T.svdb"
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	VAL-01_T
+chr1	150500	.	N	<DUP>	.	.	SVTYPE=DUP;END=3683619;SVLEN=3533120;LOG_ODDS_RATIO=0.437749;CALLER=cnvkit;CN=NA;CORR_CN=2.71;PROBES=28;BAF=0.0897886;set=Intersection;SVDB_CHROM=.|chr1;SVDB_POS=.|150500;SVDB_QUAL=.|.;SVDB_FILTERS=.|.;SVDB_SAMPLES=.|VAL-01_T|GT:0/1|CN:2.71|CNQ:28|DP:266.428|BAF:0.0897886;SVDB_INFO=.|SVTYPE:DUP|END:3683619|SVLEN:3533120|LOG_ODDS_RATIO:0.437749|CALLER:cnvkit|CN:NA|CORR_CN:2.71|PROBES:28|BAF:0.0897886;svdb_origin=VAL-01_T;Twist_OCC=9;Twist_AF=0.030927835051546393	GT:CN:CNQ:DP:BAF	0/1:2.71:28:266.428:0.0897886
+chr1	934169	.	N	<COPY_NORMAL>	.	.	SVTYPE=COPY_NORMAL;END=246932308;SVLEN=245998140;LOG_ODDS_RATIO=-0.044693;CALLER=gatk_cnv;CN=1.94;CORR_CN=1.94;PROBES=1024;BAF=0.245801;BAF_PROBES=225;set=Intersection;SVDB_CHROM=.|chr1;SVDB_POS=.|934169;SVDB_QUAL=.|.;SVDB_FILTERS=.|.;SVDB_SAMPLES=.|VAL-01_T|GT:0/0|CN:1.94|CCN:1.94|CNQ:1024|BAF:0.245801|BAFQ:225;SVDB_INFO=.|SVTYPE:COPY_NORMAL|END:246932308|SVLEN:245998140|LOG_ODDS_RATIO:-0.044693|CALLER:gatk_cnv|CN:1.94|CORR_CN:1.94|PROBES:1024|BAF:0.245801|BAF_PROBES:225;svdb_origin=VAL-01_T	GT:CN:CCN:CNQ:BAF:BAFQ	0/0:1.94:1.94:1024:0.245801:225
+chr1	3683619	.	N	<COPY_NORMAL>	.	.	SVTYPE=COPY_NORMAL;END=121485522;SVLEN=117801904;LOG_ODDS_RATIO=-0.0207748;CALLER=cnvkit;CN=NA;CORR_CN=1.97;PROBES=1627;BAF=0.303493;set=Intersection;SVDB_CHROM=.|chr1;SVDB_POS=.|3683619;SVDB_QUAL=.|.;SVDB_FILTERS=.|.;SVDB_SAMPLES=.|VAL-01_T|GT:0/0|CN:1.97|CNQ:1627|DP:744.304|BAF:0.303493;SVDB_INFO=.|SVTYPE:COPY_NORMAL|END:121485522|SVLEN:117801904|LOG_ODDS_RATIO:-0.0207748|CALLER:cnvkit|CN:NA|CORR_CN:1.97|PROBES:1627|BAF:0.303493;svdb_origin=VAL-01_T	GT:CN:CNQ:DP:BAF	0/0:1.97:1627:744.304:0.303493
+chr1	142388550	.	N	<COPY_NORMAL>	.	.	SVTYPE=COPY_NORMAL;END=247764057;SVLEN=105375508;LOG_ODDS_RATIO=-0.034011;CALLER=cnvkit;CN=NA;CORR_CN=1.95;PROBES=1271;BAF=0.293016;set=Intersection;SVDB_CHROM=.|chr1;SVDB_POS=.|142388550;SVDB_QUAL=.|.;SVDB_FILTERS=.|.;SVDB_SAMPLES=.|VAL-01_T|GT:0/0|CN:1.95|CNQ:1271|DP:541.946|BAF:0.293016;SVDB_INFO=.|SVTYPE:COPY_NORMAL|END:247764057|SVLEN:105375508|LOG_ODDS_RATIO:-0.034011|CALLER:cnvkit|CN:NA|CORR_CN:1.95|PROBES:1271|BAF:0.293016;svdb_origin=VAL-01_T	GT:CN:CNQ:DP:BAF	0/0:1.95:1271:541.946:0.293016

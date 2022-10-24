@@ -1,6 +1,3 @@
-# vim: syntax=python tabstop=4 expandtab
-# coding: utf-8
-
 __author__ = "Jonas A"
 __copyright__ = "Copyright 2021, Jonas A"
 __email__ = "jonas.almlof@igp.uu.se"
@@ -13,7 +10,9 @@ include: "rules/add_multi_snv_in_codon.smk"
 include: "rules/annotate_cnv.smk"
 include: "rules/artifact_annotation.smk"
 include: "rules/background_annotation.smk"
-include: "rules/bgzip_vcf.smk"
+include: "rules/bcftools.smk"
+include: "rules/bgzip.smk"
+include: "rules/calculate_seqrun_background.smk"
 include: "rules/hotspot_annotation.smk"
 include: "rules/simple_sv_annotation.smk"
 include: "rules/snpeff.smk"
@@ -21,7 +20,6 @@ include: "rules/sort_vcf.smk"
 include: "rules/stranger.smk"
 include: "rules/tabix_vcf.smk"
 include: "rules/vep.smk"
-include: "rules/calculate_seqrun_background.smk"
 
 
 report: "report/workflow.rst"

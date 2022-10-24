@@ -4,22 +4,23 @@ type: object
 properties:
   default_resources:
     type: object
+    description: default resource definitions
     properties:
       mem_mb:
         type: integer
-        description: max memory in MB to be available by default
+        description: memory in MB used per cpu
       mem_per_cpu:
         type: integer
-        description: memory in MB used per cpu by default
+        description: memory used per cpu
       partition:
         type: string
-        description: partition to use on cluster by default
+        description: partition to use on cluster
       threads:
         type: integer
-        description: number of threads to be available by default
+        description: number of threads to be available
       time:
         type: string
-        description: max execution time by default
+        description: max execution time
     required:
       - mem_mb
       - mem_per_cpu
@@ -27,195 +28,208 @@ properties:
       - threads
       - time
 
+  required:
+    - default_resources
+
   add_mosdepth_coverage_to_gvcf:
     type: object
+    description: resource definitions for add_mosdepth_coverage_to_gvcf
     properties:
       mem_mb:
         type: integer
-        description: max memory in MB to be available by default
+        description: max memory in MB in total
       mem_per_cpu:
         type: integer
-        description: memory in MB used per cpu by default
+        description: max memory in MB used per cpu
       partition:
         type: string
-        description: partition to use on cluster by default
+        description: partition to use on cluster
       threads:
         type: integer
-        description: number of threads to be available by default
+        description: number of threads to be available
       time:
         type: string
-        description: max execution time by default
+        description: max execution time
 
   add_multi_snv_in_codon:
     type: object
+    description: resource definitions for add_multi_snv_in_codon
     properties:
       mem_mb:
         type: integer
-        description: max memory in MB to be available by default
+        description: max memory in MB in total
       mem_per_cpu:
         type: integer
-        description: memory in MB used per cpu by default
+        description: max memory in MB used per cpu
       partition:
         type: string
-        description: partition to use on cluster by default
+        description: partition to use on cluster
       threads:
         type: integer
-        description: number of threads to be available by default
+        description: number of threads to be available
       time:
         type: string
-        description: max execution time by default
+        description: max execution time
 
   artifact_annotation:
     type: object
+    description: resource definitions for artifact_annotation
     properties:
       mem_mb:
         type: integer
-        description: max memory in MB to be available by default
+        description: max memory in MB in total
       mem_per_cpu:
         type: integer
-        description: memory in MB used per cpu by default
+        description: max memory in MB used per cpu
       partition:
         type: string
-        description: partition to use on cluster by default
+        description: partition to use on cluster
       threads:
         type: integer
-        description: number of threads to be available by default
+        description: number of threads to be available
       time:
         type: string
-        description: max execution time by default
+        description: max execution time
 
   background_annotation:
     type: object
+    description: resource definitions for background_annotation
     properties:
       mem_mb:
         type: integer
-        description: max memory in MB to be available by default
+        description: max memory in MB in total
       mem_per_cpu:
         type: integer
-        description: memory in MB used per cpu by default
+        description: max memory in MB used per cpu
       partition:
         type: string
-        description: partition to use on cluster by default
+        description: partition to use on cluster
       threads:
         type: integer
-        description: number of threads to be available by default
+        description: number of threads to be available
       time:
         type: string
-        description: max execution time by default
+        description: max execution time
 
   bgzip_vcf:
     type: object
+    description: resource definitions for bgzip_vcf
     properties:
       mem_mb:
         type: integer
-        description: max memory in MB to be available by default
+        description: max memory in MB in total
       mem_per_cpu:
         type: integer
-        description: memory in MB used per cpu by default
+        description: max memory in MB used per cpu
       partition:
         type: string
-        description: partition to use on cluster by default
+        description: partition to use on cluster
       threads:
         type: integer
-        description: number of threads to be available by default
+        description: number of threads to be available
       time:
         type: string
-        description: max execution time by default
+        description: max execution time
 
   calculate_seqrun_background:
     type: object
+    description: resource definitions for calculate_seqrun_background
     properties:
       mem_mb:
         type: integer
-        description: max memory in MB to be available by default
+        description: max memory in MB in total
       mem_per_cpu:
         type: integer
-        description: memory in MB used per cpu by default
+        description: max memory in MB used per cpu
       partition:
         type: string
-        description: partition to use on cluster by default
+        description: partition to use on cluster
       threads:
         type: integer
-        description: number of threads to be available by default
+        description: number of threads to be available
       time:
         type: string
-        description: max execution time by default
+        description: max execution time
 
   hotspot_annotation:
     type: object
+    description: resource definitions for hotspot_annotation
     properties:
       mem_mb:
         type: integer
-        description: max memory in MB to be available by default
+        description: max memory in MB in total
       mem_per_cpu:
         type: integer
-        description: memory in MB used per cpu by default
+        description: max memory in MB used per cpu
       partition:
         type: string
-        description: partition to use on cluster by default
+        description: partition to use on cluster
       threads:
         type: integer
-        description: number of threads to be available by default
+        description: number of threads to be available
       time:
         type: string
-        description: max execution time by default
+        description: max execution time
 
   simple_sv_annotation:
     type: object
+    description: resource definitions for simple_sv_annotation
     properties:
       mem_mb:
         type: integer
-        description: max memory in MB to be available by default
+        description: max memory in MB in total
       mem_per_cpu:
         type: integer
-        description: memory in MB used per cpu by default
+        description: max memory in MB used per cpu
       partition:
         type: string
-        description: partition to use on cluster by default
+        description: partition to use on cluster
       threads:
         type: integer
-        description: number of threads to be available by default
+        description: number of threads to be available
       time:
         type: string
-        description: max execution time by default
+        description: max execution time
 
   snpeff:
     type: object
+    description: resource definitions for snpeff
     properties:
       mem_mb:
         type: integer
-        description: max memory in MB to be available by default
+        description: max memory in MB in total
       mem_per_cpu:
         type: integer
-        description: memory in MB used per cpu by default
+        description: max memory in MB used per cpu
       partition:
         type: string
-        description: partition to use on cluster by default
+        description: partition to use on cluster
       threads:
         type: integer
-        description: number of threads to be available by default
+        description: number of threads to be available
       time:
         type: string
-        description: max execution time by default
+        description: max execution time
 
   sort_vcf:
     type: object
+    description: resource definitions for sort_vcf
     properties:
       mem_mb:
         type: integer
-        description: max memory in MB to be available by default
+        description: max memory in MB in total
       mem_per_cpu:
         type: integer
-        description: memory in MB used per cpu by default
+        description: max memory in MB used per cpu
       partition:
         type: string
-        description: partition to use on cluster by default
+        description: partition to use on cluster
       threads:
         type: integer
-        description: number of threads to be available by default
+        description: number of threads to be available
       time:
         type: string
-        description: max execution time by default
+        description: max execution time
 
   stranger:
     type: object
@@ -239,41 +253,40 @@ properties:
 
   tabix_vcf:
     type: object
+    description: resource definitions for tabix_vcf
     properties:
       mem_mb:
         type: integer
-        description: max memory in MB to be available by default
+        description: max memory in MB in total
       mem_per_cpu:
         type: integer
-        description: memory in MB used per cpu by default
+        description: max memory in MB used per cpu
       partition:
         type: string
-        description: partition to use on cluster by default
+        description: partition to use on cluster
       threads:
         type: integer
-        description: number of threads to be available by default
+        description: number of threads to be available
       time:
         type: string
-        description: max execution time by default
+        description: max execution time
 
   vep:
     type: object
+    description: resource definitions for vep
     properties:
       mem_mb:
         type: integer
-        description: max memory in MB to be available by default
+        description: max memory in MB in total
       mem_per_cpu:
         type: integer
-        description: memory in MB used per cpu by default
+        description: max memory in MB used per cpu
       partition:
         type: string
-        description: partition to use on cluster by default
+        description: partition to use on cluster
       threads:
         type: integer
-        description: number of threads to be available by default
+        description: number of threads to be available
       time:
         type: string
-        description: max execution time by default
-
-  required:
-    - default_resources
+        description: max execution time

@@ -1,6 +1,3 @@
-# vim: syntax=python tabstop=4 expandtab
-# coding: utf-8
-
 __author__ = "Jonas A"
 __copyright__ = "Copyright 2021, Jonas A"
 __email__ = "jonas.almlof@igp.uu.se"
@@ -14,7 +11,7 @@ from hydra_genetics.utils.resources import load_resources
 from hydra_genetics.utils.samples import *
 from hydra_genetics.utils.units import *
 
-min_version("7.8.0")
+min_version("7.13.0")
 
 ### Set and validate config file
 
@@ -34,15 +31,21 @@ validate(samples, schema="../schemas/samples.schema.yaml")
 
 ### Read and validate units file
 
-units = pandas.read_table(config["units"], dtype=str).set_index(["sample", "type", "flowcell", "lane"], drop=False).sort_index()
-validate(units, schema="../schemas/units.schema.yaml")
+units = (
+    pandas.read_table(config["units"], dtype=str)
+    .set_index(["sample", "type", "flowcell", "lane", "barcode"], drop=False)
+    .sort_index()
+)
 
 ### Set wildcard constraints
 
 
 wildcard_constraints:
-    sample="|".join(samples.index),
-    unit="N|T|R",
+    barcode="[A-Z+]+",
+    flowcell="[A-Z0-9]+",
+    lane="L[0-9]+",
+    sample="|".join(get_samples(samples)),
+    type="N|T|R",
     tag="[^.]+",
 
 
@@ -53,6 +56,8 @@ def compile_output_list(wildcards):
         "annotation/background_annotation": [".background_annotation.vcf"],
         "annotation/add_multi_snv_in_codon": [".background_annotation.include.exon.filter.snv_hard_filter.codon_snvs.vcf"],
         "cnv_sv/expansionhunter": [".stranger.vcf"],
+        "cnv_sv/svdb_query": [".svdb_query.annotate_cnv.cnv_amp_genes.vcf"],
+
     }
     output_files = [
         "%s/%s_%s%s" % (prefix, sample, unit_type, suffix)

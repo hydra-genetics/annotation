@@ -9,10 +9,10 @@ __license__ = "GPL-3"
 
 rule vep:
     input:
-        vcf="{file}.vcf.gz",
-        tabix="{file}.vcf.gz.tbi",
         cache=config.get("vep", {}).get("vep_cache", ""),
         fasta=config["reference"]["fasta"],
+        tabix="{file}.vcf.gz.tbi",
+        vcf="{file}.vcf.gz",
     output:
         vcf=temp("{file}.vep_annotated.vcf"),
     params:
@@ -21,22 +21,28 @@ rule vep:
     log:
         "{file}.vep_annotated.vcf.log",
     benchmark:
-        repeat(
-            "{file}.vep_annotated.vcf.benchmark.tsv",
-            config.get("vep", {}).get("benchmark_repeats", 1),
-        )
+        repeat("{file}.vep_annotated.vcf.benchmark.tsv", config.get("vep", {}).get("benchmark_repeats", 1))
     threads: config.get("vep", {}).get("threads", config["default_resources"]["threads"])
     resources:
-        threads=config.get("vep", {}).get("threads", config["default_resources"]["threads"]),
-        time=config.get("vep", {}).get("time", config["default_resources"]["time"]),
         mem_mb=config.get("vep", {}).get("mem_mb", config["default_resources"]["mem_mb"]),
         mem_per_cpu=config.get("vep", {}).get("mem_per_cpu", config["default_resources"]["mem_per_cpu"]),
         partition=config.get("vep", {}).get("partition", config["default_resources"]["partition"]),
+        threads=config.get("vep", {}).get("threads", config["default_resources"]["threads"]),
+        time=config.get("vep", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("vep", {}).get("container", config["default_container"])
     conda:
         "../envs/vep.yaml"
     message:
-        "{rule}: annotate with vep {wildcards.file}.vep_annotated.vcf.gz"
+        "{rule}: vep annotate {input.vcf}"
     shell:
-        "(vep --vcf --no_stats -o {output.vcf} -i {input.vcf} --dir_cache {input.cache} --fork {threads} --refseq {params.mode} --fasta {input.fasta} {params.extra} ) &> {log}"
+        "(vep "
+        "--vcf "
+        "--no_stats "
+        "-o {output.vcf} "
+        "-i {input.vcf} "
+        "--dir_cache {input.cache} "
+        "--fork {threads} "
+        "--refseq {params.mode} "
+        "--fasta {input.fasta} "
+        "{params.extra} ) &> {log}"
