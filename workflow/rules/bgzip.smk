@@ -25,7 +25,7 @@ rule bgzip_vcf:
     conda:
         "../envs/bgzip_vcf.yaml"
     message:
-        "{rule}: bgzip {input.vcf}"
+        "{rule}: bgzip {input}"
     shell:
         "(bgzip -c {input} > {output}) &> {log}"
 
