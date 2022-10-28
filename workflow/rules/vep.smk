@@ -9,7 +9,7 @@ __license__ = "GPL-3"
 
 rule vep:
     input:
-        cache=config["vep"]["vep_cache"],
+        cache=config.get("vep", {}).get("vep_cache", ""),
         fasta=config["reference"]["fasta"],
         tabix="{file}.vcf.gz.tbi",
         vcf="{file}.vcf.gz",

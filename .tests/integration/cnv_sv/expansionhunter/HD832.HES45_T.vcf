@@ -1,0 +1,51 @@
+##fileformat=VCFv4.1
+##FILTER=<ID=PASS,Description="All filters passed">
+##INFO=<ID=SVTYPE,Number=1,Type=String,Description="Type of structural variant">
+##INFO=<ID=END,Number=1,Type=Integer,Description="End position of the variant">
+##INFO=<ID=REF,Number=1,Type=Integer,Description="Reference copy number">
+##INFO=<ID=RL,Number=1,Type=Integer,Description="Reference length in bp">
+##INFO=<ID=RU,Number=1,Type=String,Description="Repeat unit in the reference orientation">
+##INFO=<ID=REPID,Number=1,Type=String,Description="Repeat identifier from the repeat specification file">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=SO,Number=1,Type=String,Description="Type of reads that support the allele; can be SPANNING, FLANKING, or INREPEAT meaning that the reads span, flank, or are fully contained in the repeat">
+##FORMAT=<ID=REPCN,Number=1,Type=String,Description="Number of repeat units spanned by the allele">
+##FORMAT=<ID=REPCI,Number=1,Type=String,Description="Confidence interval for REPCN">
+##FORMAT=<ID=ADFL,Number=1,Type=String,Description="Number of flanking reads consistent with the allele">
+##FORMAT=<ID=ADSP,Number=1,Type=String,Description="Number of spanning reads consistent with the allele">
+##FORMAT=<ID=ADIR,Number=1,Type=String,Description="Number of in-repeat reads consistent with the allele">
+##ALT=<ID=STR4,Description="Allele comprised of 4 repeat units">
+##ALT=<ID=STR7,Description="Allele comprised of 7 repeat units">
+##ALT=<ID=STR8,Description="Allele comprised of 8 repeat units">
+##ALT=<ID=STR11,Description="Allele comprised of 11 repeat units">
+##ALT=<ID=STR12,Description="Allele comprised of 12 repeat units">
+##ALT=<ID=STR15,Description="Allele comprised of 15 repeat units">
+##ALT=<ID=STR18,Description="Allele comprised of 18 repeat units">
+##ALT=<ID=STR20,Description="Allele comprised of 20 repeat units">
+##ALT=<ID=STR22,Description="Allele comprised of 22 repeat units">
+##ALT=<ID=STR24,Description="Allele comprised of 24 repeat units">
+##ALT=<ID=STR25,Description="Allele comprised of 25 repeat units">
+##ALT=<ID=STR27,Description="Allele comprised of 27 repeat units">
+##ALT=<ID=STR33,Description="Allele comprised of 33 repeat units">
+##ALT=<ID=STR59,Description="Allele comprised of 59 repeat units">
+##ALT=<ID=STR67,Description="Allele comprised of 67 repeat units">
+##contig=<ID=11>
+##contig=<ID=12>
+##contig=<ID=14>
+##contig=<ID=16>
+##contig=<ID=19>
+##contig=<ID=21>
+##contig=<ID=22>
+##contig=<ID=3>
+##contig=<ID=4>
+##contig=<ID=5>
+##contig=<ID=6>
+##contig=<ID=9>
+##contig=<ID=X>
+##INFO=<ID=OLD_MULTIALLELIC,Number=1,Type=String,Description="Original chr:pos:ref:alt encoding">
+##INFO=<ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes">
+##INFO=<ID=AN,Number=1,Type=Integer,Description="Total number of alleles in called genotypes">
+##bcftools_viewVersion=1.16+htslib-1.16
+##bcftools_viewCommand=view -r 9 -s ADM1059A2 643594.clinical.str.vcf.gz; Date=Tue Oct 18 10:26:57 2022
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	ADM1059A2
+9	27573526	.	C	<STR4>	.	PASS	END=27573544;REF=3;RL=18;RU=GGCCCC;REPID=C9ORF72;AC=2;AN=2	GT:SO:REPCN:REPCI:ADSP:ADFL:ADIR	1/1:SPANNING/SPANNING:2/2:2-2/2-2:32/32:5/5:0/0
+9	71652202	.	A	<STR8>	.	PASS	END=71652220;REF=6;RL=18;RU=GAA;REPID=FXN;AC=2;AN=2	GT:SO:REPCN:REPCI:ADSP:ADFL:ADIR	1/1:SPANNING/SPANNING:9/9:9-9/9-9:17/17:9/9:0/0
