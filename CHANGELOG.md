@@ -1,5 +1,19 @@
 # Changelog
 
+### [0.1.1](https://www.github.com/hydra-genetics/annotation/compare/v0.1.0...v0.1.1) (2022-10-28)
+
+
+### Bug Fixes
+
+* change output path for stranger.smk ([c49f774](https://www.github.com/hydra-genetics/annotation/commit/c49f774faf033d8c19b4dedd1ba7692071413af6))
+* Fixed message in bgzip. Added testrun of bgzip and tabix. ([9cf7676](https://www.github.com/hydra-genetics/annotation/commit/9cf7676211afce299fbb8d1b190d97afd31eaac9))
+* update env ([33fb178](https://www.github.com/hydra-genetics/annotation/commit/33fb178ff8564068e1aea9f6b17193cbefeb16ac))
+
+
+### Documentation
+
+* new rulegraph ([4880e96](https://www.github.com/hydra-genetics/annotation/commit/4880e96ec070ef0f5caba026f80a632f262afda1))
+
 ## 0.1.0 (2022-10-24)
 
 
