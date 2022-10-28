@@ -23,7 +23,7 @@ rule bgzip_vcf:
     container:
         config.get("bgzip_vcf", {}).get("container", config["default_container"])
     conda:
-        "../envs/bgzip_vcf.yaml"
+        "../envs/bgzip.yaml"
     message:
         "{rule}: bgzip {input}"
     shell:
@@ -51,7 +51,7 @@ rule tabix_vcf:
     container:
         config.get("tabix_vcf", {}).get("container", config["default_container"])
     conda:
-        "../envs/tabix.yaml"
+        "../envs/bgzip.yaml"
     message:
         "{rule}: tabix index {input}"
     wrapper:
