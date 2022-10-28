@@ -9,7 +9,7 @@ rule stranger:
         vcf="cnv_sv/expansionhunter/{sample}_{type}.vcf",
         cat=config.get("stranger", {}).get("catalog", ""),
     output:
-        "cnv_sv/expansionhunter/{sample}_{type}.stranger.vcf",
+        "cnv_sv/stranger/{sample}_{type}.stranger.vcf",
     params:
         extra=config.get("stranger", {}).get("extra", ""),
     log:
