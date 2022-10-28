@@ -53,9 +53,8 @@ def compile_output_list(wildcards):
     files = {
         "qc/add_mosdepth_coverage_to_gvcf": [".mosdepth.g.vcf"],
         "snv_indels/bcbio_variation_recall_ensemble": [".ensembled.vep_annotated.vcf", ".ensembled.ssa.vcf"],
-        "annotation/background_annotation": [".background_annotation.vcf"],
+        "annotation/background_annotation": [".background_annotation.vcf.gz", ".background_annotation.vcf.gz.tbi"],
         "annotation/add_multi_snv_in_codon": [".background_annotation.include.exon.filter.snv_hard_filter.codon_snvs.vcf"],
-        "cnv_sv/expansionhunter": [".stranger.vcf"],
         "cnv_sv/svdb_query": [".svdb_query.annotate_cnv.cnv_amp_genes.vcf"],
     }
     output_files = [
