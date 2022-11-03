@@ -52,9 +52,9 @@ wildcard_constraints:
 def compile_output_list(wildcards):
     files = {
         "qc/add_mosdepth_coverage_to_gvcf": [".mosdepth.g.vcf"],
-        "snv_indels/bcbio_variation_recall_ensemble": [".ensembled.vep_annotated.sorted.vcf", ".ensembled.ssa.vcf"],
+        "snv_indels/bcbio_variation_recall_ensemble": [".ensembled.vep_annotated.vcf", ".ensembled.ssa.vcf"],
         "annotation/background_annotation": [".background_annotation.vcf.gz", ".background_annotation.vcf.gz.tbi"],
-        "annotation/add_multi_snv_in_codon": [".background_annotation.include.exon.filter.snv_hard_filter.codon_snvs.vcf"],
+        "annotation/add_multi_snv_in_codon": [".background_annotation.include.exon.filter.snv_hard_filter.codon_snvs.sorted.vcf"],
         "cnv_sv/stranger": [".stranger.vcf"],
         "cnv_sv/svdb_query": [".svdb_query.annotate_cnv.cnv_amp_genes.vcf"],
     }
