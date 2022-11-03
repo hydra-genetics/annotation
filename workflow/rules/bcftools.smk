@@ -26,7 +26,7 @@ rule sort_vcf:
     container:
         config.get("sort_vcf", {}).get("container", config["default_container"])
     conda:
-        "../envs/sort_vcf.yaml"
+        "../envs/bcftools.yaml"
     message:
         "{rule}: sort vcf {input.vcf}"
     wrapper:
