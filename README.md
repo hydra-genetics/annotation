@@ -92,7 +92,7 @@ use rule * from annotation as annotation_*
 ### Compatibility
 
 Latest:
- - alignment:v0.2.0
+ - alignment:v0.3.0
  - snv_indels:v0.2.0
  - cnv_sv:v0.1.0
  - qc:v0.1.0
