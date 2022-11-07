@@ -1,5 +1,17 @@
 # Changelog
 
+### [0.1.2](https://www.github.com/hydra-genetics/annotation/compare/v0.1.1...v0.1.2) (2022-11-07)
+
+
+### Bug Fixes
+
+* release-please ([46d542d](https://www.github.com/hydra-genetics/annotation/commit/46d542d286aa616374198f964b7af86ed7ac90c1))
+
+
+### Documentation
+
+* update README and compatibility ([e51c5ca](https://www.github.com/hydra-genetics/annotation/commit/e51c5cac6e434c20aff6435d50ebe116e7c68345))
+
 ### [0.1.1](https://www.github.com/hydra-genetics/annotation/compare/v0.1.0...v0.1.1) (2022-10-28)
 
 
