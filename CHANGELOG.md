@@ -1,5 +1,17 @@
 # Changelog
 
+### [0.1.2](https://www.github.com/hydra-genetics/annotation/compare/v0.1.1...v0.1.2) (2022-11-07)
+
+
+### Bug Fixes
+
+* rename env file for bcftools.smk
+
+
+### Documentation
+
+* update README and compatibility ([e51c5ca](https://www.github.com/hydra-genetics/annotation/commit/e51c5cac6e434c20aff6435d50ebe116e7c68345))
+
 ### [0.1.1](https://www.github.com/hydra-genetics/annotation/compare/v0.1.0...v0.1.1) (2022-10-28)
 
 
