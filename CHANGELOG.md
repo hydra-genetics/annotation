@@ -5,7 +5,7 @@
 
 ### Bug Fixes
 
-* release-please ([46d542d](https://www.github.com/hydra-genetics/annotation/commit/46d542d286aa616374198f964b7af86ed7ac90c1))
+* rename env file for bcftools.smk
 
 
 ### Documentation
