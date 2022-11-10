@@ -17,7 +17,6 @@ class TestUnitUtils(unittest.TestCase):
 
     def _test_annotation(self, test_table, variants, field):
         for variant in variants:
-            print(variant)
             try:
                 self.assertEqual(test_table["{}\t{}".format(variant.chrom, variant.start + 1)],
                                  variant.info.get(field, ''))
