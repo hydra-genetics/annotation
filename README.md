@@ -93,9 +93,9 @@ use rule * from annotation as annotation_*
 
 Latest:
  - alignment:v0.3.0
- - snv_indels:v0.2.0
+ - snv_indels:v0.3.0
  - cnv_sv:v0.1.0
- - qc:v0.1.0
+ - qc:v0.2.0
 
 See [COMPATIBLITY.md](../master/COMPATIBLITY.md) file for a complete list of module compatibility.
 

@@ -27,15 +27,21 @@ def add_artifact_annotation_data(in_vcf_filename, artifacts, out_vcf_filename):
         pos = lline[1]
         type = lline[2]
         observations = []
+        medians = []
+        sds = []
         i = 0
-        for observation in lline[3:]:
+        for data in lline[3:]:
             if i % 3 == 0:
-                observations.append(observation)
+                observations.append(data)
+            if i % 3 == 1:
+                medians.append(data)
+            if i % 3 == 2:
+                sds.append(data)
             i += 1
         for obs in observations:
             if int(obs) > max_nr_observations:
                 max_nr_observations = int(obs)
-        artifact_dict[chrom + "_" + pos + "_" + type] = [type, observations]
+        artifact_dict[chrom + "_" + pos + "_" + type] = [type, observations, medians, sds]
 
     in_vcf = VariantFile(in_vcf_filename)
     new_header = in_vcf.header
@@ -46,6 +52,8 @@ def add_artifact_annotation_data(in_vcf_filename, artifacts, out_vcf_filename):
         "Number of observations of SNV or INDEL in panel samples per caller and finally panel size: %s,Total" %
         ",".join(caller_list)
     )
+    new_header.info.add("ArtifactMedian", "1", "String", "Artifact median MAFs in normal panel")
+    new_header.info.add("ArtifactNrSD", "1", "String", "Number of Standard Deviations from artifacts in panel median")
     out_vcf = VariantFile(out_vcf_filename, 'w', header=new_header)
     out_vcf.close()
     in_vcf.close()
@@ -69,19 +77,45 @@ def add_artifact_annotation_data(in_vcf_filename, artifacts, out_vcf_filename):
             type = "SNV"
         key = chrom + "_" + pos + "_" + type
         filter = lline[6]
+        format_list = lline[8].split(":")
+        format_data = lline[9].split(":")
+        AF_index = 0
+        i = 0
+        for f in format_list:
+            if f == "AF":
+                AF_index = i
+            i += 1
+        AF = float(format_data[AF_index])
         Observations = Empty_observation
+        Medians = Empty_observation
+        SDs = Empty_observation
         if key in artifact_dict:
             Observations = artifact_dict[key][1]
-        max_observations = 0
-        for obs in Observations:
-            if int(obs) > max_observations:
-                max_observations = int(obs)
+            Medians = artifact_dict[key][2]
+            SDs = artifact_dict[key][3]
         INFO = lline[7]
         Artifact_string = "Artifact=" + Observations[0]
         if len(Observations) > 1:
             for obs in Observations[1:]:
                 Artifact_string += "," + obs
             Artifact_string += "," + str(max_nr_observations)
+        Artifact_string += ";ArtifactMedian=" + Medians[0]
+        if len(Medians) > 1:
+            for median in Medians[1:]:
+                Artifact_string += "," + median
+        Artifact_string += ";ArtifactNrSD="
+        i = 0
+        nrsd = 1000
+        for sd in SDs:
+            if sd == "0" or float(sd) == 0.0:
+                nrsd = 1000
+            else:
+                nrsd = (AF - float(Medians[i])) / float(sd)
+            if i == 0:
+                Artifact_string += str(nrsd)
+            else:
+                Artifact_string += "," + str(nrsd)
+            i += 1
         INFO = Artifact_string + ";" + INFO
         lline[7] = INFO
         out_vcf.write(lline[0])

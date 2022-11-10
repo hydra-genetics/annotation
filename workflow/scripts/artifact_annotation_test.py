@@ -35,6 +35,8 @@ class TestUnitUtils(unittest.TestCase):
         # Make sure header has been updated
         result = VariantFile(out_vcf_filename)
         self.assertTrue("Artifact" in result.header.info)
+        self.assertTrue("ArtifactMedian" in result.header.info)
+        self.assertTrue("ArtifactNrSD" in result.header.info)
 
         test_table = {
             "chr1\t934487": ('0', '0', '36'),  # Variant without artifacts
@@ -42,3 +44,19 @@ class TestUnitUtils(unittest.TestCase):
         }
 
         self._test_annotation(test_table, result, "Artifact")
+
+        result = VariantFile(out_vcf_filename)
+        test_table = {
+            "chr1\t934487": ('0', '0'),  # Variant without artifacts
+            "chr1\t935222": ('0.4719', '0.5015'),  # Variants with artifacts
+        }
+
+        self._test_annotation(test_table, result, "ArtifactMedian")
+
+        result = VariantFile(out_vcf_filename)
+        test_table = {
+            "chr1\t934487": ('1000', '1000'),  # Variant without artifacts
+            "chr1\t935222": ('-0.0032145636697137395', '-0.14682527283387936'),  # Variants with artifacts
+        }
+
+        self._test_annotation(test_table, result, "ArtifactNrSD")
