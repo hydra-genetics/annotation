@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.2.0](https://www.github.com/hydra-genetics/annotation/compare/v0.1.2...v0.2.0) (2022-11-14)
+
+
+### Features
+
+* added additional artifact annotation to vcf file. Add temp on stranger rule ([21bb0e1](https://www.github.com/hydra-genetics/annotation/commit/21bb0e11e420c5079364061c4fd3109b731df320))
+
+
+### Bug Fixes
+
+* return correct reference base and not always C ([1bcc50e](https://www.github.com/hydra-genetics/annotation/commit/1bcc50e1b0ce35cf58d6474c8d993e4ab05b563f))
+
+
+### Documentation
+
+* update release versions ([5268635](https://www.github.com/hydra-genetics/annotation/commit/52686350d91651e847b0588acbecd76ed24e62c4))
+* update release versions ([120e0a1](https://www.github.com/hydra-genetics/annotation/commit/120e0a1fc55cc3489537fe5dcf990447d668f83c))
+* update versions ([87c1de4](https://www.github.com/hydra-genetics/annotation/commit/87c1de4534b072c9a277c01ab2308a449e881593))
+
 ### [0.1.2](https://www.github.com/hydra-genetics/annotation/compare/v0.1.1...v0.1.2) (2022-11-07)
 
 
