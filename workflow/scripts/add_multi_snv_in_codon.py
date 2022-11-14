@@ -178,8 +178,8 @@ def add_multi_snv_in_codon(in_fastq_ref, in_vcf, out_vcf, af_limit, artifact_lim
         for bp in ref:
             if bp == "X":
                 fasta_pos = pos + i
-                ref_bp = pysam.faidx(in_fastq_ref, chrom + ":" + str(fasta_pos) + "-" + str(fasta_pos))
-                ref_bp = ref_bp[1]
+                fasta_open = pysam.Fastafile(in_fastq_ref)
+                ref_bp = fasta_open.fetch(chrom, fasta_pos-1, fasta_pos)
                 ref_bp = ref_bp.upper()
                 ref[i] = ref_bp
                 alt[i] = ref_bp
