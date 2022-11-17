@@ -49,14 +49,15 @@ def add_background_annotation_data(in_vcf_filename, background_panel_filename, o
             i += 1
         AF = float(data[AF_index])
         nr_SD = 1000
+        panel_median = 0.0
         if len(ref) == 1 and len(alt) == 1:
             if key in background_panel_dict:
                 panel_median = background_panel_dict[key][0]
                 if background_panel_dict[key][1] > 0.0:
                     nr_SD = (AF - panel_median) / background_panel_dict[key][1]
-                INFO = "PanelMedian=" + "{:.4f}".format(panel_median) + ";" + INFO
-                INFO = "PositionNrSD=" + "{:.2f}".format(nr_SD) + ";" + INFO
-                lline[7] = INFO
+            INFO = "PanelMedian=" + "{:.4f}".format(panel_median) + ";" + INFO
+            INFO = "PositionNrSD=" + "{:.2f}".format(nr_SD) + ";" + INFO
+            lline[7] = INFO
         out_vcf.write(lline[0])
         for column in lline[1:]:
             out_vcf.write("\t" + column)
