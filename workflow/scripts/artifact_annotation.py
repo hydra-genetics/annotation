@@ -109,7 +109,7 @@ def add_artifact_annotation_data(in_vcf_filename, artifacts, out_vcf_filename):
         for sd in SDs:
             if sd == "0":
                 nrsd = 1000
-            elif float(sd) == 1000.0:
+            elif float(sd) == 1000.0 or float(sd) == 0.0:
                 if float(Medians[i]) > AF:
                     nrsd = 0.0
                 else:
