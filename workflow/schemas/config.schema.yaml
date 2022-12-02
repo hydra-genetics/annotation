@@ -96,6 +96,29 @@ properties:
         type: integer
         description: number of standard deviations from median to not get a filter flag
 
+  bcftools_annotate:
+    type: object
+    description: parameters for bcftools_annotate
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      annotation_db:
+        type: string
+        description: annotation database in vcf or bed file format
+      output_type:
+        type: string
+        description: output file packing type (b,u,z,v) z=bgzipped
+      annotation_string:
+        type: string
+        description: annotation parameters
+      extra:
+        type: string
+        description: parameters that should be forwarded
+
   bgzip_vcf:
     type: object
     description: parameters for bgzip_vcf
