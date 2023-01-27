@@ -3,5 +3,8 @@ channels:
   - bioconda
   - defaults
 dependencies:
+  #- perl=5.32.1
+  #- perl-test-harness=3.44
   - ensembl-vep=105
-  - bcftools=1.10
+  - bcftools=1.2
+  
