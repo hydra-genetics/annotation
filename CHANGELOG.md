@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.3.0](https://www.github.com/hydra-genetics/annotation/compare/v0.2.0...v0.3.0) (2023-01-27)
+
+
+### Features
+
+* added bcftools annotate rule ([0af9134](https://www.github.com/hydra-genetics/annotation/commit/0af9134b86f0bf16d25985c825ee283cbac8766d))
+
+
+### Bug Fixes
+
+* annotate missing positions in background ([25ca244](https://www.github.com/hydra-genetics/annotation/commit/25ca24461aa6833662931bcc0d688af0350aa65c))
+* correct nrsd for median = 0 ([08fe2f9](https://www.github.com/hydra-genetics/annotation/commit/08fe2f9e15070d110222055ff037338c3eb6e875))
+* float division by 0 ([6659ca3](https://www.github.com/hydra-genetics/annotation/commit/6659ca345d5852e4d85b1f23f422f7a790aa8490))
+* **script:** homozygous normal variants should be filtered ([6245853](https://www.github.com/hydra-genetics/annotation/commit/62458539d115ec10c59a72b8688806c87c26d5f9))
+* update bcltools version to fi dep issues ([0865bc6](https://www.github.com/hydra-genetics/annotation/commit/0865bc69fbce2c6367d0b65d7fcc2f555c6b6e9f))
+
 ## [0.2.0](https://www.github.com/hydra-genetics/annotation/compare/v0.1.2...v0.2.0) (2022-11-14)
 
 
