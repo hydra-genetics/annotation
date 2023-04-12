@@ -24,8 +24,6 @@ rule simple_sv_annotation:
         time=config.get("simple_sv_annotation", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("simple_sv_annotation", {}).get("container", config["default_container"])
-    conda:
-        "../envs/simple_sv_annotation.yaml"
     message:
         "{rule}: annotate {input.vcf} with simple_sv_annotation"
     shell:

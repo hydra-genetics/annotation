@@ -30,8 +30,6 @@ rule add_multi_snv_in_codon:
         time=config.get("add_multi_snv_in_codon", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("add_multi_snv_in_codon", {}).get("container", config["default_container"])
-    conda:
-        "../envs/add_multi_snv_in_codon.yaml"
     message:
         "{rule}: add multivariants to vcf if they are in same codon: {output.vcf}"
     script:

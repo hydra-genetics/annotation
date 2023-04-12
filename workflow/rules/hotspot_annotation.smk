@@ -27,8 +27,6 @@ rule hotspot_annotation:
         time=config.get("hotspot_annotation", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("hotspot_annotation", {}).get("container", config["default_container"])
-    conda:
-        "../envs/hotspot_annotation.yaml"
     message:
         "{rule}: hotspot annotation vcf in {output.vcf}"
     script:
