@@ -25,8 +25,6 @@ rule annotate_cnv:
         partition=config.get("annotate_cnv", {}).get("partition", config["default_resources"]["partition"]),
         threads=config.get("annotate_cnv", {}).get("threads", config["default_resources"]["threads"]),
         time=config.get("annotate_cnv", {}).get("time", config["default_resources"]["time"]),
-    conda:
-        "../envs/annotate_cnv.yaml"
     container:
         config.get("annotate_cnv", {}).get("container", config["default_container"])
     message:

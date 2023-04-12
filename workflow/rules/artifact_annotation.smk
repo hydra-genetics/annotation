@@ -26,8 +26,6 @@ rule artifact_annotation:
         time=config.get("artifact_annotation", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("artifact_annotation", {}).get("container", config["default_container"])
-    conda:
-        "../envs/artifact_annotation.yaml"
     message:
         "{rule}: artifact annotation of vcf in {output.vcf}"
     script:

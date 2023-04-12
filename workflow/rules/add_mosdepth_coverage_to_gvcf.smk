@@ -24,8 +24,6 @@ rule add_mosdepth_coverage_to_gvcf:
             "qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.g.vcf.benchmark.tsv",
             config.get("add_mosdepth_coverage_to_gvcf", {}).get("benchmark_repeats", 1),
         )
-    conda:
-        "../envs/add_mosdepth_coverage_to_gvcf.yaml"
     container:
         config.get("add_mosdepth_coverage_to_gvcf", {}).get("container", config["default_container"])
     message:

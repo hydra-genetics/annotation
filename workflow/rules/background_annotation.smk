@@ -28,8 +28,6 @@ rule background_annotation:
         time=config.get("background_annotation", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("background_annotation", {}).get("container", config["default_container"])
-    conda:
-        "../envs/background_annotation.yaml"
     message:
         "{rule}: background annotation of vcf in {output.vcf}"
     script:

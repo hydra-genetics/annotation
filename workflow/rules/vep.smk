@@ -31,8 +31,6 @@ rule vep:
         time=config.get("vep", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("vep", {}).get("container", config["default_container"])
-    conda:
-        "../envs/vep.yaml"
     message:
         "{rule}: vep annotate {input.vcf}"
     shell:

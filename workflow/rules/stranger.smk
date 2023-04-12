@@ -28,8 +28,6 @@ rule stranger:
         time=config.get("stranger", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("stranger", {}).get("container", config["default_container"])
-    conda:
-        "../envs/stranger.yaml"
     message:
         "{rule}: Annotate {input.vcf} with stranger"
     shell:

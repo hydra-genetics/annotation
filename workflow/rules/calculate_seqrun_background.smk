@@ -30,8 +30,6 @@ rule calculate_seqrun_background:
         time=config.get("calculate_seqrun_background", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("calculate_seqrun_background", {}).get("container", config["default_container"])
-    conda:
-        "../envs/calculate_seqrun_background.yaml"
     message:
         "{rule}: calculate background for the sequencing run: {output.background}"
     script:

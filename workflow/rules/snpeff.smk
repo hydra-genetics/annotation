@@ -28,8 +28,6 @@ rule snpeff:
         time=config.get("snpeff", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("snpeff", {}).get("container", config["default_container"])
-    conda:
-        "../envs/snpeff.yaml"
     message:
         "{rule}: annotate {input.vcf} with SnpEff"
     wrapper:

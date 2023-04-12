@@ -25,8 +25,6 @@ rule sort_vcf:
         time=config.get("sort_vcf", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("sort_vcf", {}).get("container", config["default_container"])
-    conda:
-        "../envs/bcftools.yaml"
     message:
         "{rule}: sort vcf {input.vcf}"
     wrapper:
@@ -60,8 +58,6 @@ rule bcftools_annotate:
         time=config.get("bcftools_annotate", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("bcftools_annotate", {}).get("container", config["default_container"])
-    conda:
-        "../envs/bcftools.yaml"
     message:
         "{rule}: bcftools annotate vcf {input.vcf}"
     shell:
