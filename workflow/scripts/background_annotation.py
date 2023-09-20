@@ -1,9 +1,10 @@
-
+import logging
 from pysam import VariantFile
 
 
 def add_background_annotation_data(in_vcf_filename, background_panel_filename, out_vcf_filename, nr_min_sd):
-
+    log = logging.getLogger(f"Adding bacground annotation to {in_vcf_filename) using number min sd {nr_min_sd}"
+                            f"and background data from {background_panel_filename}")
     in_vcf = VariantFile(in_vcf_filename)
     new_header = in_vcf.header
     new_header.info.add("PanelMedian", "1", "Float", "Background median MAF in panel")
