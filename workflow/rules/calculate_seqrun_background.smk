@@ -7,8 +7,8 @@ __license__ = "GPL-3"
 rule calculate_seqrun_background:
     input:
         gvcfs=lambda wildcards: [
-            "snv_indels/gatk_mutect2_gvcf/%s_%s.merged.g.vcf.gz" % sample_run
-            for sample_run in get_units_per_flowcell(units, wildcards)
+            "snv_indels/gatk_mutect2_gvcf/%s_%s.merged.g.vcf.gz" % (sample_run, sample_type)
+            for sample_run, sample_type in get_units_per_flowcell(units, wildcards)
         ],
     output:
         background=temp("annotation/calculate_seqrun_background/{flowcell}_seqrun_background.tsv"),

@@ -8,13 +8,15 @@ rule simple_sv_annotation:
     input:
         fusion_pairs=config.get("simple_sv_annotation", {}).get("fusion_pairs", ""),
         panel=config.get("simple_sv_annotation", {}).get("panel", ""),
-        vcf="{file}.snpeff.vcf.gz",
+        vcf="{path}/{sample}_{type}.{file_tags}.vcf.gz",
     output:
-        vcf=temp("{file}.ssa.vcf"),
+        vcf=temp("{path}/{sample}_{type}.{file_tags}.ss_annotated.vcf"),
     log:
-        "{file}.ssa.vcf.log",
+        "{path}/{sample}_{type}.{file_tags}.ss_annotated.vcf.log",
     benchmark:
-        repeat("{file}.ssa.vcf.benchmark.tsv", config.get("simple_sv_annotation", {}).get("benchmark_repeats", 1))
+        repeat("{path}/{sample}_{type}.{file_tags}.ss_annotated.vcf.benchmark.tsv", config.get("simple_sv_annotation", {}).get("benchmark_repeats", 1))
+    wildcard_constraints:
+        file_tags="[a-zA-Z0-9_.]*snpeff_annotated[a-zA-Z0-9_.]*",
     threads: config.get("simple_sv_annotation", {}).get("threads", config["default_resources"]["threads"])
     resources:
         mem_mb=config.get("simple_sv_annotation", {}).get("mem_mb", config["default_resources"]["mem_mb"]),

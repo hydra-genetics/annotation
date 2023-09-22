@@ -13,10 +13,10 @@ rule stranger:
     params:
         extra=config.get("stranger", {}).get("extra", ""),
     log:
-        "annotation/stranger/{sample}_{type}.stranger.vcf.log",
+        "cnv_sv/stranger/{sample}_{type}.stranger.vcf.log",
     benchmark:
         repeat(
-            "annotation/stranger/{sample}_{type}.stranger.vcf.benchmark.tsv",
+            "cnv_sv/stranger/{sample}_{type}.stranger.vcf.benchmark.tsv",
             config.get("stranger", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("stranger", {}).get("threads", config["default_resources"]["threads"])
