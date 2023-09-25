@@ -14,7 +14,10 @@ rule simple_sv_annotation:
     log:
         "{path}/{sample}_{type}.{file_tags}.ss_annotated.vcf.log",
     benchmark:
-        repeat("{path}/{sample}_{type}.{file_tags}.ss_annotated.vcf.benchmark.tsv", config.get("simple_sv_annotation", {}).get("benchmark_repeats", 1))
+        repeat(
+            "{path}/{sample}_{type}.{file_tags}.ss_annotated.vcf.benchmark.tsv",
+            config.get("simple_sv_annotation", {}).get("benchmark_repeats", 1),
+        )
     wildcard_constraints:
         file_tags="[a-zA-Z0-9_.]*snpeff_annotated[a-zA-Z0-9_.]*",
     threads: config.get("simple_sv_annotation", {}).get("threads", config["default_resources"]["threads"])
