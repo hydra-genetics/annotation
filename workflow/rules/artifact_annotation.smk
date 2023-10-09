@@ -7,15 +7,15 @@ __license__ = "GPL-3"
 rule artifact_annotation:
     input:
         artifacts=config.get("reference", {}).get("artifacts", ""),
-        vcf="snv_indels/bcbio_variation_recall_ensemble/{sample}_{type}.ensembled.vep_annotated.vcf",
+        vcf="{file}.vcf",
     output:
-        vcf=temp("annotation/artifact_annotation/{sample}_{type}.artifact_annotation.vcf"),
+        vcf=temp("{file}.artifact_annotated.vcf"),
     log:
-        "annotation/artifact_annotation/{sample}_{type}.artifact_annotation.vcf.log",
+        "{file}.artifact_annotated.vcf.log",
     benchmark:
         repeat(
-            "annotation/artifact_annotation/{sample}_{type}.artifact_annotation.vcf.benchmark.tsv",
-            config.get("artifact_annotation", {}).get("benchmark_repeats", 1),
+            "{file}.artifact_annotated.vcf.benchmark.tsv",
+            config.get("artifact_annotated", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("artifact_annotation", {}).get("threads", config["default_resources"]["threads"])
     resources:

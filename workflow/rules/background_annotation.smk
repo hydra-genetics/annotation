@@ -7,16 +7,16 @@ __license__ = "GPL-3"
 rule background_annotation:
     input:
         background=config.get("reference").get("background", ""),
-        vcf="annotation/hotspot_annotation/{sample}_{type}.hotspot_annotation.vcf",
+        vcf="{file}.vcf",
     output:
-        vcf=temp("annotation/background_annotation/{sample}_{type}.background_annotation.vcf"),
+        vcf=temp("{file}.background_annotated.vcf"),
     params:
-        nr_min_sd=config.get("background_annotation", {}).get("nr_min_sd", 5),
+        nr_min_sd=config.get("background_annotated", {}).get("nr_min_sd", 5),
     log:
-        "annotation/background_annotation/{sample}_{type}.background_annotation.vcf.log",
+        "{file}.background_annotated.vcf.log",
     benchmark:
         repeat(
-            "annotation/background_annotation/{sample}_{type}.background_annotation.vcf.benchmark.tsv",
+            "{file}.background_annotated.vcf.benchmark.tsv",
             config.get("background_annotation", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("background_annotation", {}).get("threads", config["default_resources"]["threads"])

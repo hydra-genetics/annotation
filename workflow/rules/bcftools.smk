@@ -6,14 +6,14 @@ __license__ = "GPL-3"
 
 rule sort_vcf:
     input:
-        vcf="annotation/add_multi_snv_in_codon/{file}.vcf",
+        vcf="{path}/{sample}_{type}.{file_tags}.vcf",
     output:
-        vcf=temp("annotation/add_multi_snv_in_codon/{file}.sorted.vcf"),
+        vcf=temp("{path}/{sample}_{type}.{file_tags}.sorted.vcf"),
     log:
-        "annotation/add_multi_snv_in_codon/{file}.sorted.vcf.gz.log",
+        "{path}/{sample}_{type}.{file_tags}.sorted.vcf.log",
     benchmark:
         repeat(
-            "annotation/add_multi_snv_in_codon/{file}.sorted.vcf.gz.benchmark.tsv",
+            "{path}/{sample}_{type}.{file_tags}.sorted.vcf.benchmark.tsv",
             config.get("sort_vcf", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("sort_vcf", {}).get("threads", config["default_resources"]["threads"])

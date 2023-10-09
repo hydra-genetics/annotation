@@ -8,19 +8,21 @@ rule add_multi_snv_in_codon:
     input:
         artifacts=config.get("reference", {}).get("artifacts", ""),
         ref=config["reference"]["fasta"],
-        vcf="annotation/background_annotation/{file}.vcf",
+        vcf="{path}/{sample}_{type}.{file_tags}.vcf",
     output:
-        vcf=temp("annotation/add_multi_snv_in_codon/{file}.codon_snvs.vcf"),
+        vcf=temp("{path}/{sample}_{type}.{file_tags}.codon_snvs.vcf"),
     params:
         af_limit=config.get("add_multi_snv_in_codon", {}).get("af_limit", 0.05),
         artifact_limit=config.get("add_multi_snv_in_codon", {}).get("artifact_limit", 3),
     log:
-        "annotation/add_multi_snv_in_codon/{file}.codon_snvs.vcf.log",
+        "{path}/{sample}_{type}.{file_tags}.vcf.codon_snvs.vcf.log",
     benchmark:
         repeat(
-            "annotation/add_multi_snv_in_codon/{file}.codon_snvs.vcf.benchmark.tsv",
+            "{path}/{sample}_{type}.{file_tags}.vcf.codon_snvs.vcf.benchmark.tsv",
             config.get("add_multi_snv_in_codon", {}).get("benchmark_repeats", 1),
         )
+    wildcard_constraints:
+        file_tags="[a-zA-Z0-9_.]*vep_annotated[a-zA-Z0-9_.]*",
     threads: config.get("add_multi_snv_in_codon", {}).get("threads", config["default_resources"]["threads"])
     resources:
         mem_mb=config.get("add_multi_snv_in_codon", {}).get("mem_mb", config["default_resources"]["mem_mb"]),
