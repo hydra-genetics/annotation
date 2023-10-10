@@ -43,7 +43,7 @@ rule bcftools_annotate:
         "{input.vcf}) &> {log}"
 
 
-rule bcfoolts_sort:
+rule bcftools_sort:
     input:
         vcf="{path}/{sample}_{type}.{file_tags}.vcf",
     output:
@@ -53,17 +53,17 @@ rule bcfoolts_sort:
     benchmark:
         repeat(
             "{path}/{sample}_{type}.{file_tags}.sorted.vcf.benchmark.tsv",
-            config.get("bcfoolts_sort", {}).get("benchmark_repeats", 1),
+            config.get("bcftools_sort", {}).get("benchmark_repeats", 1),
         )
-    threads: config.get("bcfoolts_sort", {}).get("threads", config["default_resources"]["threads"])
+    threads: config.get("bcftools_sort", {}).get("threads", config["default_resources"]["threads"])
     resources:
-        mem_mb=config.get("bcfoolts_sort", {}).get("mem_mb", config["default_resources"]["mem_mb"]),
-        mem_per_cpu=config.get("bcfoolts_sort", {}).get("mem_per_cpu", config["default_resources"]["mem_per_cpu"]),
-        partition=config.get("bcfoolts_sort", {}).get("partition", config["default_resources"]["partition"]),
-        threads=config.get("bcfoolts_sort", {}).get("threads", config["default_resources"]["threads"]),
-        time=config.get("bcfoolts_sort", {}).get("time", config["default_resources"]["time"]),
+        mem_mb=config.get("bcftools_sort", {}).get("mem_mb", config["default_resources"]["mem_mb"]),
+        mem_per_cpu=config.get("bcftools_sort", {}).get("mem_per_cpu", config["default_resources"]["mem_per_cpu"]),
+        partition=config.get("bcftools_sort", {}).get("partition", config["default_resources"]["partition"]),
+        threads=config.get("bcftools_sort", {}).get("threads", config["default_resources"]["threads"]),
+        time=config.get("bcftools_sort", {}).get("time", config["default_resources"]["time"]),
     container:
-        config.get("bcfoolts_sort", {}).get("container", config["default_container"])
+        config.get("bcftools_sort", {}).get("container", config["default_container"])
     message:
         "{rule}: sort vcf {input.vcf}"
     wrapper:
