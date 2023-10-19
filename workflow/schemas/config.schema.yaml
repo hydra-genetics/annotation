@@ -32,10 +32,10 @@ properties:
     properties:
       af_limit:
         type: number
-        description: Lower af limit for variants to be considered
+        description: lower af limit for variants to be considered
       artifact_limit:
         type: number
-        description: Upper non-inclusive artifact limit for variants to be considered
+        description: upper non-inclusive artifact limit for variants to be considered
       benchmark_repeats:
         type: integer
         description: set number of times benchmark should be repeated
@@ -139,7 +139,7 @@ properties:
         description: name or path to docker/singularity container
       chr_translation_file:
           type: string
-          description: Chromosome translation file (NCXXXX to chrXX)
+          description: chromosome translation file (NCXXXX to chrXX)
 
   simple_sv_annotation:
     type: object
@@ -205,7 +205,7 @@ properties:
         description: parameters that should be forwarded
       mode:
         type: string
-        description: Use online queries (--database) or offline queries (e.g. --offline --cache --refseq)
+        description: use online queries (--database) or offline queries (e.g. --offline --cache --refseq)
       vep_cache:
         type: string
         description: path to vep cache directory
