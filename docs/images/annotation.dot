@@ -3,9 +3,20 @@ digraph snakemake_dag {
     graph[bgcolor=white, margin=0];
     node[shape=box, style=rounded, fontname=sans,                 fontsize=10, penwidth=2];
     edge[penwidth=2, color=grey];
-	0[label = "vcf", color = "0.0 0.0 0.0", style="dotted"];
+	0[label = "vcf", color = "0.50 0.50 0.0", style="dotted"];
+	100[label = "vcf", color = "0.50 0.50 0.0", style="dotted"];
+	101[label = "vcf", color = "0.50 0.50 0.0", style="dotted"];
+	102[label = "vcf", color = "0.50 0.50 0.0", style="dotted"];
+	103[label = "vcf", color = "0.50 0.50 0.0", style="dotted"];
+	104[label = "vcf", color = "0.50 0.50 0.0", style="dotted"];
+	105[label = "vcf", color = "0.50 0.50 0.0", style="dotted"];
+	106[label = "vcf", color = "0.50 0.50 0.0", style="dotted"];
+	107[label = "vcf", color = "0.50 0.50 0.0", style="dotted"];
+	108[label = "vcf", color = "0.50 0.50 0.0", style="dotted"];
+	109[label = "vcf", color = "0.50 0.50 0.0", style="dotted"];
 	1[label = "add_mosdepth_coverage_to_gvcf", color = "0.17 0.6 0.85", style="rounded"];
 	2[label = "vep", color = "0.00 0.6 0.85", style="rounded"];
+	22[label = "vep", color = "0.00 0.6 0.85", style="rounded"];
 	3[label = "simple_sv_annotation", color = "0.50 0.6 0.85", style="rounded"];
 	4[label = "snpeff", color = "0.54 0.6 0.85", style="rounded"];
 	5[label = "bcftools_annotate", color = "0.21 0.6 0.85", style="rounded"];
@@ -18,28 +29,39 @@ digraph snakemake_dag {
 	14[label = "annotate_cnv", color = "0.08 0.6 0.85", style="rounded"];
 	15[label = "calculate_seqrun_background", color = "0.46 0.6 0.85", style="rounded"];
 	16[label = "vcf", color = "0.0 0.0 0.0", style="dotted"];
+	161[label = "vcf", color = "0.0 0.0 0.0", style="dotted"];
+	162[label = "vcf", color = "0.0 0.0 0.0", style="dotted"];
+	163[label = "vcf", color = "0.0 0.0 0.0", style="dotted"];
+	164[label = "vcf", color = "0.0 0.0 0.0", style="dotted"];
+	165[label = "vcf", color = "0.0 0.0 0.0", style="dotted"];
+	166[label = "vcf", color = "0.0 0.0 0.0", style="dotted"];
+	167[label = "vcf", color = "0.0 0.0 0.0", style="dotted"];
+	168[label = "vcf", color = "0.0 0.0 0.0", style="dotted"];
+	169[label = "vcf", color = "0.0 0.0 0.0", style="dotted"];
+	
+	161 -> 13
+	13 -> 100
+	162 -> 14
+	14 -> 101
+	163 -> 1
+	1 -> 102
+	164 -> 5
+	5 -> 103
+	165 -> 15
+	15 -> 104
+	166 -> 4
+	4 -> 3
+	3 -> 105
+	167 -> 7
+	7 -> 106
+	168 -> 8
+	8 -> 107
+	169 -> 9
+	9 -> 108
 	16 -> 2
-	16 -> 13
-	16 -> 14
-	16 -> 1
-	16 -> 5
-	16 -> 15
-	16 -> 4
-	16 -> 7
-	16 -> 8
-	16 -> 9
 	2 -> 12
 	2 -> 0
-	13 -> 0
-	11 -> 2
-	14 -> 0
-	1 -> 0
-	5 -> 0
-	15 -> 0
-	3 -> 0
-	4 -> 3
-	7 -> 0
-	8 -> 0
-	9 -> 0
 	12 -> 11
+	11 -> 22
+	22 -> 109
 }            
