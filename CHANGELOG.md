@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.0.0](https://www.github.com/hydra-genetics/annotation/compare/v0.3.0...v1.0.0) (2023-10-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* renamed sort_vcf to bcftools_sort
+* make annotation rule order independent where possible
+* move --refseq option from shell to params.mode
+
+### Features
+
+* drop conda support and testing ([062002b](https://www.github.com/hydra-genetics/annotation/commit/062002b6b9fa891f89d4b91ac5f42342299d6888))
+* make annotation rule order independent where possible ([9bbefcc](https://www.github.com/hydra-genetics/annotation/commit/9bbefcc92b27e0492389a951f97f445895aa34da))
+* move --refseq option from shell to params.mode ([4d4a4a8](https://www.github.com/hydra-genetics/annotation/commit/4d4a4a8f9eec280817d20762098a19e8dfe7a955))
+* update snakemake version, allow range up to version 8 ([5b48038](https://www.github.com/hydra-genetics/annotation/commit/5b48038d75dda2766cbb578edce60eb314bf11f5))
+
+
+### Bug Fixes
+
+* handle edge case correctly ([52eff4b](https://www.github.com/hydra-genetics/annotation/commit/52eff4bfb00897c48d1c6db6d7b5d2207fd1fef9))
+* renamed sort_vcf to bcftools_sort ([14a2733](https://www.github.com/hydra-genetics/annotation/commit/14a2733dcdf256db9bafe3ebc24dd43225b7b5be))
+
+
+### Documentation
+
+* added read the docs for all rules in the annotation module ([9fa5f54](https://www.github.com/hydra-genetics/annotation/commit/9fa5f54b29ac81bd32e61d225a5582ed98dede13))
+* Update config.schema.yaml ([eb1756a](https://www.github.com/hydra-genetics/annotation/commit/eb1756afcd6a0d3fa7559f270e11c57ffb210004))
+* Update rules.schema.yaml ([eb12bcf](https://www.github.com/hydra-genetics/annotation/commit/eb12bcfe83a65936196d5f1bf0d13cac97b52e9b))
+
 ## [0.3.0](https://www.github.com/hydra-genetics/annotation/compare/v0.2.0...v0.3.0) (2023-01-27)
 
 
