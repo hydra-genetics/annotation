@@ -2,20 +2,6 @@ $schema: "http://json-schema.org/draft-04/schema#"
 description: snakemake configuration file
 type: object
 properties:
-  samples:
-    type: string
-  units:
-    type: string
-  resources:
-    type: string
-    description: Path to resources.yaml file
-  default_container:
-    type: string
-    description: name or path to a default docker/singularity container
-  required:
-    - samples
-    - units
-    - default_container
 
   samples:
     type: string
@@ -46,10 +32,10 @@ properties:
     properties:
       af_limit:
         type: number
-        description: Lower af limit for variants to be considered
+        description: lower af limit for variants to be considered
       artifact_limit:
         type: number
-        description: Upper non-inclusive artifact limit for variants to be considered
+        description: upper non-inclusive artifact limit for variants to be considered
       benchmark_repeats:
         type: integer
         description: set number of times benchmark should be repeated
@@ -119,9 +105,9 @@ properties:
         type: string
         description: parameters that should be forwarded
 
-  bgzip_vcf:
+  bcftools_sort:
     type: object
-    description: parameters for bgzip_vcf
+    description: parameters for bcftools_sort
     properties:
       benchmark_repeats:
         type: integer
@@ -152,11 +138,8 @@ properties:
         type: string
         description: name or path to docker/singularity container
       chr_translation_file:
-        type: string
-        description: Chromosome translation file (NCXXXX to chrXX)
-      hotspot:
-        type: string
-        description: Hotspot file
+          type: string
+          description: chromosome translation file (NCXXXX to chrXX)
 
   simple_sv_annotation:
     type: object
@@ -168,15 +151,6 @@ properties:
       container:
         type: string
         description: name or path to docker/singularity container
-      fusion_pairs:
-        type: string
-        description: path to simple_sv_annotation fusion pairs file
-      panel:
-        type: string
-        description: path to simple_sv_annotation cancer panel file
-      required:
-        - fusion_pairs
-        - panel
 
   snpeff:
     type: object
@@ -188,25 +162,9 @@ properties:
       container:
         type: string
         description: name or path to docker/singularity container
-      db:
-        type: string
-        description: path to snpeff database directory
       extra:
         type: string
         description: parameters that should be forwarded
-      required:
-        - db
-
-  sort_vcf:
-    type: object
-    description: parameters for sort_vcf
-    properties:
-      benchmark_repeats:
-        type: integer
-        description: set number of times benchmark should be repeated
-      container:
-        type: string
-        description: name or path to docker/singularity container
 
   stranger:
     type: object
@@ -217,6 +175,9 @@ properties:
       container:
         type: string
         description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded
 
   reference:
     type: object
@@ -228,20 +189,6 @@ properties:
       background:
         type: string
         description: path to background file containing median and sd values for non-reference alleles per position
-
-  tabix_vcf:
-    type: object
-    description: parameters for tabix_vcf
-    properties:
-      benchmark_repeats:
-        type: integer
-        description: set number of times benchmark should be repeated
-      container:
-        type: string
-        description: name or path to docker/singularity container
-      extra:
-        type: string
-        description: parameters that should be forwarded
 
   vep:
     type: object
@@ -258,10 +205,15 @@ properties:
         description: parameters that should be forwarded
       mode:
         type: string
-        description: Used to make vep query online database, by setting mode to --database
+        description: use online queries (--database) or offline queries (e.g. --offline --cache --refseq)
       vep_cache:
         type: string
         description: path to vep cache directory
-      required:
-        - extra
-        - vep_cache
+    required:
+      - extra
+      - vep_cache
+
+required:
+  - samples
+  - units
+  - default_container

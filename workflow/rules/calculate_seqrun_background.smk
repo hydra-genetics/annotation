@@ -7,8 +7,8 @@ __license__ = "GPL-3"
 rule calculate_seqrun_background:
     input:
         gvcfs=lambda wildcards: [
-            "snv_indels/gatk_mutect2_gvcf/%s_%s.merged.g.vcf.gz" % sample_run
-            for sample_run in get_units_per_flowcell(units, wildcards)
+            "snv_indels/gatk_mutect2_gvcf/%s_%s.merged.g.vcf.gz" % (sample_run, sample_type)
+            for sample_run, sample_type in get_units_per_flowcell(units, wildcards)
         ],
     output:
         background=temp("annotation/calculate_seqrun_background/{flowcell}_seqrun_background.tsv"),
@@ -30,8 +30,6 @@ rule calculate_seqrun_background:
         time=config.get("calculate_seqrun_background", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("calculate_seqrun_background", {}).get("container", config["default_container"])
-    conda:
-        "../envs/calculate_seqrun_background.yaml"
     message:
         "{rule}: calculate background for the sequencing run: {output.background}"
     script:

@@ -8,14 +8,14 @@ rule hotspot_annotation:
     input:
         chr_mapping=config.get("hotspot_annotation", {}).get("chr_translation_file", ""),
         hotspot=config.get("hotspot_annotation", {}).get("hotspots", ""),
-        vcf="annotation/artifact_annotation/{sample}_{type}.artifact_annotation.vcf",
+        vcf="{file}.vcf",
     output:
-        vcf=temp("annotation/hotspot_annotation/{sample}_{type}.hotspot_annotation.vcf"),
+        vcf=temp("{file}.hotspot_annotated.vcf"),
     log:
-        "annotation/hotspot_annotation/{sample}_{type}.hotspot_annotation.vcf.log",
+        "{file}.hotspot_annotated.vcf.log",
     benchmark:
         repeat(
-            "annotation/hotspot_annotation/{sample}_{type}.hotspot_annotation.vcf.benchmark.tsv",
+            "{file}.hotspot_annotated.vcf.benchmark.tsv",
             config.get("hotspot_annotation", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("hotspot_annotation", {}).get("threads", config["default_resources"]["threads"])
@@ -27,8 +27,6 @@ rule hotspot_annotation:
         time=config.get("hotspot_annotation", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("hotspot_annotation", {}).get("container", config["default_container"])
-    conda:
-        "../envs/hotspot_annotation.yaml"
     message:
         "{rule}: hotspot annotation vcf in {output.vcf}"
     script:

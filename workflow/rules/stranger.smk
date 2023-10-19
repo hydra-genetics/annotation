@@ -9,14 +9,14 @@ rule stranger:
         vcf="cnv_sv/expansionhunter/{sample}_{type}.vcf",
         cat=config.get("stranger", {}).get("catalog", ""),
     output:
-        temp("cnv_sv/stranger/{sample}_{type}.stranger.vcf"),
+        vcf=temp("cnv_sv/stranger/{sample}_{type}.stranger.vcf"),
     params:
         extra=config.get("stranger", {}).get("extra", ""),
     log:
-        "annotation/stranger/{sample}_{type}.stranger.vcf.log",
+        "cnv_sv/stranger/{sample}_{type}.stranger.vcf.log",
     benchmark:
         repeat(
-            "annotation/stranger/{sample}_{type}.stranger.vcf.benchmark.tsv",
+            "cnv_sv/stranger/{sample}_{type}.stranger.vcf.benchmark.tsv",
             config.get("stranger", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("stranger", {}).get("threads", config["default_resources"]["threads"])
@@ -28,11 +28,9 @@ rule stranger:
         time=config.get("stranger", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("stranger", {}).get("container", config["default_container"])
-    conda:
-        "../envs/stranger.yaml"
     message:
         "{rule}: Annotate {input.vcf} with stranger"
     shell:
         "(stranger "
         "-f {input.cat} "
-        "{input.vcf} > {output}) &> {log}"
+        "{input.vcf} > {output.vcf}) &> {log}"

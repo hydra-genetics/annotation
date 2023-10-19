@@ -28,9 +28,6 @@ properties:
       - threads
       - time
 
-  required:
-    - default_resources
-
   add_mosdepth_coverage_to_gvcf:
     type: object
     description: resource definitions for add_mosdepth_coverage_to_gvcf
@@ -54,6 +51,26 @@ properties:
   add_multi_snv_in_codon:
     type: object
     description: resource definitions for add_multi_snv_in_codon
+    properties:
+      mem_mb:
+        type: integer
+        description: max memory in MB in total
+      mem_per_cpu:
+        type: integer
+        description: max memory in MB used per cpu
+      partition:
+        type: string
+        description: partition to use on cluster
+      threads:
+        type: integer
+        description: number of threads to be available
+      time:
+        type: string
+        description: max execution time
+
+  annotate_cnv:
+    type: object
+    description: resource definitions for annotate_cnv
     properties:
       mem_mb:
         type: integer
@@ -131,9 +148,9 @@ properties:
         type: string
         description: max execution time
 
-  bgzip_vcf:
+  bcftools_sort:
     type: object
-    description: resource definitions for bgzip_vcf
+    description: resource definitions for bcftools_sort
     properties:
       mem_mb:
         type: integer
@@ -231,26 +248,6 @@ properties:
         type: string
         description: max execution time
 
-  sort_vcf:
-    type: object
-    description: resource definitions for sort_vcf
-    properties:
-      mem_mb:
-        type: integer
-        description: max memory in MB in total
-      mem_per_cpu:
-        type: integer
-        description: max memory in MB used per cpu
-      partition:
-        type: string
-        description: partition to use on cluster
-      threads:
-        type: integer
-        description: number of threads to be available
-      time:
-        type: string
-        description: max execution time
-
   stranger:
     type: object
     description: resource definitions for stranger
@@ -261,26 +258,6 @@ properties:
       mem_per_cpu:
         type: integer
         description: memory in MB used per cpu
-      partition:
-        type: string
-        description: partition to use on cluster
-      threads:
-        type: integer
-        description: number of threads to be available
-      time:
-        type: string
-        description: max execution time
-
-  tabix_vcf:
-    type: object
-    description: resource definitions for tabix_vcf
-    properties:
-      mem_mb:
-        type: integer
-        description: max memory in MB in total
-      mem_per_cpu:
-        type: integer
-        description: max memory in MB used per cpu
       partition:
         type: string
         description: partition to use on cluster
@@ -310,3 +287,6 @@ properties:
       time:
         type: string
         description: max execution time
+
+required:
+    - default_resources

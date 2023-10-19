@@ -17,7 +17,7 @@ rule vep:
         vcf=temp("{file}.vep_annotated.vcf"),
     params:
         extra=config.get("vep", {}).get("extra", "--pick"),
-        mode=config.get("vep", {}).get("mode", "--offline --cache"),
+        mode=config.get("vep", {}).get("mode", "--offline --cache --refseq "),
     log:
         "{file}.vep_annotated.vcf.log",
     benchmark:
@@ -31,8 +31,6 @@ rule vep:
         time=config.get("vep", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("vep", {}).get("container", config["default_container"])
-    conda:
-        "../envs/vep.yaml"
     message:
         "{rule}: vep annotate {input.vcf}"
     shell:
@@ -43,6 +41,6 @@ rule vep:
         "-i {input.vcf} "
         "--dir_cache {input.cache} "
         "--fork {threads} "
-        "--refseq {params.mode} "
+        "{params.mode} "
         "--fasta {input.fasta} "
         "{params.extra} ) &> {log}"
