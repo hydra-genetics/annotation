@@ -182,10 +182,10 @@ properties:
         properties:
           chr_mapping:
             type: string
-            description: Chromosome translation file (NCXXXX to chrXX)
+            description: chromosome translation file (NCXXXX to chrXX)
           hotspot:
             type: string
-            description: Hotspot text file
+            description: hotspot text file
           vcf:
             type: string
             description: input vcf file
