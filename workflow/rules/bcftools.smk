@@ -4,33 +4,6 @@ __email__ = "jonas.almlof@scilifelab.uu.se"
 __license__ = "GPL-3"
 
 
-rule sort_vcf:
-    input:
-        vcf="{path}/{sample}_{type}.{file_tags}.vcf",
-    output:
-        vcf=temp("{path}/{sample}_{type}.{file_tags}.sorted.vcf"),
-    log:
-        "{path}/{sample}_{type}.{file_tags}.sorted.vcf.log",
-    benchmark:
-        repeat(
-            "{path}/{sample}_{type}.{file_tags}.sorted.vcf.benchmark.tsv",
-            config.get("sort_vcf", {}).get("benchmark_repeats", 1),
-        )
-    threads: config.get("sort_vcf", {}).get("threads", config["default_resources"]["threads"])
-    resources:
-        mem_mb=config.get("sort_vcf", {}).get("mem_mb", config["default_resources"]["mem_mb"]),
-        mem_per_cpu=config.get("sort_vcf", {}).get("mem_per_cpu", config["default_resources"]["mem_per_cpu"]),
-        partition=config.get("sort_vcf", {}).get("partition", config["default_resources"]["partition"]),
-        threads=config.get("sort_vcf", {}).get("threads", config["default_resources"]["threads"]),
-        time=config.get("sort_vcf", {}).get("time", config["default_resources"]["time"]),
-    container:
-        config.get("sort_vcf", {}).get("container", config["default_container"])
-    message:
-        "{rule}: sort vcf {input.vcf}"
-    wrapper:
-        "0.79.0/bio/bcftools/sort"
-
-
 rule bcftools_annotate:
     input:
         vcf="{file}.vcf.gz",
@@ -68,3 +41,30 @@ rule bcftools_annotate:
         "--output-type {params.output_type} "
         "{params.extra} "
         "{input.vcf}) &> {log}"
+
+
+rule bcftools_sort:
+    input:
+        vcf="{path}/{sample}_{type}.{file_tags}.vcf",
+    output:
+        vcf=temp("{path}/{sample}_{type}.{file_tags}.sorted.vcf"),
+    log:
+        "{path}/{sample}_{type}.{file_tags}.sorted.vcf.log",
+    benchmark:
+        repeat(
+            "{path}/{sample}_{type}.{file_tags}.sorted.vcf.benchmark.tsv",
+            config.get("bcftools_sort", {}).get("benchmark_repeats", 1),
+        )
+    threads: config.get("bcftools_sort", {}).get("threads", config["default_resources"]["threads"])
+    resources:
+        mem_mb=config.get("bcftools_sort", {}).get("mem_mb", config["default_resources"]["mem_mb"]),
+        mem_per_cpu=config.get("bcftools_sort", {}).get("mem_per_cpu", config["default_resources"]["mem_per_cpu"]),
+        partition=config.get("bcftools_sort", {}).get("partition", config["default_resources"]["partition"]),
+        threads=config.get("bcftools_sort", {}).get("threads", config["default_resources"]["threads"]),
+        time=config.get("bcftools_sort", {}).get("time", config["default_resources"]["time"]),
+    container:
+        config.get("bcftools_sort", {}).get("container", config["default_container"])
+    message:
+        "{rule}: sort vcf {input.vcf}"
+    wrapper:
+        "0.79.0/bio/bcftools/sort"
