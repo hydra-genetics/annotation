@@ -15,10 +15,10 @@ rule add_multi_snv_in_codon:
         af_limit=config.get("add_multi_snv_in_codon", {}).get("af_limit", 0.05),
         artifact_limit=config.get("add_multi_snv_in_codon", {}).get("artifact_limit", 3),
     log:
-        "{path}/{sample}_{type}.{file_tags}.vcf.codon_snvs.vcf.log",
+        "{path}/{sample}_{type}.{file_tags}.codon_snvs.vcf.log",
     benchmark:
         repeat(
-            "{path}/{sample}_{type}.{file_tags}.vcf.codon_snvs.vcf.benchmark.tsv",
+            "{path}/{sample}_{type}.{file_tags}.codon_snvs.vcf.benchmark.tsv",
             config.get("add_multi_snv_in_codon", {}).get("benchmark_repeats", 1),
         )
     wildcard_constraints:
