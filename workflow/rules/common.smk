@@ -56,7 +56,7 @@ def compile_output_list(wildcards):
             ".ensembled.vep_annotated.vcf",
             ".ensembled.snpeff_annotated.ss_annotated.vcf",
             ".ensembled.vep_annotated.artifact_annotated.hotspot_annotated.background_annotated.vcf",
-            ".ensembled.vep_annotated.artifact_annotated.hotspot_annotated.background_annotated.include.exon.filter.snv_hard_filter.codon_snvs.sorted.vcf",
+            ".ensembled.vep_annotated.artifact_annotated.hotspot_annotated.background_annotated.include.exon.filter.snv_hard_filter.codon_snvs.sorted.vep_annotated.vcf",
             ".ensembled.bcftools_annotated.vcf.gz",
         ],
         "cnv_sv/stranger": [".stranger.vcf"],
