@@ -116,6 +116,17 @@ properties:
         type: string
         description: name or path to docker/singularity container
 
+  bgzip_vcf:
+    type: object
+    description: parameters for bgzip_vcf
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+
   calculate_seqrun_background:
     type: object
     description: parameters for calculate_seqrun_background
@@ -140,6 +151,17 @@ properties:
       chr_translation_file:
           type: string
           description: chromosome translation file (NCXXXX to chrXX)
+
+  reference:
+    type: object
+    description: collection of reference files
+    properties:
+      artifacts:
+        type: string
+        description: path to artifact file containing caller specific variant observation counts
+      background:
+        type: string
+        description: path to background file containing median and sd values for non-reference alleles per position
 
   simple_sv_annotation:
     type: object
@@ -179,16 +201,19 @@ properties:
         type: string
         description: parameters that should be forwarded
 
-  reference:
+  tabix_vcf:
     type: object
-    description: collection of reference files
+    description: parameters for tabix_vcf
     properties:
-      artifacts:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
         type: string
-        description: path to artifact file containing caller specific variant observation counts
-      background:
+        description: name or path to docker/singularity container
+      extra:
         type: string
-        description: path to background file containing median and sd values for non-reference alleles per position
+        description: parameters that should be forwarded
 
   vep:
     type: object
