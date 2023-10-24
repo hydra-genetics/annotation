@@ -45,14 +45,14 @@ rule bcftools_annotate:
 
 rule bcftools_sort:
     input:
-        vcf="{path}/{sample}_{type}.{file_tags}.vcf",
+        vcf="{file}.vcf",
     output:
-        vcf=temp("{path}/{sample}_{type}.{file_tags}.sorted.vcf"),
+        vcf=temp("{file}.sorted.vcf"),
     log:
-        "{path}/{sample}_{type}.{file_tags}.sorted.vcf.log",
+        "{file}.sorted.vcf.log",
     benchmark:
         repeat(
-            "{path}/{sample}_{type}.{file_tags}.sorted.vcf.benchmark.tsv",
+            "{file}.sorted.vcf.benchmark.tsv",
             config.get("bcftools_sort", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("bcftools_sort", {}).get("threads", config["default_resources"]["threads"])
