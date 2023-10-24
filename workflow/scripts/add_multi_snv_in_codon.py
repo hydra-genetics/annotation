@@ -3,7 +3,7 @@ import pysam
 from subprocess import check_output
 
 
-def add_multi_snv_in_codon(in_fastq_ref, in_vcf, out_vcf, extra_variants_filename, af_limit, artifact_limit, artifacts_filename):
+def add_multi_snv_in_codon(in_fastq_ref, in_vcf, out_vcf, af_limit, artifact_limit, artifacts_filename):
 
     AA_dict = {"Ala": ["GCT", "GCC", "GCA", "GCG"],
                "Ile": ["ATT", "ATC", "ATA"],
@@ -39,17 +39,6 @@ def add_multi_snv_in_codon(in_fastq_ref, in_vcf, out_vcf, extra_variants_filenam
             break
         artifacts.close()
 
-    '''Extra non coding multi variants that should be added to vcf if they are are called'''
-    extra_variants_dict = {}
-    extra_variants_list = []
-    if extra_variants_filename != "":
-        in_extra_variants = open(extra_variants_filename)
-        for line in in_extra_variants:
-            extra_variants = line.strip().split("\t")
-            extra_variants_list.append(extra_variants)
-            for extra_variant in extra_variants:
-                extra_variants_dict[extra_variant] = [0, []]
-
     '''Read through vcf and find positions that could be within one codon and put in a candidate list'''
     header = True
     candidate_list = []
@@ -67,7 +56,6 @@ def add_multi_snv_in_codon(in_fastq_ref, in_vcf, out_vcf, extra_variants_filenam
         lline = line.strip().split()
         chrom = lline[0]
         pos = int(lline[1])
-        chrom_pos = f"{chrom}_{pos}"
         ref = lline[3]
         alt = lline[4]
         if len(ref) > 1 or len(alt) > 1:
@@ -100,11 +88,6 @@ def add_multi_snv_in_codon(in_fastq_ref, in_vcf, out_vcf, extra_variants_filenam
         prev_pos = pos
         prev_chrom = chrom
         prev_lline = lline
-        '''Add variant if in extra_variant_dict'''
-        if chrom_pos in extra_variants_dict:
-            extra_variants_dict[chrom_pos][0] += 1
-            extra_variants_dict[chrom_pos][1] = lline
-
 
     '''Go through candidates and keep those in the same codon based on VEP annotation'''
     prev_aa_nr = 0
@@ -226,27 +209,6 @@ def add_multi_snv_in_codon(in_fastq_ref, in_vcf, out_vcf, extra_variants_filenam
             i += 1
         out_vcf.write(";AA=" + ref_AA + str(aa_nr) + alt_AA + "\t" + Multibp[AF_min_i][8] + "\t" + Multibp[AF_min_i][9] + "\n")
 
-    '''Check for extra multi variants outside of coding regions'''
-    for extra_variants in extra_variants_list:
-        found = True
-        ref = ""
-        alt = ""
-        for extra_variant in extra_variants:
-            if extra_variants_dict[extra_variant][0] == 0:
-                found = False
-                break
-            ref += extra_variants_dict[extra_variant][3]
-            alt += extra_variants_dict[extra_variant][4]
-        if found:
-            chrom = extra_variants_dict[extra_variants[0]][0]
-            pos = extra_variants_dict[extra_variants[0]][1]
-            out_vcf.write(f"{chrom}\t{pos}\t.\t{ref}\t{alt}\t.\tPASS\tArtifact=-1")
-            i = 0
-            while i < nr_callers:
-                out_vcf.write(",-1")
-                i += 1
-            out_vcf.write(f";AA=XXX\t......" + Multibp[AF_min_i][8] + "\t" + Multibp[AF_min_i][9] + "\n")
-
 
 if __name__ == "__main__":
     log = snakemake.log_fmt_shell(stdout=False, stderr=True)
@@ -255,7 +217,6 @@ if __name__ == "__main__":
         snakemake.input.ref,
         open(snakemake.input.vcf),
         open(snakemake.output.vcf, "w"),
-        snakemake.params.extra_variants.csv,
         snakemake.params.af_limit,
         snakemake.params.artifact_limit,
         snakemake.input.artifacts,
