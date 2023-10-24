@@ -168,6 +168,26 @@ properties:
         type: string
         description: max execution time
 
+  bgzip_vcf:
+    type: object
+    description: resource definitions for bgzip_vcf
+    properties:
+      mem_mb:
+        type: integer
+        description: max memory in MB in total
+      mem_per_cpu:
+        type: integer
+        description: max memory in MB used per cpu
+      partition:
+        type: string
+        description: partition to use on cluster
+      threads:
+        type: integer
+        description: number of threads to be available
+      time:
+        type: string
+        description: max execution time
+
   calculate_seqrun_background:
     type: object
     description: resource definitions for calculate_seqrun_background
@@ -258,6 +278,26 @@ properties:
       mem_per_cpu:
         type: integer
         description: memory in MB used per cpu
+      partition:
+        type: string
+        description: partition to use on cluster
+      threads:
+        type: integer
+        description: number of threads to be available
+      time:
+        type: string
+        description: max execution time
+
+  tabix_vcf:
+    type: object
+    description: resource definitions for tabix_vcf
+    properties:
+      mem_mb:
+        type: integer
+        description: max memory in MB in total
+      mem_per_cpu:
+        type: integer
+        description: max memory in MB used per cpu
       partition:
         type: string
         description: partition to use on cluster

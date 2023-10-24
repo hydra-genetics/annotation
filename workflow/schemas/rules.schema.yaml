@@ -153,6 +153,25 @@ properties:
             type: string
             description: sorted vcf file
 
+  bgzip_vcf:
+    type: object
+    description: input and output parameters for bgzip_vcf
+    properties:
+      input:
+        type: object
+        description: list of inputs
+        properties:
+          vcf:
+            type: string
+            description: input 'vcf' file
+      output:
+        type: object
+        description: list of outputs
+        properties:
+          gz:
+            type: string
+            description: output gzipped 'vcf' file
+
   calculate_seqrun_background:
     type: object
     description: input and output parameters for samtools_extract_reads
@@ -274,6 +293,25 @@ properties:
           vcf:
             type: string
             description: annotated vcf file with pathologic implications of the repeats
+
+  tabix_vcf:
+    type: object
+    description: input and output parameters for tabix_vcf
+    properties:
+      input:
+        type: object
+        description: list of inputs
+        properties:
+          gz:
+            type: string
+            description: input gzipped 'vcf' file
+      output:
+        type: object
+        description: list of outputs
+        properties:
+          tbi:
+            type: string
+            description: output tbi index file for gzipped 'vcf' file
 
   vep:
     type: object
