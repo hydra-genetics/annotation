@@ -1,5 +1,16 @@
 # Changelog
 
+### [1.0.1](https://www.github.com/hydra-genetics/annotation/compare/v1.0.0...v1.0.1) (2023-10-24)
+
+
+### Bug Fixes
+
+* include bgzip smk file and change wildcard/filename for bcftools_sort ([1cd7f15](https://www.github.com/hydra-genetics/annotation/commit/1cd7f158ab041a49ac7d96487256d2992b83b9cc))
+* reinstate tabix and bgzip rules ([c1c00c7](https://www.github.com/hydra-genetics/annotation/commit/c1c00c7e304375bb86112f6114db2aad09b0ead0))
+* remove conda env files entry for bgzip rule ([11d9c65](https://www.github.com/hydra-genetics/annotation/commit/11d9c65e7a3adcafa2a97f3f3f25f29311cf0802))
+* revert to unaltered version of script ([be2e85d](https://www.github.com/hydra-genetics/annotation/commit/be2e85de5d05cc4554af9ac74d810edc793089ca))
+* update output file from pipeline ([2ebc961](https://www.github.com/hydra-genetics/annotation/commit/2ebc961236b15916a153cae9d4e86e10441a035b))
+
 ## [1.0.0](https://www.github.com/hydra-genetics/annotation/compare/v0.3.0...v1.0.0) (2023-10-19)
 
 
