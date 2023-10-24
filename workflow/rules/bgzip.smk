@@ -22,8 +22,6 @@ rule bgzip_vcf:
         time=config.get("bgzip_vcf", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("bgzip_vcf", {}).get("container", config["default_container"])
-    conda:
-        "../envs/bgzip.yaml"
     message:
         "{rule}: bgzip {input}"
     shell:
@@ -50,8 +48,6 @@ rule tabix_vcf:
         time=config.get("tabix_vcf", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("tabix_vcf", {}).get("container", config["default_container"])
-    conda:
-        "../envs/bgzip.yaml"
     message:
         "{rule}: tabix index {input}"
     wrapper:
