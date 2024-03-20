@@ -49,5 +49,5 @@ if __name__ == "__main__":
     annotate_gvcf_with_mosdepth_data(
         gzip.open(snakemake.input.coverage, "rt"),
         gzip.open(snakemake.input.gvcf, "rt"),
-        bgzip.open(snakemake.output.gvcf, "w")
+        bgzf.open(snakemake.output.gvcf, "w")
     )
