@@ -60,7 +60,7 @@ def compile_output_list(wildcards):
             ".ensembled.bcftools_annotated.vcf.gz",
         ],
         "cnv_sv/stranger": [".stranger.vcf"],
-        "cnv_sv/svdb_query": [".svdb_query.annotate_cnv.cnv_amp_genes.vcf"],
+        "cnv_sv/svdb_query": [".svdb_query.annotate_cnv.cnv_amp_genes.vcf.gz"],
     }
     output_files = [
         "%s/%s_%s%s" % (prefix, sample, unit_type, suffix)
