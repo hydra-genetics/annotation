@@ -27,7 +27,7 @@ class TestUnitUtils(unittest.TestCase):
     def test_annotate_gvcf_with_mosdepth_data(self):
         from add_mosdepth_coverage_to_gvcf import annotate_gvcf_with_mosdepth_data
 
-        out_gvcf = bgzip.open(os.path.join(self.tempdir, "sample.mosdepth.g.vcf.gz"), "w")
+        out_gvcf = bgzf.open(os.path.join(self.tempdir, "sample.mosdepth.g.vcf.gz"), "w")
 
         # Annotate all variants with depth from mosdepth (added last)
         annotate_gvcf_with_mosdepth_data(self.in_coverage, self.in_gvcf, out_gvcf)
