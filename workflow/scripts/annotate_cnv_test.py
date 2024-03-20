@@ -1,7 +1,7 @@
 import tempfile
 import os
 import unittest
-
+from Bio import bgzf
 from pysam import VariantFile
 
 
@@ -27,7 +27,7 @@ class TestUnitUtils(unittest.TestCase):
     def test_filter_variants(self):
         from annotate_cnv import filter_variants
 
-        out_vcf_filename = "sample.svdb_query.annotate_cnv.cnv_amp_genes.vcf"
+        out_vcf_filename = "sample.svdb_query.annotate_cnv.cnv_amp_genes.vcf.gz"
 
         # Annotate some cnv variants with gene info
         filter_variants(self.in_vcf_filename, out_vcf_filename, self.genes)
