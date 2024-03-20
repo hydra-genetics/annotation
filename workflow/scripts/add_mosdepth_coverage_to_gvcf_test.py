@@ -32,7 +32,7 @@ class TestUnitUtils(unittest.TestCase):
         # Annotate all variants with depth from mosdepth (added last)
         annotate_gvcf_with_mosdepth_data(self.in_coverage, self.in_gvcf, out_gvcf)
 
-        result_file = gzip.open(os.path.join(self.tempdir, "sample.mosdepth.g.vcf.gz"))
+        result_file = gzip.open(os.path.join(self.tempdir, "sample.mosdepth.g.vcf.gz"), "rt")
         result = []
         for line in result_file:
             if line[0] != "#":
