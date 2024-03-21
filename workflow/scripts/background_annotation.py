@@ -1,5 +1,5 @@
-
 from pysam import VariantFile
+import gzip
 
 
 def add_background_annotation_data(in_vcf_filename, background_panel_filename, out_vcf_filename, nr_min_sd):
@@ -8,7 +8,7 @@ def add_background_annotation_data(in_vcf_filename, background_panel_filename, o
     new_header = in_vcf.header
     new_header.info.add("PanelMedian", "1", "Float", "Background median MAF in panel")
     new_header.info.add("PositionNrSD", "1", "Float", "Number of Standard Deviations from background panel median")
-    out_vcf = VariantFile(out_vcf_filename, 'w', header=new_header)
+    out_vcf = VariantFile(out_vcf_filename, "w", header=new_header)
     out_vcf.close()
     in_vcf.close()
 
@@ -25,7 +25,10 @@ def add_background_annotation_data(in_vcf_filename, background_panel_filename, o
             background_panel_dict[chrom + "_" + pos] = [median, sd]
 
     out_vcf = open(out_vcf_filename, "a")
-    in_vcf = open(in_vcf_filename)
+    if in_vcf_filename.endswith(".vcf.gz"):
+        in_vcf = gzip.open(in_vcf_filename, "rt")
+    else:
+        in_vcf = open(in_vcf_filename)
     header = True
     for line in in_vcf:
         if header:
@@ -68,7 +71,6 @@ def add_background_annotation_data(in_vcf_filename, background_panel_filename, o
 if __name__ == "__main__":
     log = snakemake.log_fmt_shell(stdout=False, stderr=True)
 
-    add_background_annotation_data(snakemake.input.vcf,
-                                   snakemake.input.background,
-                                   snakemake.output.vcf,
-                                   snakemake.params.nr_min_sd)
+    add_background_annotation_data(
+        snakemake.input.vcf, snakemake.input.background, snakemake.output.vcf, snakemake.params.nr_min_sd
+    )
