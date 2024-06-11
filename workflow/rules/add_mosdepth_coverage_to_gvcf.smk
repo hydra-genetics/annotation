@@ -9,9 +9,9 @@ rule add_mosdepth_coverage_to_gvcf:
         coverage="qc/mosdepth_bed/{sample}_{type}.per-base.bed.gz",
         gvcf="snv_indels/gatk_mutect2_gvcf/{sample}_{type}.merged.g.vcf.gz",
     output:
-        gvcf=temp("qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.g.vcf"),
+        gvcf=temp("qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.g.vcf.gz"),
     log:
-        "qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.g.vcf.log",
+        "qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.g.vcf.gz.log",
     threads: config.get("add_mosdepth_coverage_to_gvcf", {}).get("threads", config["default_resources"]["threads"])
     resources:
         mem_mb=config.get("add_mosdepth_coverage_to_gvcf", {}).get("mem_mb", config["default_resources"]["mem_mb"]),
@@ -21,7 +21,7 @@ rule add_mosdepth_coverage_to_gvcf:
         time=config.get("add_mosdepth_coverage_to_gvcf", {}).get("time", config["default_resources"]["time"]),
     benchmark:
         repeat(
-            "qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.g.vcf.benchmark.tsv",
+            "qc/add_mosdepth_coverage_to_gvcf/{sample}_{type}.mosdepth.g.vcf.gz.benchmark.tsv",
             config.get("add_mosdepth_coverage_to_gvcf", {}).get("benchmark_repeats", 1),
         )
     container:

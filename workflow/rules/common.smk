@@ -51,7 +51,7 @@ wildcard_constraints:
 
 def compile_output_list(wildcards):
     files = {
-        "qc/add_mosdepth_coverage_to_gvcf": [".mosdepth.g.vcf"],
+        "qc/add_mosdepth_coverage_to_gvcf": [".mosdepth.g.vcf.gz"],
         "snv_indels/bcbio_variation_recall_ensemble": [
             ".ensembled.vep_annotated.vcf",
             ".ensembled.snpeff_annotated.ss_annotated.vcf",
@@ -60,7 +60,7 @@ def compile_output_list(wildcards):
             ".ensembled.bcftools_annotated.vcf.gz",
         ],
         "cnv_sv/stranger": [".stranger.vcf"],
-        "cnv_sv/svdb_query": [".svdb_query.annotate_cnv.cnv_amp_genes.vcf"],
+        "cnv_sv/svdb_query": [".svdb_query.annotate_cnv.cnv_amp_genes.vcf.gz"],
     }
     output_files = [
         "%s/%s_%s%s" % (prefix, sample, unit_type, suffix)
