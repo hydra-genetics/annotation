@@ -33,4 +33,5 @@ rule stranger:
     shell:
         "(stranger "
         "-f {input.cat} "
+        "{params.extra} "
         "{input.vcf} > {output.vcf}) &> {log}"
