@@ -48,14 +48,13 @@ def filter_variants(in_vcf, out_vcf, filter_bed_file):
                 header_id = "##INFO=<ID=SVDB_" + line.split(",")[0].split("_")[-1]
                 header_id_new = "SVDB_" + line.split(",")[0].split("_")[-1]
                 header_id_org = line.split(",")[0].split("ID=")[1]
-                if header_id.find("SAMPLE") != -1:
-                    header_id += "S"
-                    header_id_new += "S"
-                    header_id_org += "S"
                 info_ids[header_id_org] = header_id_new
                 for hi in line.split(",")[1:]:
                     header_id += "," + hi
-                vcf_out.write(header_id)
+                if header_id.find("_SAMPLE") != -1:
+                    vcf_out.write(line)
+                else:
+                    vcf_out.write(header_id)
             else:
                 vcf_out.write(line)
             continue
