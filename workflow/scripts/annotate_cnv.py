@@ -1,5 +1,4 @@
 import gzip
-from Bio import bgzf
 from pysam import VariantFile
 
 
@@ -34,7 +33,7 @@ def filter_variants(in_vcf, out_vcf, filter_bed_file):
         else:
             gene_dict[chrom].append([start, end, gene])
 
-    vcf_out = bgzf.open(out_vcf, "w")
+    vcf_out = open(out_vcf, "w")
     vcf_in = open(in_vcf) if not in_vcf.endswith(".gz") else gzip.open(in_vcf, "rt")
     header = True
     info_ids = {}
