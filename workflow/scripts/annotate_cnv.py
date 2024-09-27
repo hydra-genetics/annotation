@@ -48,7 +48,7 @@ def filter_variants(in_vcf, out_vcf, filter_bed_file):
                 line.find("pipe separated list of all details in the") != -1
             ):
                 # Change SAMPLE to SAMPLES
-                new_sample_header = f"{line.split('_')[0]}_{line.split(',')[0].split('_')[1]}S}"
+                new_sample_header = f"{line.split('_')[0]}_{line.split(',')[0].split('_')[1]}S"
                 for header_info in line.split(",")[1:]:
                     new_sample_header = f"{new_sample_header},{header_info}"
                 vcf_out.write(new_sample_header)
