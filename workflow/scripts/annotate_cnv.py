@@ -43,8 +43,8 @@ def filter_variants(in_vcf, out_vcf, filter_bed_file):
                 vcf_out.write(line)
                 header = False
             elif (
-                line[:11] == "##INFO=<ID=" and 
-                line.find("SAMPLE") != -1 and 
+                line[:11] == "##INFO=<ID=" and
+                line.find("SAMPLE") != -1 and
                 line.find("pipe separated list of all details in the") != -1
             ):
                 # Change SAMPLE to SAMPLES
