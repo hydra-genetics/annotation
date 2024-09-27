@@ -36,13 +36,22 @@ def filter_variants(in_vcf, out_vcf, filter_bed_file):
     vcf_out = open(out_vcf, "w")
     vcf_in = open(in_vcf) if not in_vcf.endswith(".gz") else gzip.open(in_vcf, "rt")
     header = True
-    info_ids = {}
     for line in vcf_in:
         if header:
             if line[:6] == "#CHROM":
                 vcf_out.write("##INFO=<ID=Genes,Number=1,Type=String,Description=\"Gene names\">\n")
                 vcf_out.write(line)
                 header = False
+            elif (
+                line[:11] == "##INFO=<ID=" and
+                line.find("SAMPLE") != -1 and
+                line.find("pipe separated list of all details in the") != -1
+            ):
+                # Change SAMPLE to SAMPLES
+                new_sample_header = f"{line.split('_')[0]}_{line.split(',')[0].split('_')[1]}S"
+                for header_info in line.split(",")[1:]:
+                    new_sample_header = f"{new_sample_header},{header_info}"
+                vcf_out.write(new_sample_header)
             else:
                 vcf_out.write(line)
             continue
