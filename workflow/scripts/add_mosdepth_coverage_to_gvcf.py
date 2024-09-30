@@ -1,4 +1,3 @@
-from Bio import bgzf
 import gzip
 
 
@@ -49,5 +48,5 @@ if __name__ == "__main__":
     annotate_gvcf_with_mosdepth_data(
         gzip.open(snakemake.input.coverage, "rt"),
         gzip.open(snakemake.input.gvcf, "rt"),
-        bgzf.open(snakemake.output.gvcf, "w")
+        open(snakemake.output.gvcf, "w")
     )
