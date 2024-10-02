@@ -30,12 +30,13 @@ samples = pd.read_table(config["samples"], dtype=str).set_index("sample", drop=F
 validate(samples, schema="../schemas/samples.schema.yaml")
 
 ### Read and validate units file
+units = pandas.read_table(config["units"], dtype=str)
 
-units = (
-    pandas.read_table(config["units"], dtype=str)
-    .set_index(["sample", "type", "flowcell", "lane", "barcode"], drop=False)
-    .sort_index()
-)
+if units.platform.iloc[0] in ["PACBIO", "ONT"]:
+    units = units.set_index(["sample", "type", "processing_unit", "barcode"], drop=False).sort_index()
+else:  # assume that the platform Illumina data with a lane and flowcell columns
+    units = units.set_index(["sample", "type", "flowcell", "lane", "barcode"], drop=False).sort_index()
+validate(units, schema="../schemas/units.schema.yaml")
 
 ### Set wildcard constraints
 
@@ -51,7 +52,7 @@ wildcard_constraints:
 
 def compile_output_list(wildcards):
     files = {
-        "qc/add_mosdepth_coverage_to_gvcf": [".mosdepth.g.vcf"],
+        "qc/add_mosdepth_coverage_to_gvcf": [".mosdepth.g.vcf.gz"],
         "snv_indels/bcbio_variation_recall_ensemble": [
             ".ensembled.vep_annotated.vcf",
             ".ensembled.snpeff_annotated.ss_annotated.vcf",
@@ -60,7 +61,7 @@ def compile_output_list(wildcards):
             ".ensembled.bcftools_annotated.vcf.gz",
         ],
         "cnv_sv/stranger": [".stranger.vcf"],
-        "cnv_sv/svdb_query": [".svdb_query.annotate_cnv.cnv_amp_genes.vcf"],
+        "cnv_sv/svdb_query": [".svdb_query.annotate_cnv.cnv_amp_genes.vcf.gz"],
     }
     output_files = [
         "%s/%s_%s%s" % (prefix, sample, unit_type, suffix)

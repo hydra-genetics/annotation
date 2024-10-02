@@ -36,25 +36,22 @@ def filter_variants(in_vcf, out_vcf, filter_bed_file):
     vcf_out = open(out_vcf, "w")
     vcf_in = open(in_vcf) if not in_vcf.endswith(".gz") else gzip.open(in_vcf, "rt")
     header = True
-    info_ids = {}
     for line in vcf_in:
         if header:
             if line[:6] == "#CHROM":
                 vcf_out.write("##INFO=<ID=Genes,Number=1,Type=String,Description=\"Gene names\">\n")
                 vcf_out.write(line)
                 header = False
-            elif line[:11] == "##INFO=<ID=" and line.find("pipe separated list of all details in the") != -1:
-                header_id = "##INFO=<ID=SVDB_" + line.split(",")[0].split("_")[-1]
-                header_id_new = "SVDB_" + line.split(",")[0].split("_")[-1]
-                header_id_org = line.split(",")[0].split("ID=")[1]
-                if header_id.find("SAMPLE") != -1:
-                    header_id += "S"
-                    header_id_new += "S"
-                    header_id_org += "S"
-                info_ids[header_id_org] = header_id_new
-                for hi in line.split(",")[1:]:
-                    header_id += "," + hi
-                vcf_out.write(header_id)
+            elif (
+                line[:11] == "##INFO=<ID=" and
+                line.find("SAMPLE") != -1 and
+                line.find("pipe separated list of all details in the") != -1
+            ):
+                # Change SAMPLE to SAMPLES
+                new_sample_header = f"{line.split('_')[0]}_{line.split(',')[0].split('_')[1]}S"
+                for header_info in line.split(",")[1:]:
+                    new_sample_header = f"{new_sample_header},{header_info}"
+                vcf_out.write(new_sample_header)
             else:
                 vcf_out.write(line)
             continue
@@ -63,18 +60,10 @@ def filter_variants(in_vcf, out_vcf, filter_bed_file):
         start = int(columns[1])
         INFO = columns[7]
         end = int(INFO.split("END=")[1].split(";")[0])
-        INFO_mod = INFO.split(";")[0]
-        for info in INFO.split(";")[1:]:
-            if info.split("=")[0] in info_ids:
-                info_mod = info_ids[info.split("=")[0]] + "=" + info.split("=")[1]
-                INFO_mod = "%s;%s" % (INFO_mod, info_mod)
-            else:
-                INFO_mod = "%s;%s" % (INFO_mod, info)
-
         genes = variant_in_genelist(chrom, start, end, gene_dict)
         if genes:
-            INFO_mod = "Genes=%s;%s" % (genes, INFO_mod)
-        columns[7] = INFO_mod
+            INFO = "Genes=%s;%s" % (genes, INFO)
+        columns[7] = INFO
         vcf_out.write(columns[0])
         for column in columns[1:]:
             vcf_out.write("\t" + column)
