@@ -1,5 +1,39 @@
 # Changelog
 
+## [1.1.0](https://www.github.com/hydra-genetics/annotation/compare/v1.0.1...v1.1.0) (2024-10-02)
+
+
+### Features
+
+* bgzipped output ([271c2f9](https://www.github.com/hydra-genetics/annotation/commit/271c2f9e63a1e6718851ade7a69ed3bd31c8a82c))
+* make background_annotation be able to handel vcf.gz-files ([20608dc](https://www.github.com/hydra-genetics/annotation/commit/20608dcd4844516b4d22b1f242a029f764d8a3bd))
+* output bgzipped vcf ([9378b16](https://www.github.com/hydra-genetics/annotation/commit/9378b16a923b587904974ac496a0c8d6157b930d))
+* write gzipped outputfile ([138518c](https://www.github.com/hydra-genetics/annotation/commit/138518c2c8c5964bdd655cfa2117c4fe78e2de54))
+
+
+### Bug Fixes
+
+* adapt vcf header to new svdb ([c897dbb](https://www.github.com/hydra-genetics/annotation/commit/c897dbbe5099d48e69a842a77e8d6ab5f99c4298))
+* add biopython ([d5c7c9f](https://www.github.com/hydra-genetics/annotation/commit/d5c7c9f276a4515339b847eed05c993e33e35838))
+* add S to SAMPLE in vcf header ([00c4524](https://www.github.com/hydra-genetics/annotation/commit/00c4524ff4987f8da11594c5edff771f1a98b0de))
+* bugfix ([2730ebf](https://www.github.com/hydra-genetics/annotation/commit/2730ebfdd141559ede77cc6efe34c9a560d3994b))
+* bugfix ([171d978](https://www.github.com/hydra-genetics/annotation/commit/171d9789c26ae24f567bfc2a7d0082f53987eed8))
+* bugfix ([1e78a3a](https://www.github.com/hydra-genetics/annotation/commit/1e78a3a6ae83a05914d27b8e2e6bc28d86a183bc))
+* integration test using apptainer ([9b402b4](https://www.github.com/hydra-genetics/annotation/commit/9b402b43a0ce03c2ad51a42e3697e6187173732d))
+* output bgzipped ([a9137df](https://www.github.com/hydra-genetics/annotation/commit/a9137dfa08db0cefe2174c7b28bf0fa2398b2823))
+* pulp ([8dea2cc](https://www.github.com/hydra-genetics/annotation/commit/8dea2cc33430452660caf93d7407e7222b69e19b))
+* remove missing module for bgzip ([75d82df](https://www.github.com/hydra-genetics/annotation/commit/75d82df8a9012761e6a46523ed64705b74d9e35b))
+* rm gzipped output ([046c7c3](https://www.github.com/hydra-genetics/annotation/commit/046c7c39a380446097a2fc9446acd1166b7e3dd2))
+* rm non-installed module ([e5a21ce](https://www.github.com/hydra-genetics/annotation/commit/e5a21ceb490533113c11b74ac3afc6680df38811))
+* rm old svdb header fix ([779efe6](https://www.github.com/hydra-genetics/annotation/commit/779efe6d3a3f37a256a4f50d42ffd50934ac6210))
+* rm req field that is now in data config ([af26eed](https://www.github.com/hydra-genetics/annotation/commit/af26eedc2f8a6b1d243e35346e911860d157231d))
+* rule all with gz ([838131b](https://www.github.com/hydra-genetics/annotation/commit/838131b4722801b2239f411d49498e21f3f2927a))
+* **stranger:** access extra in the shell command ([5fb7bed](https://www.github.com/hydra-genetics/annotation/commit/5fb7bed3b2639edcd126afea33c2db300ee0e819))
+* trying to close closed file ([2b2805e](https://www.github.com/hydra-genetics/annotation/commit/2b2805e3e1984db402244369e1f884f316012ed0))
+* Update requirements.txt (pulp) ([a535a56](https://www.github.com/hydra-genetics/annotation/commit/a535a56262accc060edcf2551b21d22df3d0bc2e))
+* update rule all to gz ([4b77e37](https://www.github.com/hydra-genetics/annotation/commit/4b77e3730d6db355efa0bcda0b62180aac84eb8c))
+* update test file with gz ([fcd18db](https://www.github.com/hydra-genetics/annotation/commit/fcd18dbd7ef5fe477d6a49e28dab8e04e4f5edd1))
+
 ### [1.0.1](https://www.github.com/hydra-genetics/annotation/compare/v1.0.0...v1.0.1) (2023-10-24)
 
 
