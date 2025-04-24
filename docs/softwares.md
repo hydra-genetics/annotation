@@ -344,3 +344,24 @@ Annotates vcf file using Ensemble Variant Effect Predictor (VEP). Uses local cac
 #RESOURCESSCHEMA__vep#
 
 ---
+
+## [whatshap_whatshap](url_to_tool)
+Introduction to whatshap_whatshap
+
+### :snake: Rule
+
+#SNAKEMAKE_RULE_SOURCE__whatshap__whatshap_whatshap#
+
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__whatshap__whatshap_whatshap#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__whatshap_whatshap#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__whatshap_whatshap#

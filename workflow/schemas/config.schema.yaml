@@ -235,6 +235,23 @@ properties:
         type: string
         description: path to vep cache directory
 
+
+
+# Entry added using Hydra-Genetics CLI - please move it into alphabetically sorted order
+  whatshap_whatshap:
+    type: object
+    description: parameters for whatshap_whatshap
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded
+
 required:
   - samples
   - units
