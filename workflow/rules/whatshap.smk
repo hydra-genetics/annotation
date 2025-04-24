@@ -18,7 +18,7 @@ rule whatshap_phase:
     benchmark:
         repeat(
             "annotation/whatshap_phase/{sample}_{type}.output.benchmark.tsv",
-            config.get("whatshap_phase", {}).get("benchmark_repeats", 1)
+            config.get("whatshap_phase", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("whatshap_phase", {}).get("threads", config["default_resources"]["threads"])
     resources:
@@ -39,7 +39,7 @@ rule whatshap_haplotag:
     input:
         vcf="annotation/whatshap_phase/{sample}_{type}.phased.vcf.gz",
         bam="alignment/pbmm2_align/{sample}_{type}.bam",
-        fasta=config.get("reference",{}).get("fasta",""),
+        fasta=config.get("reference", {}).get("fasta", ""),
     output:
         bam="annotation/whatshap_haplotag/{sample}_{type}.haplotagged.bam",
     params:
@@ -49,7 +49,7 @@ rule whatshap_haplotag:
     benchmark:
         repeat(
             "annotation/whatshap_haplotag/{sample}_{type}.output.benchmark.tsv",
-            config.get("whatshap_haplotag", {}).get("benchmark_repeats", 1)
+            config.get("whatshap_haplotag", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("whatshap_haplotag", {}).get("threads", config["default_resources"]["threads"])
     resources:
