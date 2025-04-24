@@ -341,20 +341,23 @@ properties:
             type: string
             description: annotated vcf file
 
-
-# Entry added using Hydra-Genetics CLI - please move it into alphabetically sorted order
-  whatshap_whatshap:
+  whatshap_haplotag:
     type: object
-    description: input and output parameters for whatshap_whatshap
+    description: input and output parameters for whatshap_haplotag
     properties:
       input:
         type: object
         description: list of inputs
         properties:
-          input1:
+          vcf:
             type: string
-            description: description input1
-            #value: set to override value in table, else remove
+            description: phased variants in VCF format
+          bam:
+            type: string
+            description: BAM file with reads to haplotag
+          fasta:
+            type: string
+            description: reference genome in FASTA format
 
       output:
         type: object
@@ -362,5 +365,30 @@ properties:
         properties:
           output1:
             type: string
-            description: description output1
-            #value: set to override value in table, else remove
+            description: BAM file with haplotagged reads
+
+  whatshap_phase:
+    type: object
+    description: input and output parameters for whatshap_phase
+    properties:
+      input:
+        type: object
+        description: list of inputs
+        properties:
+          vcf:
+            type: string
+            description: variants to phase in VCF format
+          bam:
+            type: string
+            description: BAM file with mapped reads to use for phasing
+          fasta:
+            type: string
+            description: reference genome in FASTA format
+
+      output:
+        type: object
+        description: list of outputs
+        properties:
+          output1:
+            type: string
+            description: phased variants in VCF format (gzipped)
