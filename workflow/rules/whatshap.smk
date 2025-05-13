@@ -17,7 +17,7 @@ rule whatshap_phase:
         "annotation/whatshap_phase/{sample}_{type}.phased.vcf.gz.log",
     benchmark:
         repeat(
-            "annotation/whatshap_phase/{sample}_{type}.output.benchmark.tsv",
+            "annotation/whatshap_phase/{sample}_{type}.phased.vcf.gz.benchmark.tsv",
             config.get("whatshap_phase", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("whatshap_phase", {}).get("threads", config["default_resources"]["threads"])
