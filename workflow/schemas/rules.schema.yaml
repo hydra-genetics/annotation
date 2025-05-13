@@ -383,7 +383,6 @@ properties:
           fasta:
             type: string
             description: reference genome in FASTA format
-
       output:
         type: object
         description: list of outputs
