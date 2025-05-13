@@ -14,7 +14,7 @@ rule whatshap_phase:
     params:
         extra=config.get("whatshap_phase", {}).get("extra", ""),
     log:
-        "annotation/whatshap_phase/{sample}_{type}.output.log",
+        "annotation/whatshap_phase/{sample}_{type}.phased.vcf.gz.log",
     benchmark:
         repeat(
             "annotation/whatshap_phase/{sample}_{type}.output.benchmark.tsv",
