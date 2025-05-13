@@ -48,7 +48,7 @@ rule whatshap_haplotag:
         "annotation/whatshap_haplotag/{sample}_{type}.haplotagged.bam.log",
     benchmark:
         repeat(
-            "annotation/whatshap_haplotag/{sample}_{type}.output.benchmark.tsv",
+            "annotation/whatshap_haplotag/{sample}_{type}.haplotagged.bam.benchmark.tsv",
             config.get("whatshap_haplotag", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("whatshap_haplotag", {}).get("threads", config["default_resources"]["threads"])
