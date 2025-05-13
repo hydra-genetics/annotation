@@ -32,7 +32,7 @@ rule whatshap_phase:
     message:
         "{rule}: do variants phasing on {input.vcf}"
     shell:
-        "whatshap phase -o {output.vcf} --reference {input.fasta} {input.vcf} {input.bam} &> {log} "
+        "whatshap phase -o {output.vcf} --reference {input.fasta} {params.extra} {input.vcf} {input.bam} &> {log} "
 
 
 rule whatshap_haplotag:
