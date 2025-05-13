@@ -344,3 +344,47 @@ Annotates vcf file using Ensemble Variant Effect Predictor (VEP). Uses local cac
 #RESOURCESSCHEMA__vep#
 
 ---
+
+## [whatshap_phase](https://whatshap.readthedocs.io/en/latest/index.html)
+WhatsHap is a software for phasing genomic variants and haplotagging reads. It is especially suitable for long reads, but works also well with short reads.
+
+### :snake: Rule
+
+#SNAKEMAKE_RULE_SOURCE__whatshap__whatshap_phase#
+
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__whatshap__whatshap_phase#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__whatshap_phase#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__whatshap_phase#
+
+---
+
+## [whatshap_haplotag](https://whatshap.readthedocs.io/en/latest/index.html)
+WhatsHap is a software for phasing genomic variants and haplotagging reads. It is especially suitable for long reads, but works also well with short reads.
+
+### :snake: Rule
+
+#SNAKEMAKE_RULE_SOURCE__whatshap__whatshap_haplotag#
+
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__whatshap__whatshap_haplotag#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__whatshap_haplotag#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__whatshap_haplotag#
