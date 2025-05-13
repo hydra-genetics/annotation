@@ -45,7 +45,7 @@ rule whatshap_haplotag:
     params:
         extra=config.get("whatshap_haplotag", {}).get("extra", ""),
     log:
-        "annotation/whatshap_haplotag/{sample}_{type}.output.log",
+        "annotation/whatshap_haplotag/{sample}_{type}.haplotagged.bam.log",
     benchmark:
         repeat(
             "annotation/whatshap_haplotag/{sample}_{type}.output.benchmark.tsv",
