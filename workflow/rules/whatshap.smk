@@ -45,7 +45,7 @@ rule whatshap_haplotag:
         aln="alignment/pbmm2_align/{sample}_{type}.bam",
         ref=config.get("reference", {}).get("fasta", ""),
     output:
-        bam="annotation/whatshap_haplotag/{sample}_{type}.haplotagged.bam",
+        "annotation/whatshap_haplotag/{sample}_{type}.haplotagged.bam",
     params:
         extra=config.get("whatshap_haplotag", {}).get("extra", ""),
     log:
@@ -65,6 +65,6 @@ rule whatshap_haplotag:
     container:
         config.get("whatshap_haplotag", {}).get("container", config["default_container"])
     message:
-        "{rule}: do haplotagging on {input.bam}"
+        "{rule}: do haplotagging on {input.aln}"
     wrapper:
         "v6.0.0/bio/whatshap/haplotag"
