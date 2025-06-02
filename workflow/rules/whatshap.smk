@@ -8,6 +8,7 @@ rule whatshap_phase:
     input:
         vcf="snv_indels/deepsomatic_t_only/{sample}_{type}.vcf.gz",
         bam="alignment/pbmm2_align/{sample}_{type}.bam",
+        bai="alignment/pbmm2_align/{sample}_{type}.bam.bai",
         fasta=config.get("reference", {}).get("fasta", ""),
     output:
         vcf="annotation/whatshap_phase/{sample}_{type}.phased.vcf.gz",
@@ -39,6 +40,7 @@ rule whatshap_haplotag:
     input:
         vcf="annotation/whatshap_phase/{sample}_{type}.phased.vcf.gz",
         bam="alignment/pbmm2_align/{sample}_{type}.bam",
+        bai="alignment/pbmm2_align/{sample}_{type}.bam.bai",
         fasta=config.get("reference", {}).get("fasta", ""),
     output:
         bam="annotation/whatshap_haplotag/{sample}_{type}.haplotagged.bam",
