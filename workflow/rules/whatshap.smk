@@ -38,10 +38,12 @@ rule whatshap_phase:
 
 rule whatshap_haplotag:
     input:
+        "annotation/whatshap_phase/{sample}_{type}.phased.vcf.gz.tbi",
+        "alignment/pbmm2_align/{sample}_{type}.bam.bai",
+        config.get("reference",{}).get("fai",""),
         vcf="annotation/whatshap_phase/{sample}_{type}.phased.vcf.gz",
-        bam="alignment/pbmm2_align/{sample}_{type}.bam",
-        bai="alignment/pbmm2_align/{sample}_{type}.bam.bai",
-        fasta=config.get("reference", {}).get("fasta", ""),
+        aln="alignment/pbmm2_align/{sample}_{type}.bam",
+        ref=config.get("reference", {}).get("fasta", ""),
     output:
         bam="annotation/whatshap_haplotag/{sample}_{type}.haplotagged.bam",
     params:
