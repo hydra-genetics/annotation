@@ -40,7 +40,7 @@ rule whatshap_haplotag:
     input:
         "annotation/whatshap_phase/{sample}_{type}.phased.vcf.gz.tbi",
         "alignment/pbmm2_align/{sample}_{type}.bam.bai",
-        config.get("reference",{}).get("fai",""),
+        config.get("reference", {}).get("fai", ""),
         vcf="annotation/whatshap_phase/{sample}_{type}.phased.vcf.gz",
         aln="alignment/pbmm2_align/{sample}_{type}.bam",
         ref=config.get("reference", {}).get("fasta", ""),
