@@ -6,9 +6,10 @@ __license__ = "GPL-3"
 
 rule whatshap_phase:
     input:
-        vcf="snv_indels/deepsomatic_t_only/{sample}_{type}.vcf.gz",
+        bai="alignment/pbmm2_align/{sample}_{type}.bam.bai",
         bam="alignment/pbmm2_align/{sample}_{type}.bam",
         fasta=config.get("reference", {}).get("fasta", ""),
+        vcf="snv_indels/deepsomatic_t_only/{sample}_{type}.vcf.gz",
     output:
         vcf="annotation/whatshap_phase/{sample}_{type}.phased.vcf.gz",
     params:
@@ -37,11 +38,14 @@ rule whatshap_phase:
 
 rule whatshap_haplotag:
     input:
+        "annotation/whatshap_phase/{sample}_{type}.phased.vcf.gz.tbi",
+        "alignment/pbmm2_align/{sample}_{type}.bam.bai",
+        config.get("reference", {}).get("fai", ""),
+        aln="alignment/pbmm2_align/{sample}_{type}.bam",
+        ref=config.get("reference", {}).get("fasta", ""),
         vcf="annotation/whatshap_phase/{sample}_{type}.phased.vcf.gz",
-        bam="alignment/pbmm2_align/{sample}_{type}.bam",
-        fasta=config.get("reference", {}).get("fasta", ""),
     output:
-        bam="annotation/whatshap_haplotag/{sample}_{type}.haplotagged.bam",
+        "annotation/whatshap_haplotag/{sample}_{type}.haplotagged.bam",
     params:
         extra=config.get("whatshap_haplotag", {}).get("extra", ""),
     log:
@@ -61,6 +65,6 @@ rule whatshap_haplotag:
     container:
         config.get("whatshap_haplotag", {}).get("container", config["default_container"])
     message:
-        "{rule}: do haplotagging on {input.bam}"
+        "{rule}: do haplotagging on {input.aln}"
     wrapper:
         "v6.0.0/bio/whatshap/haplotag"
