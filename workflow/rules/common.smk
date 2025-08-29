@@ -49,6 +49,7 @@ wildcard_constraints:
     type="N|T|R",
     tag="[^.]+",
 
+
 def compile_output_list(wildcards):
     files = {
         "qc/add_mosdepth_coverage_to_gvcf": [".mosdepth.g.vcf.gz"],
