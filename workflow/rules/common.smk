@@ -48,7 +48,7 @@ wildcard_constraints:
     sample="|".join(get_samples(samples)),
     type="N|T|R",
     tag="[^.]+",
-
+    file="^annotation/.+",
 
 def compile_output_list(wildcards):
     files = {
