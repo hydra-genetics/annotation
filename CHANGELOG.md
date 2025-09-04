@@ -3,12 +3,6 @@
 ## [1.2.0](https://www.github.com/hydra-genetics/annotation/compare/v1.1.0...v1.2.0) (2025-09-04)
 
 
-### Features
-
-* add whatshap entries using hydra-genetics ([413cde5](https://www.github.com/hydra-genetics/annotation/commit/413cde58151746b3ecc72216bdc22f8ed16f364f))
-* add whatshap.smk ([ead4101](https://www.github.com/hydra-genetics/annotation/commit/ead410154aded148383cf938df1f5389ea3e475d))
-* constrain the file wildcard to annotation module paths ([c9c5241](https://www.github.com/hydra-genetics/annotation/commit/c9c5241e974df83e2bd1a6125daecd9029c672ca))
-
 
 ### Bug Fixes
 
