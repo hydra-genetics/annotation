@@ -344,3 +344,4 @@ Annotates vcf file using Ensemble Variant Effect Predictor (VEP). Uses local cac
 #RESOURCESSCHEMA__vep#
 
 ---
+
