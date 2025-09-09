@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.2.0](https://www.github.com/hydra-genetics/annotation/compare/v1.1.0...v1.2.0) (2025-09-04)
+
+
+
+### Bug Fixes
+
+* add all required/change names of inputs in whatshap_haplotag (as per wrapper) ([c11061d](https://www.github.com/hydra-genetics/annotation/commit/c11061df706a39ccb17b1fbe4d2ad239eeff033f))
+* add bai input ([fd70524](https://www.github.com/hydra-genetics/annotation/commit/fd70524252b46241da548ee6cbb2da5393a52206))
+* add extra to whatshap_phase command ([f87731c](https://www.github.com/hydra-genetics/annotation/commit/f87731c15b88435e0955e4bf749997baadc2de37))
+* add separate whatshap phase and whatshap haplotag entries ([32517ea](https://www.github.com/hydra-genetics/annotation/commit/32517ea695d90d0352f27c60628e530a2c975cab))
+* correct benchmark filename in whatshap_haplotag ([8e57e8d](https://www.github.com/hydra-genetics/annotation/commit/8e57e8dcf4a500bee171b477a0f4bc446081976a))
+* correct benchmark filename in whatshap_phase ([ba3e873](https://www.github.com/hydra-genetics/annotation/commit/ba3e873e4a1a48e99e658b04f6eeabb5ba02a2bd))
+* correct log filename in whatshap_haplotag ([2c3a81d](https://www.github.com/hydra-genetics/annotation/commit/2c3a81df649f5cb5ba5816ad770e0d9df7a2243f))
+* correct log filename in whatshap_phase ([fda07bf](https://www.github.com/hydra-genetics/annotation/commit/fda07bf872458f8e9ebba5c7f70e9e871ecbac76))
+* make SAMPLE to SAMPLES more precise ([71ee702](https://www.github.com/hydra-genetics/annotation/commit/71ee702553cd4df11a56f2fc6495bf692bcdf86b))
+* remove special output name/handle (bam) ([74f0ee5](https://www.github.com/hydra-genetics/annotation/commit/74f0ee5710fd6d10fd8508a3eccb9959cd2bc530))
+* remove whatshap rules ([de1dea7](https://www.github.com/hydra-genetics/annotation/commit/de1dea791a9e0cdc20fc3179f647f78e4b376a1c))
+
+
+### Documentation
+
+* Update README.md ([d46d415](https://www.github.com/hydra-genetics/annotation/commit/d46d41545138c509a0a4014bb19bfa8f51e59531))
+* update workflow/schemas/rules.schema.yaml ([9fe7834](https://www.github.com/hydra-genetics/annotation/commit/9fe7834e5adfed8edbe3da3929756885012aba53))
+* update workflow/schemas/rules.schema.yaml ([113abc4](https://www.github.com/hydra-genetics/annotation/commit/113abc48095f81badbf1886c7b6ff41fa3c45b25))
+
 ## [1.1.0](https://www.github.com/hydra-genetics/annotation/compare/v1.0.1...v1.1.0) (2024-10-02)
 
 
