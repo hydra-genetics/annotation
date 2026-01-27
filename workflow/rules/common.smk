@@ -59,7 +59,7 @@ def compile_output_list(wildcards):
             ".ensembled.vep_annotated.artifact_annotated.hotspot_annotated.background_annotated.vcf",
             ".ensembled.vep_annotated.artifact_annotated.hotspot_annotated.background_annotated.include.exon.filter.snv_hard_filter.codon_snvs.sorted.vep_annotated.vcf",
             ".ensembled.bcftools_annotated.vcf.gz",
-            ".ensembled.bcftools_norm.echtvar_annotated.vcf.gz"
+            ".ensembled.bcftools_norm.echtvar_annotated.vcf.gz",
         ],
         "cnv_sv/stranger": [".stranger.vcf"],
         "cnv_sv/svdb_query": [".svdb_query.annotate_cnv.cnv_amp_genes.vcf.gz"],

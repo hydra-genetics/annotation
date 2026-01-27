@@ -17,7 +17,7 @@ rule echtvar_anno:
     benchmark:
         repeat(
             "{file}.bcftools_norm.echtvar_annotated.vcf.gz.benchmark.tsv",
-            config.get("echtvar_anno", {}).get("benchmark_repeats", 1)
+            config.get("echtvar_anno", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("echtvar_anno", {}).get("threads", config["default_resources"]["threads"])
     resources:
@@ -35,4 +35,3 @@ rule echtvar_anno:
         "{params.echtvar_files} "
         "{input.vcf} "
         "{output.vcf} &> {log}"
-        
