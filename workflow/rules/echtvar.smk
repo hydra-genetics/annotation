@@ -8,7 +8,7 @@ rule echtvar_anno:
     input:
         vcf="{file}.bcftools_norm.vcf.gz",
     output:
-        vcf="{file}.bcftools_norm.echtvar_annotated.vcf.gz",
+        vcf=temp("{file}.bcftools_norm.echtvar_annotated.vcf.gz"),
     params:
         echtvar_files=lambda wildcards: " ".join([f"-e {db}" for db in config.get("echtvar_anno", {}).get("databases", [])]),
         extra=config.get("echtvar_anno", {}).get("extra", ""),
@@ -29,9 +29,10 @@ rule echtvar_anno:
     container:
         config.get("echtvar_anno", {}).get("container", config["default_container"])
     message:
-        "{rule}: Anotate variants in {input.vcf} with echtvar"
+        "{rule}: Annotate variants in {input.vcf} with echtvar"
     shell:
         "echtvar anno "
         "{params.echtvar_files} "
+        "{params.extra} "
         "{input.vcf} "
         "{output.vcf} &> {log}"
