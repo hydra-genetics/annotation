@@ -209,8 +209,7 @@ properties:
         properties:
           vcf:
             type: string
-            description: echctvar annotated gzipped vcf file
-
+            description: echtvar annotated gzipped vcf file
 
   hotspot_annotation:
     type: object
