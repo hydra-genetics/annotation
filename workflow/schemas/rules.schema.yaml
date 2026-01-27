@@ -191,6 +191,27 @@ properties:
             type: string
             description: a tsv file with position specific background noise levels for one sequencing run
 
+  echtvar_anno:
+    type: object
+    description: input and output parameters for echtvar_anno
+    properties:
+      input:
+        type: object
+        description: list of inputs
+        properties:
+          vcf:
+            type: string
+            description: normalised gzipped vcf file
+
+      output:
+        type: object
+        description: list of outputs
+        properties:
+          vcf:
+            type: string
+            description: echctvar annotated gzipped vcf file
+
+
   hotspot_annotation:
     type: object
     description: input and output parameters for hotspot_annotation
@@ -340,3 +361,4 @@ properties:
           vcf:
             type: string
             description: annotated vcf file
+

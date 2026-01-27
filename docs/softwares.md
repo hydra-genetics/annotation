@@ -207,6 +207,30 @@ Calculated the background noise level in a specific sequencing run based on geno
 
 ---
 
+
+## [echtvar_anno](https://github.com/brentp/echtvar)
+Annotate a `vcf` file using echtvar anno. The annotation is obtained from a supplied echtvar annotation database created by echtvar encode.
+
+### :snake: Rule
+
+#SNAKEMAKE_RULE_SOURCE__echtvar__echtvar_anno#
+
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__echtvar__echtvar_anno#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__echtvar_anno#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__echtvar_anno#
+
+---
+
 ## [hotspot_annotation](https://github.com/hydra-genetics/annotation/blob/develop/workflow/scripts/add_hotspot_information.py)
 In house script that annotates small variants in a vcf file with hotspot information from a text file describing different hotspot variants of interest. 
 
@@ -344,4 +368,5 @@ Annotates vcf file using Ensemble Variant Effect Predictor (VEP). Uses local cac
 #RESOURCESSCHEMA__vep#
 
 ---
+
 

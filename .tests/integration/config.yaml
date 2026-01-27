@@ -14,6 +14,12 @@ bcftools_annotate:
   output_type: "z"
   annotation_string: "-m DB"
 
+echtvar_anno:
+  container: "docker://hydragenetics/echtvar:0.2.2"
+  databases:
+    - "reference/echtvar_db.zip"
+    - "reference/test22_db.zip"
+
 hotspot_annotation:
   hotspots: "reference/hotspots_combined_small.csv"
   chr_translation_file: "reference/hotspot_report.chr.translation.hg19"
