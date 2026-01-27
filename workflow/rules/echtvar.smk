@@ -29,7 +29,7 @@ rule echtvar_anno:
     container:
         config.get("echtvar_anno", {}).get("container", config["default_container"])
     message:
-        "{rule}: Anotate variants in {input.vcf} with echtvar"
+        "{rule}: Annotate variants in {input.vcf} with echtvar"
     shell:
         "echtvar anno "
         "{params.echtvar_files} "
