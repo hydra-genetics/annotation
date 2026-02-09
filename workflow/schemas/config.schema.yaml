@@ -137,7 +137,25 @@ properties:
       container:
         type: string
         description: name or path to docker/singularity container
-
+  
+  echtvar_anno:
+    type: object
+    description: parameters for echtvar_anno
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      databases:
+        type: array
+        items:
+          type: string
+        description: list of echtvar database files (.zip) for annotation
+      extra:
+        type: string
+        description: parameters that should be forwarded
   hotspot_annotation:
     type: object
     description: parameters for hotspot_annotation
