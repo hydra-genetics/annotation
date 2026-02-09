@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://www.github.com/hydra-genetics/annotation/compare/v1.2.0...v1.3.0) (2026-02-09)
+
+
+### Features
+
+* add echtvar anno ([14d51d0](https://www.github.com/hydra-genetics/annotation/commit/14d51d055479d95f536c7d4b543ff5a0502119ff))
+
 ## [1.2.0](https://www.github.com/hydra-genetics/annotation/compare/v1.1.0...v1.2.0) (2025-09-04)
 
 
