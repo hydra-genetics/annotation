@@ -53,6 +53,8 @@ class TestUnitUtils(unittest.TestCase):
             "chr1\t12645": "",  # Additional variant in another codon
         }
 
+        self._test_annotation(test_table, result, "AA")
+
     def test_add_multi_snv_in_codon_negative_strand(self):
         from add_multi_snv_in_codon import add_multi_snv_in_codon
 
