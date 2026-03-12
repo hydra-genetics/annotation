@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.3.1](https://www.github.com/hydra-genetics/annotation/compare/v1.3.0...v1.3.1) (2026-03-12)
+
+
+### Bug Fixes
+
+* **add_multi_snv_in_codon.py:** fix bug of reference base in negative strand genes ([fec227a](https://www.github.com/hydra-genetics/annotation/commit/fec227a0e8a90a2900d1026e70da5a2a936defb9))
+
 ## [1.3.0](https://www.github.com/hydra-genetics/annotation/compare/v1.2.0...v1.3.0) (2026-02-09)
 
 
