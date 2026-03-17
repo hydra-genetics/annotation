@@ -109,3 +109,65 @@ class TestUnitUtils(unittest.TestCase):
                 self.assertEqual(variant.info.get("AA"), "Asn1Gly")
                 found_multi = True
         self.assertTrue(found_multi)
+
+    def test_add_multi_snv_in_codon_phasing(self):
+        from add_multi_snv_in_codon import add_multi_snv_in_codon
+
+        fasta_path = os.path.join(self.tempdir, "phasing.fasta")
+        with open(fasta_path, "w") as f:
+            f.write(">chrPhase\nATGCGGTGA\n")  # Met (ATG), Gly (GGC), * (TGA)
+        import pysam
+        pysam.faidx(fasta_path)
+
+        in_vcf_path = os.path.join(self.tempdir, "phasing.vcf")
+        with open(in_vcf_path, "w") as f:
+            f.write("##fileformat=VCFv4.2\n")
+            f.write('##INFO=<ID=CSQ,Number=.,Type=String,Description="Format: Allele|...|HGVSc|...|CDS_position|...">\n')
+            f.write('##INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency">\n')
+            f.write('##INFO=<ID=Artifact,Number=1,Type=String,Description="Artifact">\n')
+            f.write('##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">\n')
+            f.write('##FORMAT=<ID=PS,Number=1,Type=Integer,Description="Phase set">\n')
+            f.write("#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\tSAMPLE\n")
+
+            # Codon 2: GGC (pos 4,5,6)
+            # Variant 1: G4>A (c.4G>A)
+            # Variant 2: G5>A (c.5G>A)
+            # Variant 3: G4>T (c.4G>T) - different PS
+            # Variant 4: G5>T (c.5G>T) - different phase
+
+            csq_v1 = "A|missense|MOD|G|1|T|T1|pc|1/1||G:c.4G>A||4|4|2||Ggc/Agc||-1||||||"
+            csq_v2 = "A|missense|MOD|G|1|T|T1|pc|1/1||G:c.5G>A||5|5|2||gGc/gAc||-1||||||"
+            csq_v3 = "T|missense|MOD|G|1|T|T1|pc|1/1||G:c.4G>T||4|4|2||Ggc/Tgc||-1||||||"
+            csq_v4 = "T|missense|MOD|G|1|T|T1|pc|1/1||G:c.5G>T||5|5|2||gGc/gTc||-1||||||"
+
+            # Phased together (should combine)
+            f.write(f"chrPhase\t4\t.\tG\tA\t100\tPASS\tAF=0.5;Artifact=0,;CSQ={csq_v1}\tGT:PS\t0|1:100\n")
+            f.write(f"chrPhase\t5\t.\tG\tA\t100\tPASS\tAF=0.5;Artifact=0,;CSQ={csq_v2}\tGT:PS\t0|1:100\n")
+
+            # Phased differently (should NOT combine)
+            csq_v_diff_p1 = "A|missense|MOD|G|1|T|T1|pc|1/1||G:c.7T>A||7|7|3||Tga/Aga||-1||||||"
+            f.write(f"chrPhase\t7\t.\tT\tA\t100\tPASS\tAF=0.5;Artifact=0,;CSQ={csq_v_diff_p1}\tGT:PS\t0|1:100\n")
+            csq_v_diff_p2 = "T|missense|MOD|G|1|T|T1|pc|1/1||G:c.8G>T||8|8|3||tGa/tTa||-1||||||"
+            f.write(f"chrPhase\t8\t.\tG\tT\t100\tPASS\tAF=0.5;Artifact=0,;CSQ={csq_v_diff_p2}\tGT:PS\t1|0:100\n")
+
+            # Different Phase Set (should NOT combine)
+            csq_v_diff_ps1 = "T|missense|MOD|G|1|T|T1|pc|1/1||G:c.10G>T||10|10|4||||-1||||||"
+            f.write(f"chrPhase\t10\t.\tG\tT\t100\tPASS\tAF=0.5;Artifact=0,;CSQ={csq_v_diff_ps1}\tGT:PS\t0|1:100\n")
+            csq_v_diff_ps2 = "T|missense|MOD|G|1|T|T1|pc|1/1||G:c.11G>T||11|11|4||||-1||||||"
+            f.write(f"chrPhase\t11\t.\tG\tT\t100\tPASS\tAF=0.5;Artifact=0,;CSQ={csq_v_diff_ps2}\tGT:PS\t0|1:200\n")
+
+        out_vcf_path = os.path.join(self.tempdir, "phased_out.vcf")
+        add_multi_snv_in_codon(fasta_path, open(in_vcf_path), open(out_vcf_path, "w"), 0.0, 1000, "")
+
+        # Verify results
+        result = VariantFile(out_vcf_path)
+        combined_positions = []
+        for v in result:
+            if "AA" in v.info:
+                combined_positions.append(v.start + 1)
+
+        # Should only have combined variant at position 4 (from pos 4 and 5)
+        # Positions 7/8 (opposing phase) and 10/11 (different PS) should NOT be here
+        self.assertIn(4, combined_positions)
+        self.assertNotIn(7, combined_positions)
+        self.assertNotIn(10, combined_positions)
