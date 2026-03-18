@@ -115,7 +115,7 @@ class TestUnitUtils(unittest.TestCase):
 
         fasta_path = os.path.join(self.tempdir, "phasing.fasta")
         with open(fasta_path, "w") as f:
-            f.write(">chrPhase\nATGGCGTGAGGC\n")  # Met (ATG), Gly (GGC), * (TGA), Gly (GGC)
+            f.write(">chrPhase\nATGGGCTGAGGC\n")  # Met (ATG), Gly (GGC), * (TGA), Gly (GGC)
         import pysam
         pysam.faidx(fasta_path)
 
