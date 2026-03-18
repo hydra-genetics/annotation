@@ -141,7 +141,6 @@ jobs:
           cache: "pip"
           cache-dependency-path: |
             requirements.txt
-            requirements.test.txt
       - name: Free disk space
         uses: jlumbroso/free-disk-space@v1.3.1
         with:
@@ -166,7 +165,6 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install -r requirements.test.txt
       - name: Integration test - small dataset
         working-directory: .tests/integration
         run: |
