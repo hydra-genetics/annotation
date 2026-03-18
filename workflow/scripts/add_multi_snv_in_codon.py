@@ -42,8 +42,8 @@ def add_multi_snv_in_codon(in_fastq_ref, in_vcf, out_vcf, af_limit, artifact_lim
                 gt_idx = i
             elif f == "PS":
                 ps_idx = i
-        gt = sample_list[gt_idx] if gt_idx != -1 else "./."
-        ps = sample_list[ps_idx] if ps_idx != -1 else None
+        gt = sample_list[gt_idx] if gt_idx != -1 and gt_idx < len(sample_list) else "./."
+        ps = sample_list[ps_idx] if ps_idx != -1 and ps_idx < len(sample_list) and sample_list[ps_idx] != "." else None
         phased = "|" in gt
         haps = set()
         if phased:
