@@ -30,6 +30,28 @@ def add_multi_snv_in_codon(in_fastq_ref, in_vcf, out_vcf, af_limit, artifact_lim
 
     dna_opposite = {"A": "T", "T": "A", "G": "C", "C": "G", "X": "X"}
 
+    def get_phase_info(lline):
+        if len(lline) < 10:
+            return {"phased": False, "ps": None, "haps": set()}
+        format_list = lline[8].split(":")
+        sample_list = lline[9].split(":")
+        gt_idx = -1
+        ps_idx = -1
+        for i, f in enumerate(format_list):
+            if f == "GT":
+                gt_idx = i
+            elif f == "PS":
+                ps_idx = i
+        gt = sample_list[gt_idx] if gt_idx != -1 and gt_idx < len(sample_list) else "./."
+        ps = sample_list[ps_idx] if ps_idx != -1 and ps_idx < len(sample_list) and sample_list[ps_idx] != "." else None
+        phased = "|" in gt
+        haps = set()
+        if phased:
+            for i, val in enumerate(gt.split("|")):
+                if val == "1":
+                    haps.add(i)
+        return {"phased": phased, "ps": ps, "haps": haps}
+
     '''Get number of caller'''
     nr_callers = 0
     if artifacts_filename != "":
@@ -106,7 +128,27 @@ def add_multi_snv_in_codon(in_fastq_ref, in_vcf, out_vcf, af_limit, artifact_lim
         aa_nr = math.ceil(gene_pos / 3.0)
         chrom = candidate[0]
         pos = int(candidate[1])
-        if chrom == prev_chrom and pos - prev_pos <= 2 and pos - prev_pos > 0 and aa_nr == prev_aa_nr:
+
+        # Phasing check:
+        # If any variant is phased, we only combine them if they are on the same haplotype.
+        # This requires that:
+        # 1. Both variants are phased ('|' in GT).
+        # 2. Both variants share the same Phase Set (PS).
+        # 3. They share at least one haplotype (e.g., both carry the alt allele on haplotype 1).
+        # If any of these are False, the variants are considered incompatible for MNV creation.
+        phasing_compatible = True
+        if prev_candidate != []:
+            c_phase = get_phase_info(candidate)
+            p_phase = get_phase_info(prev_candidate)
+            if c_phase["phased"] or p_phase["phased"]:
+                if not c_phase["phased"] or not p_phase["phased"]:
+                    phasing_compatible = False
+                elif c_phase["ps"] != p_phase["ps"]:
+                    phasing_compatible = False
+                elif not (c_phase["haps"] & p_phase["haps"]):
+                    phasing_compatible = False
+
+        if chrom == prev_chrom and pos - prev_pos <= 2 and pos - prev_pos > 0 and aa_nr == prev_aa_nr and phasing_compatible:
             if Multibp_list != [] and Multibp_list[-1][1][0] == prev_chrom and int(Multibp_list[-1][1][1]) == prev_pos:
                 Multibp_list[-1].append(candidate)
             else:
