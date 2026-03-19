@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.4.0](https://github.com/hydra-genetics/annotation/compare/v1.3.1...v1.4.0) (2026-03-19)
+
+
+### Features
+
+* added logic for phasing when input vcf id phased ([33e0204](https://github.com/hydra-genetics/annotation/commit/33e020441b0c49a9791ce8b4de9d3b3b76058a28))
+* added logic for phasing when input vcf id phased ([b256172](https://github.com/hydra-genetics/annotation/commit/b256172325442d7d0655267e76e69790ca457079))
+
+
+### Bug Fixes
+
+* rabbit comment ([a0ea1da](https://github.com/hydra-genetics/annotation/commit/a0ea1daf3e3b960cdcdfc6ac79d1e39c26233c52))
+
 ### [1.3.1](https://www.github.com/hydra-genetics/annotation/compare/v1.3.0...v1.3.1) (2026-03-12)
 
 
