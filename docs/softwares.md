@@ -26,6 +26,11 @@ In house script that adds coverage per position based on coverage data from mosd
 ## [add_multi_snv_in_codon](https://github.com/hydra-genetics/annotation/blob/develop/workflow/scripts/add_multi_snv_in_codon.py)
 In house script that goes through a vcf file and based on the VEP annotation finds multiple SNVs in the same codon. When these are found a merged variant are added to the vcf file. After this step the vcf file should be sorted and then reannotated with vep.
 
+When phased data is present in the input VCF (indicated by the `|` genotype separator and `PS` tags), the script respects this phasing to ensure biological accuracy:
+- Only variants sharing the same **Phase Set (PS)** are eligible for merging.
+- Variants are only merged if they reside on the same **Haplotype** (e.g., both carry the alternate allele on the same strand).
+- If variants are unphased, the script falls back to its original proximity-based logic.
+
 ### :snake: Rule
 
 #SNAKEMAKE_RULE_SOURCE__add_multi_snv_in_codon__add_multi_snv_in_codon#
