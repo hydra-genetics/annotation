@@ -244,7 +244,7 @@ def add_multi_snv_in_codon(in_fastq_ref, in_vcf, out_vcf, af_limit, artifact_lim
                 alt_AA = AA
         aa_nr = int(math.ceil(gene_pos / 3.0))
         out_vcf.write(chrom + "\t" + str(pos) + "\t.\t" + "".join(ref) + "\t" + "".join(alt) + "\t.\tPASS\t")
-        out_vcf.write("Artifact=-1")
+        out_vcf.write("AF=" + str(AF_min) + ";Artifact=-1")
         i = 0
         while i < nr_callers:
             out_vcf.write(",-1")
