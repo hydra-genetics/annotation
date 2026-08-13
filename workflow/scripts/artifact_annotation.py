@@ -70,12 +70,20 @@ def add_artifact_annotation_data(in_vcf_filename, artifacts, out_vcf_filename):
         lline = line.strip().split("\t")
         chrom = lline[0]
         pos = lline[1]
-        type = "INDEL"
         ref = lline[3]
         alt = lline[4]
         if len(ref) == 1 and len(alt) == 1:
-            type = "SNV"
-        key = chrom + "_" + pos + "_" + type
+            specific_type = f"{ref}>{alt}"
+            generic_type = "SNV"
+        elif len(alt) > len(ref):
+            specific_type = "insertion"
+            generic_type = "INDEL"
+        else:
+            specific_type = "deletion"
+            generic_type = "INDEL"
+        key = chrom + "_" + pos + "_" + specific_type
+        if key not in artifact_dict:
+            key = chrom + "_" + pos + "_" + generic_type
         filter = lline[6]
         format_list = lline[8].split(":")
         format_data = lline[9].split(":")
