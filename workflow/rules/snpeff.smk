@@ -31,4 +31,4 @@ rule snpeff:
     message:
         "{rule}: annotate {input.vcf} with SnpEff"
     wrapper:
-        "0.85.0/bio/snpeff/annotate"
+        "v9.16.0/bio/snpeff/annotate"

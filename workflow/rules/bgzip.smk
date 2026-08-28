@@ -51,4 +51,4 @@ rule tabix_vcf:
     message:
         "{rule}: tabix index {input}"
     wrapper:
-        "0.79.0/bio/tabix"
+        "v9.16.0/bio/tabix/index"
