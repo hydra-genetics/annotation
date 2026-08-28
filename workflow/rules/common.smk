@@ -3,6 +3,8 @@ __copyright__ = "Copyright 2021, Jonas A"
 __email__ = "jonas.almlof@igp.uu.se"
 __license__ = "GPL-3"
 
+import re
+
 import pandas as pd
 from snakemake.utils import validate
 from snakemake.utils import min_version
@@ -11,7 +13,7 @@ from hydra_genetics.utils.resources import load_resources
 from hydra_genetics.utils.samples import *
 from hydra_genetics.utils.units import *
 
-min_version("7.13.0")
+min_version("9.0.0")
 
 ### Set and validate config file
 
@@ -45,7 +47,7 @@ wildcard_constraints:
     barcode="[A-Z+]+",
     flowcell="[A-Z0-9]+",
     lane="L[0-9]+",
-    sample="|".join(get_samples(samples)),
+    sample="|".join(re.escape(s) for s in get_samples(samples)),
     type="N|T|R",
     tag="[^.]+",
 

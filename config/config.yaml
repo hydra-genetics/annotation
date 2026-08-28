@@ -2,4 +2,5 @@ resources: "resources.yaml"
 samples: "samples.tsv"
 units: "units.tsv"
 
-default_container: "docker://hydragenetics/common:0.1.9"
+# ToDo change to proper container
+default_container: "docker://hydragenetics/common:4.0.0Python3.12"

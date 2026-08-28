@@ -67,4 +67,4 @@ rule bcftools_sort:
     message:
         "{rule}: sort vcf {input.vcf}"
     wrapper:
-        "0.79.0/bio/bcftools/sort"
+        "v9.16.0/bio/bcftools/sort"
