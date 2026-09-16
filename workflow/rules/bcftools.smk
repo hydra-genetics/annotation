@@ -11,7 +11,7 @@ rule bcftools_annotate:
     output:
         vcf=temp("{file}.bcftools_annotated.vcf.gz"),
     params:
-        annotation_db=config.get("bcftools_annotate", {}).get("annotation_db", ""),
+        annotation_db=lambda wildcards: get_config_value("bcftools_annotate", "annotation_db"),
         output_type=config.get("bcftools_annotate", {}).get("output_type", "z"),
         annotation_string=config.get("bcftools_annotate", {}).get("annotation_string", "-m DB"),
         extra=config.get("bcftools_annotate", {}).get("extra", ""),
@@ -67,4 +67,4 @@ rule bcftools_sort:
     message:
         "{rule}: sort vcf {input.vcf}"
     wrapper:
-        "0.79.0/bio/bcftools/sort"
+        "v9.16.0/bio/bcftools/sort"

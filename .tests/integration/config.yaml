@@ -2,7 +2,7 @@ resources: "resources.yaml"
 samples: "samples.tsv"
 units: "units.tsv"
 
-default_container: "docker://hydragenetics/common:0.1.9"
+default_container: "docker://hydragenetics/common:4.0.0Python3.12"
 
 reference:
   fasta: "reference/WASH7P.fna"
@@ -30,7 +30,7 @@ simple_sv_annotation:
   fusion_pairs: "reference/fusion_pairs.txt"
 
 snpeff:
-  container: "docker://hydragenetics/snpeff:5.0"
+  container: "docker://hydragenetics/snpeff:5.0-1"
   db: "SnpEff/GRCh38.99"
 
 stranger:

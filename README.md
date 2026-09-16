@@ -2,12 +2,7 @@
 
 Snakemake module containing processing steps for variant annotation.
 
-![Lint](https://github.com/hydra-genetics/annotation/actions/workflows/lint.yaml/badge.svg?branch=develop)
-![Snakefmt](https://github.com/hydra-genetics/annotation/actions/workflows/snakefmt.yaml/badge.svg?branch=develop)
-![snakemake dry run](https://github.com/hydra-genetics/annotation/actions/workflows/snakemake-dry-run.yaml/badge.svg?branch=develop)
-![integration test](https://github.com/hydra-genetics/annotation/actions/workflows/integration.yaml/badge.svg?branch=develop)
-![pycodestyle](https://github.com/hydra-genetics/annotation/actions/workflows/pycodestyle.yaml/badge.svg?branch=develop)
-![pytest](https://github.com/hydra-genetics/annotation/actions/workflows/pytest.yaml/badge.svg?branch=develop)
+![CI](https://github.com/hydra-genetics/annotation/actions/workflows/ci.yaml/badge.svg?branch=develop)
 
 [![License: GPL-3](https://img.shields.io/badge/License-GPL3-yellow.svg)](https://opensource.org/licenses/gpl-3.0.html)
 
@@ -19,12 +14,13 @@ The module consists of annotation processing steps, such as vep and artifact ann
 
 In order to use this module, the following dependencies are required:
 
-[![hydra-genetics](https://img.shields.io/badge/hydragenetics-0.15.0-blue)](https://github.com/hydra-genetics/)
+<!-- TODO: hydra-genetics is installed from a git ref until a PyPI release supports
+     Snakemake 9 / Python 3.12; update this badge when requirements.txt is pinned. -->
+[![hydra-genetics](https://img.shields.io/badge/hydragenetics-3.4.1.dev-blue)](https://github.com/hydra-genetics/)
 [![pandas](https://img.shields.io/badge/pandas-1.3.1-blue)](https://pandas.pydata.org/)
-[![python](https://img.shields.io/badge/python-3.8-blue)](https://www.python.org/)
-[![snakemake](https://img.shields.io/badge/snakemake-7.13.0-blue)](https://snakemake.readthedocs.io/en/stable/)
-[![singularity](https://img.shields.io/badge/singularity-3.0.0-blue)](https://sylabs.io/docs/)
-[![drmaa](https://img.shields.io/badge/drmaa-0.7.9-blue)](https://pypi.org/project/drmaa/)
+[![python](https://img.shields.io/badge/python-3.12-blue)](https://www.python.org/)
+[![snakemake](https://img.shields.io/badge/snakemake-9.0.0-blue)](https://snakemake.readthedocs.io/en/stable/)
+[![apptainer](https://img.shields.io/badge/apptainer-1.4.5-blue)](https://apptainer.org/)
 [![tabulate](https://img.shields.io/badge/tabulate-0.8.10-blue)](https://pypi.org/project/tabulate/)
 
 ## :school_satchel: Preparations
@@ -65,7 +61,7 @@ The workflow repository contains a small test dataset `.tests/integration` which
 
 ```bash
 $ cd .tests/integration
-$ snakemake -s ../../Snakefile -j1 --configfile config.yaml --use-singularity
+$ snakemake -s ../../workflow/Snakefile -j1 --configfile config.yaml --software-deployment-method apptainer
 ```
 
 ## :rocket: Usage

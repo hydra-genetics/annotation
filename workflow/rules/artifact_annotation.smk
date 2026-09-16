@@ -6,7 +6,7 @@ __license__ = "GPL-3"
 
 rule artifact_annotation:
     input:
-        artifacts=config.get("reference", {}).get("artifacts", ""),
+        artifacts=lambda wildcards: get_config_value("reference", "artifacts"),
         vcf="{file}.vcf",
     output:
         vcf=temp("{file}.artifact_annotated.vcf"),

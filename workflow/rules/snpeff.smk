@@ -7,7 +7,7 @@ __license__ = "GPL-3"
 rule snpeff:
     input:
         vcf="{file}.vcf.gz",
-        db=config.get("snpeff", {}).get("db", ""),
+        db=lambda wildcards: get_config_value("snpeff", "db"),
         tabix="{file}.vcf.gz.tbi",
     output:
         calls=temp("{file}.snpeff_annotated.vcf.gz"),
@@ -31,4 +31,4 @@ rule snpeff:
     message:
         "{rule}: annotate {input.vcf} with SnpEff"
     wrapper:
-        "0.85.0/bio/snpeff/annotate"
+        "v9.16.0/bio/snpeff/annotate"

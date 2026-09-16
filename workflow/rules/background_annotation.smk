@@ -6,7 +6,7 @@ __license__ = "GPL-3"
 
 rule background_annotation:
     input:
-        background=config.get("reference").get("background", ""),
+        background=lambda wildcards: get_config_value("reference", "background"),
         vcf="{file}.vcf",
     output:
         vcf=temp("{file}.background_annotated.vcf"),

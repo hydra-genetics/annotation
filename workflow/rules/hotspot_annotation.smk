@@ -6,8 +6,8 @@ __license__ = "GPL-3"
 
 rule hotspot_annotation:
     input:
-        chr_mapping=config.get("hotspot_annotation", {}).get("chr_translation_file", ""),
-        hotspot=config.get("hotspot_annotation", {}).get("hotspots", ""),
+        chr_mapping=lambda wildcards: get_config_value("hotspot_annotation", "chr_translation_file"),
+        hotspot=lambda wildcards: get_config_value("hotspot_annotation", "hotspots"),
         vcf="{file}.vcf",
     output:
         vcf=temp("{file}.hotspot_annotated.vcf"),

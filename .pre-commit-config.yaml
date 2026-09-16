@@ -24,7 +24,8 @@ repos:
         name: snakemake-lint
         language: system
         entry: snakemake
-        args: ["--lint", "-n", "-s", "workflow/Snakefile", "--configfile", ".tests/integration/config.yaml"]
+        args: ["--lint", "-n", "-s", "workflow/Snakefile", "--configfile", ".tests/integration/config.yaml",
+               "--directory", ".tests/integration"]
         pass_filenames: false
         stages: [pre-push]
 
@@ -32,6 +33,7 @@ repos:
         name: snakemake-dry-run
         language: system
         entry: snakemake
-        args: ["-n", "-s", "workflow/Snakefile", "--configfile", ".tests/integration/config.yaml"]
+        args: ["-n", "-s", "workflow/Snakefile", "--configfile", ".tests/integration/config.yaml",
+               "--directory", ".tests/integration"]
         pass_filenames: false
         stages: [pre-push]
