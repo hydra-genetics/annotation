@@ -9,6 +9,7 @@ import pandas as pd
 from snakemake.utils import validate
 from snakemake.utils import min_version
 
+from hydra_genetics.utils.config import config_accessor
 from hydra_genetics.utils.resources import load_resources
 from hydra_genetics.utils.samples import *
 from hydra_genetics.utils.units import *
@@ -44,12 +45,15 @@ validate(units, schema="../schemas/units.schema.yaml")
 
 
 wildcard_constraints:
-    barcode="[A-Z+]+",
-    flowcell="[A-Z0-9]+",
+    barcode="[A-Z+-]+",
+    flowcell="[A-Z0-9-]+",
     lane="L[0-9]+",
     sample="|".join(re.escape(s) for s in get_samples(samples)),
     type="N|T|R",
     tag="[^.]+",
+
+
+get_config_value = config_accessor(config, module="annotation")
 
 
 def compile_output_list(wildcards):

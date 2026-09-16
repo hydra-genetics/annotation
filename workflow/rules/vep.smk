@@ -9,8 +9,8 @@ __license__ = "GPL-3"
 
 rule vep:
     input:
-        cache=config.get("vep", {}).get("vep_cache", ""),
-        fasta=config["reference"]["fasta"],
+        cache=lambda wildcards: get_config_value("vep", "vep_cache"),
+        fasta=lambda wildcards: get_config_value("reference", "fasta"),
         tabix="{file}.vcf.gz.tbi",
         vcf="{file}.vcf.gz",
     output:

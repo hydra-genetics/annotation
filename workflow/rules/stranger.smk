@@ -7,7 +7,7 @@ __license__ = "GPL-3"
 rule stranger:
     input:
         vcf="cnv_sv/expansionhunter/{sample}_{type}.vcf",
-        cat=config.get("stranger", {}).get("catalog", ""),
+        cat=lambda wildcards: get_config_value("stranger", "catalog"),
     output:
         vcf=temp("cnv_sv/stranger/{sample}_{type}.stranger.vcf"),
     params:

@@ -6,8 +6,8 @@ __license__ = "GPL-3"
 
 rule add_multi_snv_in_codon:
     input:
-        artifacts=config.get("reference", {}).get("artifacts", ""),
-        ref=config["reference"]["fasta"],
+        artifacts=lambda wildcards: get_config_value("reference", "artifacts"),
+        ref=lambda wildcards: get_config_value("reference", "fasta"),
         vcf="{path}/{sample}_{type}.{file_tags}.vcf",
     output:
         vcf=temp("{path}/{sample}_{type}.{file_tags}.codon_snvs.vcf"),

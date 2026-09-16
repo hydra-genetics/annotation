@@ -6,8 +6,8 @@ __license__ = "GPL-3"
 
 rule simple_sv_annotation:
     input:
-        fusion_pairs=config.get("simple_sv_annotation", {}).get("fusion_pairs", ""),
-        panel=config.get("simple_sv_annotation", {}).get("panel", ""),
+        fusion_pairs=lambda wildcards: get_config_value("simple_sv_annotation", "fusion_pairs"),
+        panel=lambda wildcards: get_config_value("simple_sv_annotation", "panel"),
         vcf="{path}/{sample}_{type}.{file_tags}.vcf.gz",
     output:
         vcf=temp("{path}/{sample}_{type}.{file_tags}.ss_annotated.vcf"),
