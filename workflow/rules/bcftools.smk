@@ -43,6 +43,43 @@ rule bcftools_annotate:
         "{input.vcf}) &> {log}"
 
 
+rule bcftools_annotate_custom:
+    input:
+        vcf="{file}.vcf.gz",
+        tbi="{file}.vcf.gz.tbi",
+    output:
+        vcf=temp("{file}.bcftools_annotate_custom.vcf.gz"),
+    params:
+        custom_command=config.get("bcftools_annotate_custom", {}).get("custom_command", ""),
+        output_type=config.get("bcftools_annotate_custom", {}).get("output_type", "z"),
+        extra=config.get("bcftools_annotate_custom", {}).get("extra", ""),
+    log:
+        "{file}.bcftools_annotate_custom.vcf.gz.log",
+    benchmark:
+        repeat(
+            "{file}.bcftools_annotate_custom.vcf.gz.benchmark.tsv",
+            config.get("bcftools_annotate_custom", {}).get("benchmark_repeats", 1),
+        )
+    threads: config.get("bcftools_annotate_custom", {}).get("threads", config["default_resources"]["threads"])
+    resources:
+        mem_mb=config.get("bcftools_annotate_custom", {}).get("mem_mb", config["default_resources"]["mem_mb"]),
+        mem_per_cpu=config.get("bcftools_annotate_custom", {}).get("mem_per_cpu", config["default_resources"]["mem_per_cpu"]),
+        partition=config.get("bcftools_annotate_custom", {}).get("partition", config["default_resources"]["partition"]),
+        threads=config.get("bcftools_annotate_custom", {}).get("threads", config["default_resources"]["threads"]),
+        time=config.get("bcftools_annotate_custom", {}).get("time", config["default_resources"]["time"]),
+    container:
+        config.get("bcftools_annotate_custom", {}).get("container", config["default_container"])
+    message:
+        "{rule}: bcftools annotate vcf {input.vcf} with custom command"
+    shell:
+        "(bcftools annotate "
+        "--output {output.vcf} "
+        "--output-type {params.output_type} "
+        "{params.custom_command} "
+        "{params.extra} "
+        "{input.vcf}) &> {log}"
+
+
 rule bcftools_sort:
     input:
         vcf="{file}.vcf",

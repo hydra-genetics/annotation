@@ -134,6 +134,28 @@ properties:
             type: string
             description: annotated vcf file
 
+  bcftools_annotate_custom:
+    type: object
+    description: input and output parameters for bcftools_annotate_custom
+    properties:
+      input:
+        type: object
+        description: list of inputs
+        properties:
+          vcf:
+            type: string
+            description: gzipped vcf file
+          tbi:
+            type: string
+            description: vcf index file
+      output:
+        type: object
+        description: list of outputs
+        properties:
+          vcf:
+            type: string
+            description: vcf file annotated using the custom bcftools annotate command
+
   bcftools_sort:
     type: object
     description: input and output parameters for bcftools_sort

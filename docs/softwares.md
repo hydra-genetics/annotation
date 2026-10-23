@@ -143,6 +143,29 @@ Annotate a `vcf` file using bcftools annotate. The annotation is obtained from a
 
 ---
 
+## [bcftools_annotate_custom](https://samtools.github.io/bcftools/bcftools.html#annotate)
+Annotate a `vcf` file using bcftools annotate with a fully user-defined set of options supplied through `custom_command`, e.g. annotation file, columns and header lines.
+
+### :snake: Rule
+
+#SNAKEMAKE_RULE_SOURCE__bcftools__bcftools_annotate_custom#
+
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__bcftools__bcftools_annotate_custom#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__bcftools_annotate_custom#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__bcftools_annotate_custom#
+
+---
+
 ## [bcftools_sort](https://samtools.github.io/bcftools/bcftools.html#sort)
 Sort a `vcf` file using bcftools sort. 
 

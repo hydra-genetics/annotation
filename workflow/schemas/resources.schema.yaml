@@ -148,6 +148,26 @@ properties:
         type: string
         description: max execution time
 
+  bcftools_annotate_custom:
+    type: object
+    description: resource definitions for bcftools_annotate_custom
+    properties:
+      mem_mb:
+        type: integer
+        description: max memory in MB in total
+      mem_per_cpu:
+        type: integer
+        description: max memory in MB used per cpu
+      partition:
+        type: string
+        description: partition to use on cluster
+      threads:
+        type: integer
+        description: number of threads to be available
+      time:
+        type: string
+        description: max execution time
+
   bcftools_sort:
     type: object
     description: resource definitions for bcftools_sort

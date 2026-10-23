@@ -105,6 +105,26 @@ properties:
         type: string
         description: parameters that should be forwarded
 
+  bcftools_annotate_custom:
+    type: object
+    description: parameters for bcftools_annotate_custom
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      custom_command:
+        type: string
+        description: custom bcftools annotate options, e.g. annotation file and columns ("--annotation db.vcf.gz -c INFO/AF")
+      output_type:
+        type: string
+        description: output file packing type (b,u,z,v) z=bgzipped
+      extra:
+        type: string
+        description: parameters that should be forwarded
+
   bcftools_sort:
     type: object
     description: parameters for bcftools_sort
